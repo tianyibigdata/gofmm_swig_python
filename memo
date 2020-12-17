@@ -1,0 +1,7 @@
+15.12.2020
+
+Modified set_env.sh, CMakeLists.txt and wrote a new swig.sh to add a
+linker file with liblapack, libblas libraries in the run time.
+
+Figured out seg fault problem in call_Launchhelper(). We must initialize
+a separate memeory block in runtime
