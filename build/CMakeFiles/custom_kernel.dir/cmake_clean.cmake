@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/custom_kernel.dir/example/custom_kernel.cpp.o"
   "custom_kernel.pdb"
   "custom_kernel"
+  "custom_kernel.pdb"
+  "CMakeFiles/CMakeRelink.dir/custom_kernel"
 )
 
 # Per-language clean rules from dependency scanning.

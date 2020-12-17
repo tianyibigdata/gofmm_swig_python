@@ -36,16 +36,16 @@
 using namespace std;
 // using namespace hmlp;
 
+
 /* Define different spd matrix types */
 // Numeric datatype is double since python only accepts double officially
 typedef double T;
 typedef SPDMatrix<T> SPDMATRIX_DENSE;
 
 SPDMATRIX_DENSE load_denseSPD(uint64_t height,
-                               uint64_t width,
-                               const std::string & filename) {
-  /* Return a pointer to a newly constructed dense SPD matrix from an
-     input data file. */
+                              uint64_t width,
+                              const std::string &filename) {
+  /* Return a newly constructed dense SPD matrix from an input data file. */
   SPDMATRIX_DENSE K(height, width, filename);
   return K;
 }
@@ -54,7 +54,7 @@ SPDMATRIX_DENSE load_denseSPD(uint64_t height,
 hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, char *argv[]) {
   /* Compress and evaluate the input SPD dense matrix.
 
-     @K: a ptr to the matrix data
+     @K: a ref to the matrix data
 
      @argv: input parameters, eg, ./test_gofmm n m k s ... spdMatrixType
   */
@@ -62,9 +62,6 @@ hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, char *argv[]) {
   gofmm::CommandLineHelper cmd(argc, argv);
 
   HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
-
-  /** random spd initialization */
-  
 
   hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
 

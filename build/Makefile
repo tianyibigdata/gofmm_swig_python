@@ -48,10 +48,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1
+CMAKE_SOURCE_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build
+CMAKE_BINARY_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -122,22 +122,11 @@ list_install_components/fast: list_install_components
 
 .PHONY : list_install_components/fast
 
-# Special rule for the target install/strip
-install/strip: preinstall
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Installing the project stripped..."
-	/usr/bin/cmake -DCMAKE_INSTALL_DO_STRIP=1 -P cmake_install.cmake
-.PHONY : install/strip
-
-# Special rule for the target install/strip
-install/strip/fast: install/strip
-
-.PHONY : install/strip/fast
-
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/CMakeFiles /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/CMakeFiles /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -191,6 +180,11 @@ unitTest/fast:
 	$(MAKE) -f CMakeFiles/unitTest.dir/build.make CMakeFiles/unitTest.dir/build
 .PHONY : unitTest/fast
 
+# Manual pre-install relink rule for target.
+unitTest/preinstall:
+	$(MAKE) -f CMakeFiles/unitTest.dir/build.make CMakeFiles/unitTest.dir/preinstall
+.PHONY : unitTest/preinstall
+
 #=============================================================================
 # Target rules for targets named coverage-html
 
@@ -217,6 +211,11 @@ distributed_matrix/fast:
 	$(MAKE) -f CMakeFiles/distributed_matrix.dir/build.make CMakeFiles/distributed_matrix.dir/build
 .PHONY : distributed_matrix/fast
 
+# Manual pre-install relink rule for target.
+distributed_matrix/preinstall:
+	$(MAKE) -f CMakeFiles/distributed_matrix.dir/build.make CMakeFiles/distributed_matrix.dir/preinstall
+.PHONY : distributed_matrix/preinstall
+
 #=============================================================================
 # Target rules for targets named custom_kernel
 
@@ -230,6 +229,11 @@ custom_kernel/fast:
 	$(MAKE) -f CMakeFiles/custom_kernel.dir/build.make CMakeFiles/custom_kernel.dir/build
 .PHONY : custom_kernel/fast
 
+# Manual pre-install relink rule for target.
+custom_kernel/preinstall:
+	$(MAKE) -f CMakeFiles/custom_kernel.dir/build.make CMakeFiles/custom_kernel.dir/preinstall
+.PHONY : custom_kernel/preinstall
+
 #=============================================================================
 # Target rules for targets named fast_matvec_solver
 
@@ -242,6 +246,11 @@ fast_matvec_solver: cmake_check_build_system
 fast_matvec_solver/fast:
 	$(MAKE) -f CMakeFiles/fast_matvec_solver.dir/build.make CMakeFiles/fast_matvec_solver.dir/build
 .PHONY : fast_matvec_solver/fast
+
+# Manual pre-install relink rule for target.
+fast_matvec_solver/preinstall:
+	$(MAKE) -f CMakeFiles/fast_matvec_solver.dir/build.make CMakeFiles/fast_matvec_solver.dir/preinstall
+.PHONY : fast_matvec_solver/preinstall
 
 #=============================================================================
 # Target rules for targets named hmlp
@@ -269,6 +278,11 @@ test_mpigofmm/fast:
 	$(MAKE) -f CMakeFiles/test_mpigofmm.dir/build.make CMakeFiles/test_mpigofmm.dir/build
 .PHONY : test_mpigofmm/fast
 
+# Manual pre-install relink rule for target.
+test_mpigofmm/preinstall:
+	$(MAKE) -f CMakeFiles/test_mpigofmm.dir/build.make CMakeFiles/test_mpigofmm.dir/preinstall
+.PHONY : test_mpigofmm/preinstall
+
 #=============================================================================
 # Target rules for targets named distributed_fast_matvec_solver
 
@@ -281,6 +295,11 @@ distributed_fast_matvec_solver: cmake_check_build_system
 distributed_fast_matvec_solver/fast:
 	$(MAKE) -f CMakeFiles/distributed_fast_matvec_solver.dir/build.make CMakeFiles/distributed_fast_matvec_solver.dir/build
 .PHONY : distributed_fast_matvec_solver/fast
+
+# Manual pre-install relink rule for target.
+distributed_fast_matvec_solver/preinstall:
+	$(MAKE) -f CMakeFiles/distributed_fast_matvec_solver.dir/build.make CMakeFiles/distributed_fast_matvec_solver.dir/preinstall
+.PHONY : distributed_fast_matvec_solver/preinstall
 
 #=============================================================================
 # Target rules for targets named nearest_neighbor
@@ -295,6 +314,11 @@ nearest_neighbor/fast:
 	$(MAKE) -f CMakeFiles/nearest_neighbor.dir/build.make CMakeFiles/nearest_neighbor.dir/build
 .PHONY : nearest_neighbor/fast
 
+# Manual pre-install relink rule for target.
+nearest_neighbor/preinstall:
+	$(MAKE) -f CMakeFiles/nearest_neighbor.dir/build.make CMakeFiles/nearest_neighbor.dir/preinstall
+.PHONY : nearest_neighbor/preinstall
+
 #=============================================================================
 # Target rules for targets named kij_interface_inheritance
 
@@ -307,6 +331,11 @@ kij_interface_inheritance: cmake_check_build_system
 kij_interface_inheritance/fast:
 	$(MAKE) -f CMakeFiles/kij_interface_inheritance.dir/build.make CMakeFiles/kij_interface_inheritance.dir/build
 .PHONY : kij_interface_inheritance/fast
+
+# Manual pre-install relink rule for target.
+kij_interface_inheritance/preinstall:
+	$(MAKE) -f CMakeFiles/kij_interface_inheritance.dir/build.make CMakeFiles/kij_interface_inheritance.dir/preinstall
+.PHONY : kij_interface_inheritance/preinstall
 
 #=============================================================================
 # Target rules for targets named distributed_nearest_neighbor
@@ -321,6 +350,11 @@ distributed_nearest_neighbor/fast:
 	$(MAKE) -f CMakeFiles/distributed_nearest_neighbor.dir/build.make CMakeFiles/distributed_nearest_neighbor.dir/build
 .PHONY : distributed_nearest_neighbor/fast
 
+# Manual pre-install relink rule for target.
+distributed_nearest_neighbor/preinstall:
+	$(MAKE) -f CMakeFiles/distributed_nearest_neighbor.dir/build.make CMakeFiles/distributed_nearest_neighbor.dir/preinstall
+.PHONY : distributed_nearest_neighbor/preinstall
+
 #=============================================================================
 # Target rules for targets named artifact_sc18gofmm
 
@@ -334,6 +368,11 @@ artifact_sc18gofmm/fast:
 	$(MAKE) -f CMakeFiles/artifact_sc18gofmm.dir/build.make CMakeFiles/artifact_sc18gofmm.dir/build
 .PHONY : artifact_sc18gofmm/fast
 
+# Manual pre-install relink rule for target.
+artifact_sc18gofmm/preinstall:
+	$(MAKE) -f CMakeFiles/artifact_sc18gofmm.dir/build.make CMakeFiles/artifact_sc18gofmm.dir/preinstall
+.PHONY : artifact_sc18gofmm/preinstall
+
 #=============================================================================
 # Target rules for targets named test_gofmm
 
@@ -346,6 +385,11 @@ test_gofmm: cmake_check_build_system
 test_gofmm/fast:
 	$(MAKE) -f CMakeFiles/test_gofmm.dir/build.make CMakeFiles/test_gofmm.dir/build
 .PHONY : test_gofmm/fast
+
+# Manual pre-install relink rule for target.
+test_gofmm/preinstall:
+	$(MAKE) -f CMakeFiles/test_gofmm.dir/build.make CMakeFiles/test_gofmm.dir/preinstall
+.PHONY : test_gofmm/preinstall
 
 #=============================================================================
 # Target rules for targets named gmock_main
@@ -1206,7 +1250,6 @@ help:
 	@echo "... kij_interface_inheritance"
 	@echo "... distributed_nearest_neighbor"
 	@echo "... list_install_components"
-	@echo "... install/strip"
 	@echo "... artifact_sc18gofmm"
 	@echo "... test_gofmm"
 	@echo "... gmock_main"

@@ -484,23 +484,23 @@ hmlp_internal.hpp
 packing.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/blas_lapack.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/blas_lapack.cpp
 blas_lapack.hpp
 -
 external/blas_lapack_prototypes.h
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/device.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/device.cpp
 base/device.hpp
 -
 base/runtime.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/hmlp_mpi.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/hmlp_mpi.cpp
 hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/runtime.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/runtime.cpp
 base/runtime.hpp
 -
 base/hmlp_gpu.hpp
@@ -510,41 +510,41 @@ magma_v2.h
 magma_lapack.h
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/tci.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/tci.cpp
 base/tci.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/thread.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/thread.cpp
 base/runtime.hpp
 -
 base/thread.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/util.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/util.cpp
 util.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/kernel/x86_64/haswell/bli_gemm_asm_d6x8.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/kernel/x86_64/haswell/bli_gemm_asm_d6x8.cpp
 hmlp_internal.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/kernel/x86_64/haswell/bli_gemm_asm_d8x6.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/kernel/x86_64/haswell/bli_gemm_asm_d8x6.cpp
 hmlp_internal.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/conv2d.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/conv2d.cpp
 primitives/conv2d.hpp
 -
 rank_k_d8x6.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/gkmx.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/gkmx.cpp
 primitives/gkmx.hpp
 -
 rank_k_d8x6.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/gnbx.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/gnbx.cpp
 primitives/gnbx.hpp
 -
 rank_k_d8x6.hpp
@@ -552,13 +552,13 @@ rank_k_d8x6.hpp
 rank_k_d6x8.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/gsknn.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/gsknn.cpp
 primitives/gsknn.hpp
 -
 rank_k_d8x6.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/gsks.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/gsks.cpp
 primitives/gsks.hpp
 -
 gsks_ref_mrxnr.hpp
@@ -566,7 +566,7 @@ gsks_ref_mrxnr.hpp
 rank_k_d8x6.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/nbody.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/nbody.cpp
 primitives/nbody.hpp
 -
 rank_k_d8x6.hpp
@@ -574,7 +574,7 @@ rank_k_d8x6.hpp
 rank_k_d6x8.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/package/x86_64/haswell/strassen.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/package/x86_64/haswell/strassen.cpp
 primitives/strassen.hpp
 -
 rank_k_d8x6.hpp

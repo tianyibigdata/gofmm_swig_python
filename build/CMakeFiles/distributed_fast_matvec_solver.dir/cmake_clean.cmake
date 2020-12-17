@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/distributed_fast_matvec_solver.dir/example/distributed_fast_matvec_solver.cpp.o"
   "distributed_fast_matvec_solver.pdb"
   "distributed_fast_matvec_solver"
+  "distributed_fast_matvec_solver.pdb"
+  "CMakeFiles/CMakeRelink.dir/distributed_fast_matvec_solver"
 )
 
 # Per-language clean rules from dependency scanning.

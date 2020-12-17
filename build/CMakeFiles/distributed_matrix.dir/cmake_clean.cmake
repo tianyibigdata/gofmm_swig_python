@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/distributed_matrix.dir/example/distributed_matrix.cpp.o"
   "distributed_matrix.pdb"
   "distributed_matrix"
+  "distributed_matrix.pdb"
+  "CMakeFiles/CMakeRelink.dir/distributed_matrix"
 )
 
 # Per-language clean rules from dependency scanning.

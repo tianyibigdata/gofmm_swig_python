@@ -524,7 +524,7 @@ base/runtime.hpp
 base/hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/example/test_mpigofmm.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/example/test_mpigofmm.cpp
 gofmm_mpi.hpp
 -
 containers/SPDMatrix.hpp

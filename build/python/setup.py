@@ -30,16 +30,16 @@ import numpy.distutils.misc_util
 
 # #include directories
 inc_dirs = numpy.distutils.misc_util.get_numpy_include_dirs()
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/include']
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/gofmm']
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame']
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base']
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/primitives']
-inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/containers']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/include']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/gofmm']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/primitives']
+inc_dirs = inc_dirs + ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/containers']
 print inc_dirs
 
 # hmlp library directory
-lib_dirs = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/lib']
+lib_dirs = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/lib']
 print lib_dirs
 
 
@@ -49,7 +49,7 @@ print lib_dirs
 # the c++ extension module
 extension_mod_hmlp = Extension( 
   "hmlp", 
-  sources = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/python/hmlp.pyx'],
+  sources = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/python/hmlp.pyx'],
   language="c++",
   include_dirs = inc_dirs,
   libraries = ['hmlp'],
@@ -72,7 +72,7 @@ setup(
 # the c++ extension module
 extension_mod_gofmm = Extension( 
   "gofmm", 
-  sources = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/python/gofmm.pyx'], 
+  sources = ['/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/python/gofmm.pyx'], 
   language="c++",
   include_dirs = inc_dirs,
   libraries = ['hmlp'],

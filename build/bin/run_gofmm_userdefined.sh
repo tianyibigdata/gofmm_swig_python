@@ -1,6 +1,6 @@
 ## all SPD matrix files stored in dense column major format
 declare -a filearray=(
-"/workspace/chenhan/data/K02N65536.bin"
+"/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/data/test.bin"
 )
 
 ## data files stored in dense d-by-N format
@@ -13,7 +13,7 @@ h=1.0
 
 
 ## problem size
-n=5000
+n=10000
 ## maximum leaf node size
 m=64
 ## maximum off-diagonal ranks
@@ -29,7 +29,7 @@ budget=0.00
 ## distance type (geometry, kernel, angle)
 distance="angle"
 ## spdmatrix type (testsuit, dense, ooc, kernel, userdefine)
-matrixtype="testsuit"
+matrixtype="dense"
 ## kernelmatrix type (gaussian, laplace)
 kerneltype="gaussian"
 

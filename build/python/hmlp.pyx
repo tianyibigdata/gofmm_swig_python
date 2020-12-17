@@ -18,7 +18,7 @@
 ##  
 
 
-cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/include/hmlp.h":
+cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/include/hmlp.h":
 
 	cdef void hmlp_init()
 

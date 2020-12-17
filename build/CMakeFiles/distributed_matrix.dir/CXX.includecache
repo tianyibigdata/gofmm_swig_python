@@ -298,7 +298,7 @@ cusparse_v2.h
 thrust/pair.h
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/example/distributed_matrix.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/example/distributed_matrix.cpp
 containers/SPDMatrix.hpp
 -
 containers/KernelMatrix.hpp

@@ -2,6 +2,8 @@ file(REMOVE_RECURSE
   "CMakeFiles/kij_interface_inheritance.dir/example/kij_interface_inheritance.cpp.o"
   "kij_interface_inheritance.pdb"
   "kij_interface_inheritance"
+  "kij_interface_inheritance.pdb"
+  "CMakeFiles/CMakeRelink.dir/kij_interface_inheritance"
 )
 
 # Per-language clean rules from dependency scanning.

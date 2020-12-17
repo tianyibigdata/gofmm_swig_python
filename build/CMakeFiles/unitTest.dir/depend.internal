@@ -50,7 +50,7 @@ CMakeFiles/unitTest.dir/test/unitTest.cpp.o
  ../gofmm/tree.hpp
  ../include/hmlp.h
  ../include/hmlp_base.hpp
- /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/external/gtest-mpi-listener.hpp
- /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/gofmm.hpp
- /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/runtime.hpp
- /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unitTest.cpp
+ /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/external/gtest-mpi-listener.hpp
+ /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/gofmm.hpp
+ /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/runtime.hpp
+ /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unitTest.cpp

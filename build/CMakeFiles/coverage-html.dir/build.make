@@ -43,10 +43,10 @@ RM = /usr/bin/cmake -E remove -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1
+CMAKE_SOURCE_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build
+CMAKE_BINARY_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build
 
 # Utility rule file for coverage-html.
 
@@ -54,8 +54,8 @@ CMAKE_BINARY_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severi
 include CMakeFiles/coverage-html.dir/progress.make
 
 CMakeFiles/coverage-html:
-	gcovr -r /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1 -e deps -e example -e test --html -o /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/doc/html/coverage.html
-	gcovr -r /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1 -e deps -e example -e test --html --html-details -o /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/doc/html/coverage_details.html
+	gcovr -r /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1 -e deps -e example -e test --html -o /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/doc/html/coverage.html
+	gcovr -r /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1 -e deps -e example -e test --html --html-details -o /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/doc/html/coverage_details.html
 
 coverage-html: CMakeFiles/coverage-html
 coverage-html: CMakeFiles/coverage-html.dir/build.make
@@ -72,6 +72,6 @@ CMakeFiles/coverage-html.dir/clean:
 .PHONY : CMakeFiles/coverage-html.dir/clean
 
 CMakeFiles/coverage-html.dir/depend:
-	cd /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1 /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1 /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/CMakeFiles/coverage-html.dir/DependInfo.cmake --color=$(COLOR)
+	cd /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1 /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1 /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/CMakeFiles/coverage-html.dir/DependInfo.cmake --color=$(COLOR)
 .PHONY : CMakeFiles/coverage-html.dir/depend
 

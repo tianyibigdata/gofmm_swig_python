@@ -456,7 +456,7 @@ base/runtime.hpp
 base/hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/example/kij_interface_inheritance.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/example/kij_interface_inheritance.cpp
 gofmm.hpp
 -
 containers/VirtualMatrix.hpp

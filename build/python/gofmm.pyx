@@ -31,7 +31,7 @@ from cython.operator cimport dereference as deref
 
 
 ## Import hmlp::Data<T> from Data.hpp. 
-cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/base/Data.hpp" namespace "hmlp":
+cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/base/Data.hpp" namespace "hmlp":
 	cdef cppclass Data[T]:
 		Data() except +
 		Data( size_t m, size_t n ) except +
@@ -77,7 +77,7 @@ cdef class PyData:
 
 
 ## Import dense SPDMatrix<T> from hmlp::SPDMatrix<T>.
-cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/frame/containers/SPDMatrix.hpp" namespace "hmlp":
+cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/containers/SPDMatrix.hpp" namespace "hmlp":
 	cdef cppclass SPDMatrix[T]:
 		SPDMatrix() except +
 		SPDMatrix( size_t m, size_t n ) except +
@@ -137,7 +137,7 @@ cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severin
 
 
 #   ## Import dTree_t from hmlp::gofmm #
-#   cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/gofmm/gofmm.hpp" namespace "hmlp::gofmm":
+#   cdef extern from "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/gofmm/gofmm.hpp" namespace "hmlp::gofmm":
 #   
 #   	## hmlp::gofmm::dTree_t #
 #   	cdef cppclass dTree_t:

@@ -1,8 +1,8 @@
-# Install script for directory: /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/deps/googletest
+# Install script for directory: /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/deps/googletest
 
 # Set the install prefix
 if(NOT DEFINED CMAKE_INSTALL_PREFIX)
-  set(CMAKE_INSTALL_PREFIX "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build")
+  set(CMAKE_INSTALL_PREFIX "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build")
 endif()
 string(REGEX REPLACE "/$" "" CMAKE_INSTALL_PREFIX "${CMAKE_INSTALL_PREFIX}")
 
@@ -34,7 +34,7 @@ endif()
 
 if(NOT CMAKE_INSTALL_LOCAL_ONLY)
   # Include the install script for each subdirectory.
-  include("/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/deps/googletest/googlemock/cmake_install.cmake")
+  include("/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build/deps/googletest/googlemock/cmake_install.cmake")
 
 endif()
 

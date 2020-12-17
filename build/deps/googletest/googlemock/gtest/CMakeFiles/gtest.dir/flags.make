@@ -6,5 +6,5 @@ CXX_FLAGS =   -O3 -fopenmp -m64 -fPIC -D_POSIX_C_SOURCE=200112L -fprofile-arcs -
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/deps/googletest/googletest/include -I/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/deps/googletest/googletest 
+CXX_INCLUDES = -I/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/deps/googletest/googletest/include -I/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/deps/googletest/googletest 
 

@@ -1,0 +1,37 @@
+[getianyi@Ubuntu build]$ bash bin/run_gofmm_userdefined.sh
+@PRIM
+gofmm
+@SETUP
+HMLP_GPU_ARCH = gpu/kepler
+@SETUP
+HMLP_ARCH = x86_64/haswell
+@SETUP
+n = 10000
+@SETUP
+m = 64
+@SETUP
+s = 64
+@SETUP
+k = 0
+@SETUP
+nrhs = 512
+@SETUP
+stol = 1E-5
+@SETUP
+budget = 0.00
+@SETUP
+distance = angle
+@SETUP
+matrixtype = dense
+@DATE
+Do 17. Dez 18:22:03 CET 2020
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/data/test.bin
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/data/test.bin
+
+ERROR: only 400000000 bytes, expecting 800000000
+Error: HMLP_ERROR_INVALID_VALUE in /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/containers/SPDMatrix.hpp at line 38
+
+
+Program encounters hmlp error.
+@STATUS
+1

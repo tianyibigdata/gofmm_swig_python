@@ -738,17 +738,17 @@ base/runtime.hpp
 base/hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/external/gtest-mpi-listener.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/external/gtest-mpi-listener.hpp
 mpi.h
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/external/mpi.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/external/mpi.h
 gtest/gtest.h
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/external/gtest/gtest.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/external/gtest/gtest.h
 cassert
 -
 vector
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/gofmm.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/gofmm.hpp
 hmlp.h
 -
 gofmm.hpp
@@ -758,19 +758,19 @@ containers/SPDMatrix.hpp
 containers/KernelMatrix.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/runtime.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/runtime.hpp
 hmlp.h
 -
 base/hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unitTest.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unitTest.cpp
 gtest/gtest.h
 -
 external/gtest-mpi-listener.hpp
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/external/gtest-mpi-listener.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/external/gtest-mpi-listener.hpp
 unit/gofmm.hpp
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/gofmm.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/gofmm.hpp
 unit/runtime.hpp
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/test/unit/runtime.hpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/test/unit/runtime.hpp
 

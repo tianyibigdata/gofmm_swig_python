@@ -466,7 +466,7 @@ base/runtime.hpp
 base/hmlp_mpi.hpp
 -
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/example/custom_kernel.cpp
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/example/custom_kernel.cpp
 gofmm.hpp
 -
 containers/KernelMatrix.hpp

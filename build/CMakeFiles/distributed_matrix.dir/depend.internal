@@ -18,4 +18,4 @@ CMakeFiles/distributed_matrix.dir/example/distributed_matrix.cpp.o
  ../frame/external/blas_lapack_prototypes.h
  ../frame/external/mpi_prototypes.h
  ../include/hmlp.h
- /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/example/distributed_matrix.cpp
+ /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/example/distributed_matrix.cpp
