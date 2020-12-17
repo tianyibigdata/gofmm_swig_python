@@ -3298,7 +3298,7 @@ SWIGINTERN PyObject *_wrap_load_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObjec
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   PyObject * obj2 = 0 ;
-  SPDMATRIX_DENSE *result = 0 ;
+  SPDMATRIX_DENSE result;
   
   if (!PyArg_ParseTuple(args,(char *)"OOO:load_denseSPD",&obj0,&obj1,&obj2)) SWIG_fail;
   {
@@ -3335,8 +3335,8 @@ SWIGINTERN PyObject *_wrap_load_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObjec
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "load_denseSPD" "', argument " "3"" of type '" "std::string const &""'"); 
   }
   arg3 = reinterpret_cast< std::string * >(argp3);
-  result = (SPDMATRIX_DENSE *)load_denseSPD(arg1,arg2,(std::string const &)*arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_SPDMatrixT_double_t, 0 |  0 );
+  result = load_denseSPD(arg1,arg2,(std::string const &)*arg3);
+  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMatrixT_double_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -3345,7 +3345,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  SPDMATRIX_DENSE *arg1 = (SPDMATRIX_DENSE *) 0 ;
+  SPDMATRIX_DENSE *arg1 = 0 ;
   char **arg2 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
@@ -3356,9 +3356,12 @@ SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self),
   hmlpError_t result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:launchhelper_denseSPD",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_SPDMatrixT_double_t, 0 |  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMatrixT_double_t,  0 );
   if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE *""'"); 
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
   }
   arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
   res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
@@ -3366,7 +3369,7 @@ SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "launchhelper_denseSPD" "', argument " "2"" of type '" "char *[]""'"); 
   } 
   arg2 = reinterpret_cast< char ** >(argp2);
-  result = launchhelper_denseSPD(arg1,arg2);
+  result = launchhelper_denseSPD(*arg1,arg2);
   resultobj = SWIG_NewPointerObj((new hmlpError_t(static_cast< const hmlpError_t& >(result))), SWIGTYPE_p_hmlpError_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:

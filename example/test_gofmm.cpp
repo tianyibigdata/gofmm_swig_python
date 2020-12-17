@@ -41,17 +41,17 @@ using namespace std;
 typedef double T;
 typedef SPDMatrix<T> SPDMATRIX_DENSE;
 
-SPDMATRIX_DENSE *load_denseSPD(uint64_t height,
+SPDMATRIX_DENSE load_denseSPD(uint64_t height,
                                uint64_t width,
                                const std::string & filename) {
   /* Return a pointer to a newly constructed dense SPD matrix from an
      input data file. */
   SPDMATRIX_DENSE K(height, width, filename);
-  return &K;
+  return K;
 }
 
 
-hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE *K, char *argv[]) {
+hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, char *argv[]) {
   /* Compress and evaluate the input SPD dense matrix.
 
      @K: a ptr to the matrix data
@@ -66,7 +66,7 @@ hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE *K, char *argv[]) {
   /** random spd initialization */
   
 
-  hmlpError_t temp = gofmm::LaunchHelper(*K, cmd);
+  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
 
   HANDLE_ERROR(hmlp_finalize());
   return temp;
