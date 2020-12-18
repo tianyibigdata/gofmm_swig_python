@@ -39,7 +39,7 @@ using namespace std;
 
 /* Define different spd matrix types */
 // Numeric datatype is double since python only accepts double officially
-typedef double T;
+typedef float T;
 typedef SPDMatrix<T> SPDMATRIX_DENSE;
 
 SPDMATRIX_DENSE load_denseSPD(uint64_t height,
@@ -156,7 +156,7 @@ int main( int argc, char *argv[] ) {
 
     /** Run the matrix file provided by users. */
     if (!cmd.spdmatrix_type.compare("dense")) {
-      using T = double;
+      using T = float;
       /** Dense spd matrix format. */
       SPDMatrix<T> K( cmd.n, cmd.n, cmd.user_matrix_filename );
       gofmm::LaunchHelper( K, cmd );
