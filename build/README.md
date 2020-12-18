@@ -1,4 +1,4 @@
-# Memo
+# `Memo`
 I'll try to document what I did specifically on a daily basis in this file,
 such as what problems I ran into, my relevant thoughts and what tasks
 I finished.

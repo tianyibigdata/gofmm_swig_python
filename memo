@@ -1,7 +1,41 @@
-15.12.2020
+This is a memo to document what I did for my master thesis on a daily
+basis. It not only includes the stuff that I successfully implemented,
+but also the problems that I encountered. Moreover, it will also contain
+the discussion with my advisor and though process.
 
+I hope this file could guide me to a clear goal of our project.
+
+
+15.12.2020
 Modified set_env.sh, CMakeLists.txt and wrote a new swig.sh to add a
 linker file with liblapack, libblas libraries in the run time.
 
 Figured out seg fault problem in call_Launchhelper(). We must initialize
 a separate memeory block in runtime
+
+
+16.12.2020
+
+Reading day!
+
+Read format in .i file about swig: %include, %inline, global var...,
+static linking, extern
+
+
+17.12.2020
+
+Designed basic working case: first start with the implementation of
+running dense matrix
+
+wrote functions: SPDMATRIX_DENSE, launchhelper_denseSPD
+
+problem encountered: see the issue in gitlab with the title 
+
+        Cant read the binary matrix file from .sh
+
+
+18.12.2020
+
+Solved the issue from 17.12.2020 (see solution in gitlab)
+
+modified tools.i file so that SPDMATRIX_DENSE function is callable in python
