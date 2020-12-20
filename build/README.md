@@ -3,6 +3,24 @@ I'll try to document what I did specifically on a daily basis in this file,
 such as what problems I ran into, my relevant thoughts and what tasks
 I finished.
 
+# hmlp + gofmm implementation
+1. Download and run blas and lapack as indicated by the website
+
+https://coral.ise.lehigh.edu/jild13/2016/07/27/install-lapack-and-blas-on-linux-based-systems/
+
+2. First check your `set_env.sh` file, do the necessary changes as indicated
+by hanyu chen in the official hmlp README.md.
+
+   Some changes I did:
+   a. export OPENBLASROOT=false
+   b. #export BLISROOT=/usr/lib/openblas-base/
+   c. 
+
+
+
+   
+
+
 # GOFMM and SWIG Interface
 Go to the directory for the file `gofmm.hpp`
 
