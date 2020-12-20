@@ -7,6 +7,12 @@ I finished.
 This file documents the questions that I should ask my mentor at our
 next meeting.
 
+# `../tools.i`
+Notice: whenever we need to change the this file, please change it in
+the `hmlp-1` directory not the `build` directory. The reason is that
+we'll be running `bash swig.sh` after the change. And `../tools.i` will
+replace the `tools.i` in the `build` directory
+
 
 # hmlp + gofmm implementation
 1. Download and run blas and lapack as indicated by the website
