@@ -14,6 +14,13 @@ we'll be running `bash swig.sh` after the change. And `../tools.i` will
 replace the `tools.i` in the `build` directory
 
 
+`compile_log.txt`
+This file records all output from a successful hmlp + gofmm compilation.
+If you run into a common problem like "can't link some functions from
+the llpack or lblas", please refer to the output of the cmd `source ..`
+and `cmake ..` and see where you did wrong.
+
+
 # hmlp + gofmm implementation
 1. Download and run blas and lapack as indicated by the website
 

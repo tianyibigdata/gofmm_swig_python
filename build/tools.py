@@ -91,6 +91,10 @@ except AttributeError:
 
 
 
+def file_to_argv(filename):
+    return _tools.file_to_argv(filename)
+file_to_argv = _tools.file_to_argv
+
 def load_denseSPD(height, width, filename):
     return _tools.load_denseSPD(height, width, filename)
 load_denseSPD = _tools.load_denseSPD

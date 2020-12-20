@@ -24,7 +24,8 @@ export OPENBLASROOT=false
 # export BLISROOT=/usr/lib/openblas-base/
 
 # ## Make sure NETLIBROOT is defined. (icc/icpc, gcc/g++)
-export NETLIBROOT=/usr/local/lib/
+# export NETLIBROOT=/usr/local/lib/
+export NETLIBROOT=/usr/lib/
 
 ## Setup the maximum number of threads.
 export OMP_NUM_THREADS=2

@@ -58,7 +58,7 @@ extension_mod_hmlp = Extension(
   extra_compile_args=['-O3 -fopenmp -arch x86_64 -m64'],
   #extra_compile_args=["-fopenmp", "-O3", "-std=c++11",
   #	"-DNPY_NO_DEPRECATED_API=NPY_1_7_API_VERSION"],
-  extra_link_args=[' -lpthread -fopenmp -lm -L/usr/local/lib/ -lblas -llapack']
+  extra_link_args=[' -lpthread -fopenmp -lm -L/usr/lib/ -lblas -llapack']
 )
 
 
@@ -79,7 +79,7 @@ extension_mod_gofmm = Extension(
   library_dirs = lib_dirs,
   runtime_library_dirs = lib_dirs,
   extra_compile_args=['-O3 -fopenmp -arch x86_64 -m64'],
-  extra_link_args=[' -lpthread -fopenmp -lm -L/usr/local/lib/ -lblas -llapack']
+  extra_link_args=[' -lpthread -fopenmp -lm -L/usr/lib/ -lblas -llapack']
 )
 
 
