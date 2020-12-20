@@ -1,7 +1,12 @@
-# `Memo`
+# `../memo`
 I'll try to document what I did specifically on a daily basis in this file,
 such as what problems I ran into, my relevant thoughts and what tasks
 I finished.
+
+# `../questions`
+This file documents the questions that I should ask my mentor at our
+next meeting.
+
 
 # hmlp + gofmm implementation
 1. Download and run blas and lapack as indicated by the website
