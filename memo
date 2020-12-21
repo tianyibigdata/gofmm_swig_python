@@ -53,6 +53,8 @@ we want to read file into char**
 3. wrote file_to_argv: which reads a file into vector. Due to memory
 issue related to local vars, this function is still under construction.
 
-
+4. wrote `compile_log.txt`: document what the output of key cmds in the
+compilitaion should look like. The other users of the gofmm + hmlp package
+should consult it.
 
 
