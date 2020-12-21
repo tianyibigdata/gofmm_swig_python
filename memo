@@ -58,3 +58,17 @@ compilitaion should look like. The other users of the gofmm + hmlp package
 should consult it.
 
 
+21.12.2020
+1. Finished part 3 of the date 20.12.2020. Namely, wrote file_to_argv
+class to wrap from a txt file the parameters into a class object.
+
+  a. This class reduces hard coding, eg, when we need to run two different spd
+     matrix, testsuit + spd dense, we don't need hard coding
+  b. Use destructor to smartly clear out the memory space occupied by the vector
+
+It runs successfully
+
+2. Wrote test_gofmm.h file so that functions in test_gofmm.cpp could
+reference each other without worrying about order
+
+
