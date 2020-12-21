@@ -31,4 +31,5 @@ CMakeFiles/test_gofmm.dir/example/test_gofmm.cpp.o: ../gofmm/tree.hpp
 CMakeFiles/test_gofmm.dir/example/test_gofmm.cpp.o: ../include/hmlp.h
 CMakeFiles/test_gofmm.dir/example/test_gofmm.cpp.o: ../include/hmlp_base.hpp
 CMakeFiles/test_gofmm.dir/example/test_gofmm.cpp.o: ../example/test_gofmm.cpp
+CMakeFiles/test_gofmm.dir/example/test_gofmm.cpp.o: ../example/test_gofmm.h
 

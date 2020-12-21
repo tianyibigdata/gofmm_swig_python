@@ -95,21 +95,9 @@ def call_Launchhelper(filename):
     return _tools.call_Launchhelper(filename)
 call_Launchhelper = _tools.call_Launchhelper
 
-def file_to_argv(filename):
-    return _tools.file_to_argv(filename)
-file_to_argv = _tools.file_to_argv
-
-def printVec(argv):
-    return _tools.printVec(argv)
-printVec = _tools.printVec
-
 def load_denseSPD(height, width, filename):
     return _tools.load_denseSPD(height, width, filename)
 load_denseSPD = _tools.load_denseSPD
-
-def launchhelper_denseSPD(K, filename):
-    return _tools.launchhelper_denseSPD(K, filename)
-launchhelper_denseSPD = _tools.launchhelper_denseSPD
 
 def hello_world():
     return _tools.hello_world()
@@ -122,6 +110,10 @@ Compress = _tools.Compress
 def main(argc, argv):
     return _tools.main(argc, argv)
 main = _tools.main
+
+def launchhelper_denseSPD(K, filename):
+    return _tools.launchhelper_denseSPD(K, filename)
+launchhelper_denseSPD = _tools.launchhelper_denseSPD
 # This file is compatible with both classic and new-style classes.
 
 

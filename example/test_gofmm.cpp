@@ -33,11 +33,16 @@
 /** Use Gauss Hessian matrices provided by Chao. */
 #include <containers/GNHessian.hpp>
 /** Use STL and HMLP namespaces. */
+#include "test_gofmm.h"
 using namespace std;
 // using namespace hmlp;
 
 
-hmlpError_t call_Launchhelper(const char* filename) {
+file_to_argv::file_to_argv() {}  // size 0 vector initialization
+
+file_to_argv::file_to_argv(const char* filename) {
+  /* Read file line by line into argv (public field) */
+
   /* Construct vector string */
   std::string line;
   std::vector<std::string> parameters;
@@ -47,14 +52,32 @@ hmlpError_t call_Launchhelper(const char* filename) {
   while (std::getline(file, para))  // Keep reading in each parameter
     parameters.push_back(para);
 
-  /* Convert vector string to vector char* */
-  std::vector<const char*> argv(parameters.size(), NULL);
+  /* Convert vector string to vector char* by pushing */
   for (int i=0; i < parameters.size(); i++)
-    argv[i]= parameters[i].c_str();
+    argv.push_back(parameters[i].c_str());
 
   parameters.clear();  // clear the vector
+}
 
-  gofmm::CommandLineHelper cmd(argv.size(), argv);
+file_to_argv::~file_to_argv() {
+  argv.clear();  // free the vector
+}
+
+void file_to_argv::print_argv() {
+  for (auto i = argv.begin(); i != argv.end(); ++i)
+    std::cout << *i << '\n';  // print argvs line by line
+}
+
+std::vector<const char*> file_to_argv::return_argv() {
+  return argv;
+}
+
+
+hmlpError_t call_Launchhelper(const char* filename) {
+  /* Construct vector string */
+  file_to_argv argvObj(filename);
+  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+                               argvObj.return_argv());  // avoid deep copy
 
   HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
 
@@ -66,32 +89,7 @@ hmlpError_t call_Launchhelper(const char* filename) {
 
   HANDLE_ERROR(hmlp_finalize());
 
-  argv.clear();  // clear the argv
-
   return temp;
-}
-
-
-
-std::vector<const char*> file_to_argv(const char* filename) {
-  std::string line;
-  std::vector<std::string> parameters;
-  int n_lines = 0;  // Number of parameters in total
-
-  std::ifstream file(filename);  // read the entire file
-  std::string   para;            // parameter <-> each line in file
-  while (std::getline(file, para))  // Keep reading in each parameter
-    parameters.push_back(para);
-
-  /* Convert vector string to vector */
-  std::vector<const char*> argv(parameters.size(), NULL);
-  for (int i=0; i < parameters.size(); i++)
-    argv[i]= parameters[i].c_str();
-
-  for (auto i = argv.begin(); i != argv.end(); ++i)
-    std::cout << *i << '\n';
-
-  return argv;
 }
 
 
@@ -109,50 +107,10 @@ SPDMATRIX_DENSE load_denseSPD(uint64_t height,
 }
 
 
-hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
-  /* Compress and evaluate a SPD dense matrix 
-
-     @K: the compressed SPD matrix
-
-     @filename: the file containing parameters
-   */
-
-  /* Construct vector string */
-  std::string line;
-  std::vector<std::string> parameters;
-  std::ifstream file(filename);  // read the entire file
-  std::string   para;            // parameter <-> each line in file
-
-  while (std::getline(file, para))  // Keep reading in each parameter
-    parameters.push_back(para);
-
-  /* Convert vector string to vector char* */
-  std::vector<const char*> argv(parameters.size(), NULL);
-  for (int i=0; i < parameters.size(); i++)
-    argv[i]= parameters[i].c_str();
-
-  parameters.clear();  // clear the vector
-
-  gofmm::CommandLineHelper cmd(argv.size(), argv);
-
-  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
-
-  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
-
-  HANDLE_ERROR(hmlp_finalize());
-
-  argv.clear();
-
-  return temp;
-}
-
-
-
 int hello_world() {
   cout << "Hello World!"<< endl;
   return 0;
 }
-
 
 
 hmlp::gofmm::dTree_t* Compress(hmlp::gofmm::dSPDMatrix_t K,
@@ -298,23 +256,24 @@ int main( int argc, char *argv[] ) {
 }; /** end main() */
 
 
-// std::vector<const char*> file_to_argv(const char* filename) {
-//   std::string line;
-//   std::vector<std::string> parameters;
-//   int n_lines = 0;  // Number of parameters in total
+hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
+  /* Compress and evaluate a SPD dense matrix 
 
-//   std::ifstream file(filename);  // read the entire file
-//   std::string   para;            // parameter <-> each line in file
-//   while (std::getline(file, para))  // Keep reading in each parameter
-//     parameters.push_back(para);
+     @K: the compressed SPD matrix
 
-//   std::vector<const char*> argv;
-//   for (std::string const& str : parameters) {
-//     argv.push_back(str.data());
-//   }
+     @filename: the file containing parameters
+   */
 
-//   for (auto i = parameters.begin(); i != parameters.end(); ++i)
-//     std::cout << *i << '\n';
+  // Wrap parameters from filename line by line into argvObj
+  file_to_argv argvObj(filename);
+  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+                               argvObj.return_argv());  // avoid deep copy
 
-//   return argv;
-// }
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
+
+  HANDLE_ERROR(hmlp_finalize());
+
+  return temp;
+}
