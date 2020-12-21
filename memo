@@ -39,3 +39,20 @@ problem encountered: see the issue in gitlab with the title
 Solved the issue from 17.12.2020 (see solution in gitlab)
 
 modified tools.i file so that SPDMATRIX_DENSE function is callable in python
+
+
+20.12.2020
+1. rewrote launchhelper_denseSPD so that it could take as an parameter
+a file path to the parameters file. It runs succesfully
+
+2. Modified the constructor of gofmm::CommandLineHelper so that it can
+take a vector as a parameter. This proves much cleaner and understandble
+since we can avoid realloc (and general memory management) which typically happens when
+we want to read file into char**
+
+3. wrote file_to_argv: which reads a file into vector. Due to memory
+issue related to local vars, this function is still under construction.
+
+
+
+

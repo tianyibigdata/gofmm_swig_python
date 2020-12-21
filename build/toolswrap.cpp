@@ -3528,6 +3528,31 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *_wrap_call_Launchhelper(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  hmlpError_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:call_Launchhelper",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "call_Launchhelper" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  result = call_Launchhelper((char const *)arg1);
+  resultobj = SWIG_NewPointerObj((new hmlpError_t(static_cast< const hmlpError_t& >(result))), SWIGTYPE_p_hmlpError_t, SWIG_POINTER_OWN |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_file_to_argv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -3549,6 +3574,35 @@ SWIGINTERN PyObject *_wrap_file_to_argv(PyObject *SWIGUNUSEDPARM(self), PyObject
   return resultobj;
 fail:
   if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_printVec(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  std::vector< char const * > arg1 ;
+  void *argp1 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:printVec",&obj0)) SWIG_fail;
+  {
+    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_std__vectorT_char_const_p_t,  0  | 0);
+    if (!SWIG_IsOK(res1)) {
+      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "printVec" "', argument " "1"" of type '" "std::vector< char const * >""'"); 
+    }  
+    if (!argp1) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "printVec" "', argument " "1"" of type '" "std::vector< char const * >""'");
+    } else {
+      std::vector< char const * > * temp = reinterpret_cast< std::vector< char const * > * >(argp1);
+      arg1 = *temp;
+      if (SWIG_IsNewObj(res1)) delete temp;
+    }
+  }
+  printVec(arg1);
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
   return NULL;
 }
 
@@ -3603,11 +3657,12 @@ fail:
 SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   SPDMATRIX_DENSE *arg1 = 0 ;
-  char **arg2 ;
+  char *arg2 = (char *) 0 ;
   void *argp1 = 0 ;
   int res1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
   PyObject * obj0 = 0 ;
   PyObject * obj1 = 0 ;
   hmlpError_t result;
@@ -3621,15 +3676,17 @@ SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self),
     SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
   }
   arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
   if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "launchhelper_denseSPD" "', argument " "2"" of type '" "char *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< char ** >(argp2);
-  result = launchhelper_denseSPD(*arg1,arg2);
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "launchhelper_denseSPD" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = launchhelper_denseSPD(*arg1,(char const *)arg2);
   resultobj = SWIG_NewPointerObj((new hmlpError_t(static_cast< const hmlpError_t& >(result))), SWIGTYPE_p_hmlpError_t, SWIG_POINTER_OWN |  0 );
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return resultobj;
 fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
   return NULL;
 }
 
@@ -3728,7 +3785,9 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
 	 { (char *)"file_to_argv", _wrap_file_to_argv, METH_VARARGS, NULL},
+	 { (char *)"printVec", _wrap_printVec, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD", _wrap_load_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},

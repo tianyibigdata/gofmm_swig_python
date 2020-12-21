@@ -91,8 +91,112 @@ class CommandLineHelper
   public:
 
     /** (Default) constructor. */
-    CommandLineHelper( int argc, char *argv[] )
-    {
+  // CommandLineHelper( int argc, char *argv[] )
+     CommandLineHelper(int argc, vector<const char*> argv) {
+      /** Number of columns and rows, i.e. problem size. */
+      sscanf( argv[ 1 ], "%lu", &n );
+      /** On-diagonal block size, such that the tree has log(n/m) levels. */
+      sscanf( argv[ 2 ], "%lu", &m );
+      /** Number of neighbors to use. */
+      sscanf( argv[ 3 ], "%lu", &k );
+      /** Maximum off-diagonal ranks. */
+      sscanf( argv[ 4 ], "%lu", &s );
+      /** Number of right-hand sides. */
+      sscanf( argv[ 5 ], "%lu", &nrhs );
+      /** Desired approximation accuracy. */
+      sscanf( argv[ 6 ], "%lf", &stol );
+      /** The maximum percentage of direct matrix-multiplication. */
+      sscanf( argv[ 7 ], "%lf", &budget );
+
+
+      /** Specify distance type. */
+      distance_type = argv[ 8 ];
+
+      if ( !distance_type.compare( "geometry" ) )
+      {
+        metric = GEOMETRY_DISTANCE;
+      }
+      else if ( !distance_type.compare( "kernel" ) )
+      {
+        metric = KERNEL_DISTANCE;
+      }
+      else if ( !distance_type.compare( "angle" ) )
+      {
+        metric = ANGLE_DISTANCE;
+      }
+      else
+      {
+        printf( "%s is not supported\n", argv[ 8 ] );
+        argv.clear();
+        exit( 1 );
+      }
+
+      /** Specify what kind of spdmatrix is used. */
+      spdmatrix_type = argv[ 9 ];
+
+      std::cout << spdmatrix_type << '\n';
+      if ( !spdmatrix_type.compare( "testsuit" ) )
+      {
+        /** NOP */
+      }
+      else if ( !spdmatrix_type.compare( "userdefine" ) )
+      {
+        /** NOP */
+      }
+      else if ( !spdmatrix_type.compare( "pvfmm" ) )
+      {
+        /** NOP */
+      }
+      else if ( !spdmatrix_type.compare( "dense" ) || !spdmatrix_type.compare( "ooc" ) )
+      {
+        /** (Optional) provide the path to the matrix file. */
+        user_matrix_filename = argv[ 10 ];
+        if ( argc > 11 ) 
+        {
+          /** (Optional) provide the path to the data file. */
+          user_points_filename = argv[ 11 ];
+          /** Dimension of the data set. */
+          sscanf( argv[ 12 ], "%lu", &d );
+        }
+      }
+      else if ( !spdmatrix_type.compare( "mlp" ) )
+      {
+        hidden_layers = argv[ 10 ];
+        user_points_filename = argv[ 11 ];
+        /** Number of attributes (dimensions). */
+        sscanf( argv[ 12 ], "%lu", &d );
+      }
+      else if ( !spdmatrix_type.compare( "cov" ) )
+      {
+        kernelmatrix_type = argv[ 10 ];
+        user_points_filename = argv[ 11 ];
+        /** Number of attributes (dimensions) */
+        sscanf( argv[ 12 ], "%lu", &d );
+        /** Block size (in dimensions) per file */
+        sscanf( argv[ 13 ], "%lu", &nb );
+      }
+      else if ( !spdmatrix_type.compare( "kernel" ) )
+      {
+        kernelmatrix_type = argv[ 10 ];
+        user_points_filename = argv[ 11 ];
+        /** Number of attributes (dimensions) */
+        sscanf( argv[ 12 ], "%lu", &d );
+        /** (Optional) provide Gaussian kernel bandwidth */
+        if ( argc > 13 ) sscanf( argv[ 13 ], "%lf", &h );
+      }
+      else if ( !spdmatrix_type.compare( "jacobian" ) )
+      {
+        user_matrix_filename = argv[ 10 ];
+      }
+      else
+      {
+        printf( "%s is not supported\n", argv[ 9 ] );
+        argv.clear();
+        exit( 1 );
+      }
+    }; /** end CommentLineSupport() */
+
+     CommandLineHelper(int argc, char* argv[]) {
       /** Number of columns and rows, i.e. problem size. */
       sscanf( argv[ 1 ], "%lu", &n );
       /** On-diagonal block size, such that the tree has log(n/m) levels. */
