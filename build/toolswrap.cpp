@@ -3006,23 +3006,22 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_SPDMatrixT_float_t swig_types[0]
+#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[0]
 #define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_float swig_types[2]
-#define SWIGTYPE_p_hmlpError_t swig_types[3]
-#define SWIGTYPE_p_hmlp__gofmm__dSPDMatrix_t swig_types[4]
-#define SWIGTYPE_p_hmlp__gofmm__dTree_t swig_types[5]
-#define SWIGTYPE_p_int swig_types[6]
-#define SWIGTYPE_p_long_long swig_types[7]
-#define SWIGTYPE_p_p_char swig_types[8]
-#define SWIGTYPE_p_short swig_types[9]
-#define SWIGTYPE_p_signed_char swig_types[10]
-#define SWIGTYPE_p_unsigned_char swig_types[11]
-#define SWIGTYPE_p_unsigned_int swig_types[12]
-#define SWIGTYPE_p_unsigned_long_long swig_types[13]
-#define SWIGTYPE_p_unsigned_short swig_types[14]
-static swig_type_info *swig_types[16];
-static swig_module_info swig_module = {swig_types, 15, 0, 0, 0, 0};
+#define SWIGTYPE_p_hmlpError_t swig_types[2]
+#define SWIGTYPE_p_hmlp__gofmm__dSPDMatrix_t swig_types[3]
+#define SWIGTYPE_p_hmlp__gofmm__dTree_t swig_types[4]
+#define SWIGTYPE_p_int swig_types[5]
+#define SWIGTYPE_p_long_long swig_types[6]
+#define SWIGTYPE_p_p_char swig_types[7]
+#define SWIGTYPE_p_short swig_types[8]
+#define SWIGTYPE_p_signed_char swig_types[9]
+#define SWIGTYPE_p_unsigned_char swig_types[10]
+#define SWIGTYPE_p_unsigned_int swig_types[11]
+#define SWIGTYPE_p_unsigned_long_long swig_types[12]
+#define SWIGTYPE_p_unsigned_short swig_types[13]
+static swig_type_info *swig_types[15];
+static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3552,6 +3551,43 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SPDMATRIX_DENSE *arg1 = 0 ;
+  char *arg2 = (char *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  int res2 ;
+  char *buf2 = 0 ;
+  int alloc2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  hmlpError_t result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:launchhelper_denseSPD",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMATRIX_DENSE,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
+  }
+  arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
+  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "launchhelper_denseSPD" "', argument " "2"" of type '" "char const *""'");
+  }
+  arg2 = reinterpret_cast< char * >(buf2);
+  result = launchhelper_denseSPD(*arg1,(char const *)arg2);
+  resultobj = SWIG_NewPointerObj((new hmlpError_t(static_cast< const hmlpError_t& >(result))), SWIGTYPE_p_hmlpError_t, SWIG_POINTER_OWN |  0 );
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return resultobj;
+fail:
+  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
+  return NULL;
+}
+
+
 SWIGINTERN PyObject *_wrap_load_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   uint64_t arg1 ;
@@ -3590,7 +3626,7 @@ SWIGINTERN PyObject *_wrap_load_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObjec
     arg3 = ptr;
   }
   result = load_denseSPD(arg1,arg2,(std::string const &)*arg3);
-  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMatrixT_float_t, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMATRIX_DENSE, SWIG_POINTER_OWN |  0 );
   if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
@@ -3691,60 +3727,22 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  SPDMATRIX_DENSE *arg1 = 0 ;
-  char *arg2 = (char *) 0 ;
-  void *argp1 = 0 ;
-  int res1 = 0 ;
-  int res2 ;
-  char *buf2 = 0 ;
-  int alloc2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  hmlpError_t result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:launchhelper_denseSPD",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMatrixT_float_t,  0 );
-  if (!SWIG_IsOK(res1)) {
-    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
-  }
-  if (!argp1) {
-    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
-  }
-  arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
-  res2 = SWIG_AsCharPtrAndSize(obj1, &buf2, NULL, &alloc2);
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "launchhelper_denseSPD" "', argument " "2"" of type '" "char const *""'");
-  }
-  arg2 = reinterpret_cast< char * >(buf2);
-  result = launchhelper_denseSPD(*arg1,(char const *)arg2);
-  resultobj = SWIG_NewPointerObj((new hmlpError_t(static_cast< const hmlpError_t& >(result))), SWIGTYPE_p_hmlpError_t, SWIG_POINTER_OWN |  0 );
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return resultobj;
-fail:
-  if (alloc2 == SWIG_NEWOBJ) delete[] buf2;
-  return NULL;
-}
-
-
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
+	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD", _wrap_load_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},
 	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
 	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
-	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_SPDMatrixT_float_t = {"_p_SPDMatrixT_float_t", "SPDMatrix< float > *|SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SPDMATRIX_DENSE = {"_p_SPDMATRIX_DENSE", "SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_float = {"_p_float", "float *|T *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlpError_t = {"_p_hmlpError_t", "hmlpError_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlp__gofmm__dSPDMatrix_t = {"_p_hmlp__gofmm__dSPDMatrix_t", "hmlp::gofmm::dSPDMatrix_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlp__gofmm__dTree_t = {"_p_hmlp__gofmm__dTree_t", "hmlp::gofmm::dTree_t *", 0, 0, (void*)0, 0};
@@ -3759,9 +3757,8 @@ static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_SPDMatrixT_float_t,
+  &_swigt__p_SPDMATRIX_DENSE,
   &_swigt__p_char,
-  &_swigt__p_float,
   &_swigt__p_hmlpError_t,
   &_swigt__p_hmlp__gofmm__dSPDMatrix_t,
   &_swigt__p_hmlp__gofmm__dTree_t,
@@ -3776,9 +3773,8 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_short,
 };
 
-static swig_cast_info _swigc__p_SPDMatrixT_float_t[] = {  {&_swigt__p_SPDMatrixT_float_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SPDMATRIX_DENSE[] = {  {&_swigt__p_SPDMATRIX_DENSE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlpError_t[] = {  {&_swigt__p_hmlpError_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlp__gofmm__dSPDMatrix_t[] = {  {&_swigt__p_hmlp__gofmm__dSPDMatrix_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlp__gofmm__dTree_t[] = {  {&_swigt__p_hmlp__gofmm__dTree_t, 0, 0, 0},{0, 0, 0, 0}};
@@ -3793,9 +3789,8 @@ static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_l
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_SPDMatrixT_float_t,
+  _swigc__p_SPDMATRIX_DENSE,
   _swigc__p_char,
-  _swigc__p_float,
   _swigc__p_hmlpError_t,
   _swigc__p_hmlp__gofmm__dSPDMatrix_t,
   _swigc__p_hmlp__gofmm__dTree_t,

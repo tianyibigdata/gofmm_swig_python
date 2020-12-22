@@ -72,3 +72,7 @@ It runs successfully
 reference each other without worrying about order
 
 
+22.12.2020
+1. Add all current functions in .cpp to its .h file so that
+  a. The interface is cleaner
+  b. No restriction of function call order in .cpp

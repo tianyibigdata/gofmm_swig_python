@@ -93,10 +93,28 @@ hmlpError_t call_Launchhelper(const char* filename) {
 }
 
 
-/* Define different spd matrix types */
-// Numeric datatype is double since python only accepts double officially
-typedef float T;
-typedef SPDMatrix<T> SPDMATRIX_DENSE;
+hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
+  /* Compress and evaluate a SPD dense matrix 
+
+     @K: the compressed SPD matrix
+
+     @filename: the file containing parameters
+   */
+
+  // Wrap parameters from filename line by line into argvObj
+  file_to_argv argvObj(filename);
+  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+                               argvObj.return_argv());  // avoid deep copy
+
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
+
+  HANDLE_ERROR(hmlp_finalize());
+
+  return temp;
+}
+
 
 SPDMATRIX_DENSE load_denseSPD(uint64_t height,
                               uint64_t width,
@@ -253,27 +271,4 @@ int main( int argc, char *argv[] ) {
     return -1;
   }
   return 0;
-}; /** end main() */
-
-
-hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
-  /* Compress and evaluate a SPD dense matrix 
-
-     @K: the compressed SPD matrix
-
-     @filename: the file containing parameters
-   */
-
-  // Wrap parameters from filename line by line into argvObj
-  file_to_argv argvObj(filename);
-  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
-                               argvObj.return_argv());  // avoid deep copy
-
-  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
-
-  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
-
-  HANDLE_ERROR(hmlp_finalize());
-
-  return temp;
-}
+} /** end main() */
