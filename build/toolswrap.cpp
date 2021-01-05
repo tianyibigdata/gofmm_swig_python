@@ -3007,24 +3007,25 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 /* -------- TYPES TABLE (BEGIN) -------- */
 
 #define SWIGTYPE_p_CONFIGURATION swig_types[0]
-#define SWIGTYPE_p_DATA swig_types[1]
-#define SWIGTYPE_p_RKDTSPLITTER swig_types[2]
-#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[3]
-#define SWIGTYPE_p_SPLITTER swig_types[4]
-#define SWIGTYPE_p_char swig_types[5]
-#define SWIGTYPE_p_hmlpError_t swig_types[6]
-#define SWIGTYPE_p_hmlp__gofmm__sTree_t swig_types[7]
-#define SWIGTYPE_p_int swig_types[8]
-#define SWIGTYPE_p_long_long swig_types[9]
-#define SWIGTYPE_p_p_char swig_types[10]
-#define SWIGTYPE_p_short swig_types[11]
-#define SWIGTYPE_p_signed_char swig_types[12]
-#define SWIGTYPE_p_unsigned_char swig_types[13]
-#define SWIGTYPE_p_unsigned_int swig_types[14]
-#define SWIGTYPE_p_unsigned_long_long swig_types[15]
-#define SWIGTYPE_p_unsigned_short swig_types[16]
-static swig_type_info *swig_types[18];
-static swig_module_info swig_module = {swig_types, 17, 0, 0, 0, 0};
+#define SWIGTYPE_p_DATA_PAIR swig_types[1]
+#define SWIGTYPE_p_DATA_s swig_types[2]
+#define SWIGTYPE_p_RKDTSPLITTER swig_types[3]
+#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[4]
+#define SWIGTYPE_p_SPLITTER swig_types[5]
+#define SWIGTYPE_p_char swig_types[6]
+#define SWIGTYPE_p_hmlpError_t swig_types[7]
+#define SWIGTYPE_p_hmlp__gofmm__sTree_t swig_types[8]
+#define SWIGTYPE_p_int swig_types[9]
+#define SWIGTYPE_p_long_long swig_types[10]
+#define SWIGTYPE_p_p_char swig_types[11]
+#define SWIGTYPE_p_short swig_types[12]
+#define SWIGTYPE_p_signed_char swig_types[13]
+#define SWIGTYPE_p_unsigned_char swig_types[14]
+#define SWIGTYPE_p_unsigned_int swig_types[15]
+#define SWIGTYPE_p_unsigned_long_long swig_types[16]
+#define SWIGTYPE_p_unsigned_short swig_types[17]
+static swig_type_info *swig_types[19];
+static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3685,7 +3686,7 @@ fail:
 SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   SPDMATRIX_DENSE *arg1 = 0 ;
-  DATA arg2 ;
+  DATA_PAIR arg2 ;
   SPLITTER arg3 ;
   RKDTSPLITTER arg4 ;
   CONFIGURATION arg5 ;
@@ -3716,14 +3717,14 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA,  0  | 0);
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA_PAIR,  0  | 0);
     if (!SWIG_IsOK(res2)) {
-      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Compress" "', argument " "2"" of type '" "DATA""'"); 
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Compress" "', argument " "2"" of type '" "DATA_PAIR""'"); 
     }  
     if (!argp2) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "2"" of type '" "DATA""'");
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "2"" of type '" "DATA_PAIR""'");
     } else {
-      DATA * temp = reinterpret_cast< DATA * >(argp2);
+      DATA_PAIR * temp = reinterpret_cast< DATA_PAIR * >(argp2);
       arg2 = *temp;
       if (SWIG_IsNewObj(res2)) delete temp;
     }
@@ -3775,6 +3776,40 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Evaluate(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  hmlp::gofmm::sTree_t *arg1 = (hmlp::gofmm::sTree_t *) 0 ;
+  DATA_s *arg2 = 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  DATA_s result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:Evaluate",&obj0,&obj1)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_hmlp__gofmm__sTree_t, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Evaluate" "', argument " "1"" of type '" "hmlp::gofmm::sTree_t *""'"); 
+  }
+  arg1 = reinterpret_cast< hmlp::gofmm::sTree_t * >(argp1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA_s,  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Evaluate" "', argument " "2"" of type '" "DATA_s &""'"); 
+  }
+  if (!argp2) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Evaluate" "', argument " "2"" of type '" "DATA_s &""'"); 
+  }
+  arg2 = reinterpret_cast< DATA_s * >(argp2);
+  result = Evaluate(arg1,*arg2);
+  resultobj = SWIG_NewPointerObj((new DATA_s(static_cast< const DATA_s& >(result))), SWIGTYPE_p_DATA_s, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
@@ -3783,6 +3818,7 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},
 	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
 	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
+	 { (char *)"Evaluate", _wrap_Evaluate, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
@@ -3790,7 +3826,8 @@ static PyMethodDef SwigMethods[] = {
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
 static swig_type_info _swigt__p_CONFIGURATION = {"_p_CONFIGURATION", "CONFIGURATION *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_DATA = {"_p_DATA", "DATA *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DATA_PAIR = {"_p_DATA_PAIR", "DATA_PAIR *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DATA_s = {"_p_DATA_s", "DATA_s *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_RKDTSPLITTER = {"_p_RKDTSPLITTER", "RKDTSPLITTER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SPDMATRIX_DENSE = {"_p_SPDMATRIX_DENSE", "SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SPLITTER = {"_p_SPLITTER", "SPLITTER *", 0, 0, (void*)0, 0};
@@ -3809,7 +3846,8 @@ static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned
 
 static swig_type_info *swig_type_initial[] = {
   &_swigt__p_CONFIGURATION,
-  &_swigt__p_DATA,
+  &_swigt__p_DATA_PAIR,
+  &_swigt__p_DATA_s,
   &_swigt__p_RKDTSPLITTER,
   &_swigt__p_SPDMATRIX_DENSE,
   &_swigt__p_SPLITTER,
@@ -3828,7 +3866,8 @@ static swig_type_info *swig_type_initial[] = {
 };
 
 static swig_cast_info _swigc__p_CONFIGURATION[] = {  {&_swigt__p_CONFIGURATION, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_DATA[] = {  {&_swigt__p_DATA, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DATA_PAIR[] = {  {&_swigt__p_DATA_PAIR, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DATA_s[] = {  {&_swigt__p_DATA_s, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_RKDTSPLITTER[] = {  {&_swigt__p_RKDTSPLITTER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SPDMATRIX_DENSE[] = {  {&_swigt__p_SPDMATRIX_DENSE, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SPLITTER[] = {  {&_swigt__p_SPLITTER, 0, 0, 0},{0, 0, 0, 0}};
@@ -3847,7 +3886,8 @@ static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short
 
 static swig_cast_info *swig_cast_initial[] = {
   _swigc__p_CONFIGURATION,
-  _swigc__p_DATA,
+  _swigc__p_DATA_PAIR,
+  _swigc__p_DATA_s,
   _swigc__p_RKDTSPLITTER,
   _swigc__p_SPDMATRIX_DENSE,
   _swigc__p_SPLITTER,

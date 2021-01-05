@@ -81,3 +81,4 @@ reference each other without worrying about order
 05.01.2021
 1. Reading day:)
 2. Create infrastructure for storing matrix in a tree (see typedef in .h)
+3. Finished the function compress

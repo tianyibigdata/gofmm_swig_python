@@ -11,6 +11,7 @@
 /* Define different spd matrix types */
 typedef float T;
 typedef SPDMatrix<T> SPDMATRIX_DENSE;
+typedef Data<T> DATA_s;
 
 /* Create infrastructure for storing matrix in a tree */
 /** Use the geometric-oblivious splitter from the metric ball tree. */
@@ -20,7 +21,7 @@ typedef gofmm::randomsplit<SPDMATRIX_DENSE, N_CHILDREN, T> RKDTSPLITTER;
 /** Create configuration for all user-define arguments. */
 typedef gofmm::Configuration<T> CONFIGURATION;
 /** (Optional) provide neighbors, leave uninitialized otherwise. */
-typedef Data<pair<T, size_t>> DATA;
+typedef Data<pair<T, size_t>> DATA_PAIR;
 
 
 class file_to_argv {
@@ -55,5 +56,9 @@ hmlp::gofmm::dTree_t* Compress(hmlp::gofmm::dSPDMatrix_t K,
                                double stol,
                                double budget);
 
-hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA NN, SPLITTER splitter,
+hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K,
+                               DATA_PAIR NN, SPLITTER splitter,
                                RKDTSPLITTER rkds, CONFIGURATION config);
+
+DATA_s Evaluate(hmlp::gofmm::sTree_t* tree, DATA_s &weights);
+

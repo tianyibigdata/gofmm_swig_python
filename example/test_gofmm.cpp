@@ -131,24 +131,6 @@ int hello_world() {
 }
 
 
-// hmlp::Data<double> Evaluate(hmlp::gofmm::dTree_t *tree,
-//                             hmlp::Data<double>    *weights) {
-//   /* Apply GOFMM on the compressed SPD matrix and return this data object
-//    (which is a r value)
-
-//    @return: A newly construct object that is calculated by GOFMM based
-//    on a compressed SPD matrix
-
-//    @tree: a ptr to the tree object which stores the compressed SPD matrix
-//    with all numeric datatypes being double
-  
-//    @weights: matrix of skeleton weights
-//   */
-//   return hmlp::gofmm::Evaluate<hmlp::gofmm::dTree_t, double>(*tree, *weights);
-// }
-
-
-
 /** @brief Top level driver that reads arguments from the command line. */ 
 int main( int argc, char *argv[] ) {
   try {
@@ -258,14 +240,33 @@ int main( int argc, char *argv[] ) {
   return 0;
 } /** end main() */
 
-hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA NN,
+hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA_PAIR NN,
                                SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
                                CONFIGURATION config) {
   /* Return a tree node that stores a compressed SPD matrix.
 
-     @return: a tree node with all numeric data type in float
-
      @K: uncompressed SPD matrix
+
+     @NN: Number of neighbors
+
+     @config: parameters loaded from the parameter file
+
+     @return: a tree node with all numeric data type in float
   */
   return hmlp::gofmm::Compress( K, NN, splitter, rkdtsplitter, config);
+}
+
+DATA_s Evaluate(hmlp::gofmm::sTree_t *tree, DATA_s &weights) {
+/* Apply GOFMM on the compressed SPD matrix and return this data object
+
+   @return: A newly construct object that is calculated by GOFMM based
+   on a compressed SPD matrix
+
+   @tree: a ptr to the tree object which stores the compressed SPD matrix
+   with all numeric datatypes being double
+  
+   @weights: matrix of skeleton weights
+*/
+  
+  return hmlp::gofmm::Evaluate(*tree, weights);
 }
