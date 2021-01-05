@@ -54,17 +54,17 @@ we want to read file into char**
 issue related to local vars, this function is still under construction.
 
 4. wrote `compile_log.txt`: document what the output of key cmds in the
-compilitaion should look like. The other users of the gofmm + hmlp package
+compilitaion should look like. Users who intend to install gofmm + hmlp package
 should consult it.
 
 
 21.12.2020
 1. Finished part 3 of the date 20.12.2020. Namely, wrote file_to_argv
-class to wrap from a txt file the parameters into a class object.
+class to wrap parameters from a txt file  into a class object.
 
   a. This class reduces hard coding, eg, when we need to run two different spd
      matrix, testsuit + spd dense, we don't need hard coding
-  b. Use destructor to smartly clear out the memory space occupied by the vector
+  b. Use destructor to smartly clean up the memory space occupied by the vector
 
 It runs successfully
 
@@ -76,3 +76,8 @@ reference each other without worrying about order
 1. Add all current functions in .cpp to its .h file so that
   a. The interface is cleaner
   b. No restriction of function call order in .cpp
+
+
+05.01.2021
+1. Reading day:)
+2. Create infrastructure for storing matrix in a tree (see typedef in .h)

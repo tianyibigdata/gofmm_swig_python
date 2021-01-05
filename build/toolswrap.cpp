@@ -3006,22 +3006,25 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[0]
-#define SWIGTYPE_p_char swig_types[1]
-#define SWIGTYPE_p_hmlpError_t swig_types[2]
-#define SWIGTYPE_p_hmlp__gofmm__dSPDMatrix_t swig_types[3]
-#define SWIGTYPE_p_hmlp__gofmm__dTree_t swig_types[4]
-#define SWIGTYPE_p_int swig_types[5]
-#define SWIGTYPE_p_long_long swig_types[6]
-#define SWIGTYPE_p_p_char swig_types[7]
-#define SWIGTYPE_p_short swig_types[8]
-#define SWIGTYPE_p_signed_char swig_types[9]
-#define SWIGTYPE_p_unsigned_char swig_types[10]
-#define SWIGTYPE_p_unsigned_int swig_types[11]
-#define SWIGTYPE_p_unsigned_long_long swig_types[12]
-#define SWIGTYPE_p_unsigned_short swig_types[13]
-static swig_type_info *swig_types[15];
-static swig_module_info swig_module = {swig_types, 14, 0, 0, 0, 0};
+#define SWIGTYPE_p_CONFIGURATION swig_types[0]
+#define SWIGTYPE_p_DATA swig_types[1]
+#define SWIGTYPE_p_RKDTSPLITTER swig_types[2]
+#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[3]
+#define SWIGTYPE_p_SPLITTER swig_types[4]
+#define SWIGTYPE_p_char swig_types[5]
+#define SWIGTYPE_p_hmlpError_t swig_types[6]
+#define SWIGTYPE_p_hmlp__gofmm__sTree_t swig_types[7]
+#define SWIGTYPE_p_int swig_types[8]
+#define SWIGTYPE_p_long_long swig_types[9]
+#define SWIGTYPE_p_p_char swig_types[10]
+#define SWIGTYPE_p_short swig_types[11]
+#define SWIGTYPE_p_signed_char swig_types[12]
+#define SWIGTYPE_p_unsigned_char swig_types[13]
+#define SWIGTYPE_p_unsigned_int swig_types[14]
+#define SWIGTYPE_p_unsigned_long_long swig_types[15]
+#define SWIGTYPE_p_unsigned_short swig_types[16]
+static swig_type_info *swig_types[18];
+static swig_module_info swig_module = {swig_types, 17, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3648,54 +3651,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  hmlp::gofmm::dSPDMatrix_t arg1 ;
-  double arg2 ;
-  double arg3 ;
-  void *argp1 ;
-  int res1 = 0 ;
-  double val2 ;
-  int ecode2 = 0 ;
-  double val3 ;
-  int ecode3 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  hmlp::gofmm::dTree_t *result = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOO:Compress",&obj0,&obj1,&obj2)) SWIG_fail;
-  {
-    res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_hmlp__gofmm__dSPDMatrix_t,  0  | 0);
-    if (!SWIG_IsOK(res1)) {
-      SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Compress" "', argument " "1"" of type '" "hmlp::gofmm::dSPDMatrix_t""'"); 
-    }  
-    if (!argp1) {
-      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "1"" of type '" "hmlp::gofmm::dSPDMatrix_t""'");
-    } else {
-      hmlp::gofmm::dSPDMatrix_t * temp = reinterpret_cast< hmlp::gofmm::dSPDMatrix_t * >(argp1);
-      arg1 = *temp;
-      if (SWIG_IsNewObj(res1)) delete temp;
-    }
-  }
-  ecode2 = SWIG_AsVal_double(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "Compress" "', argument " "2"" of type '" "double""'");
-  } 
-  arg2 = static_cast< double >(val2);
-  ecode3 = SWIG_AsVal_double(obj2, &val3);
-  if (!SWIG_IsOK(ecode3)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode3), "in method '" "Compress" "', argument " "3"" of type '" "double""'");
-  } 
-  arg3 = static_cast< double >(val3);
-  result = (hmlp::gofmm::dTree_t *)Compress(arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_hmlp__gofmm__dTree_t, 0 |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   int arg1 ;
@@ -3727,25 +3682,121 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  SPDMATRIX_DENSE *arg1 = 0 ;
+  DATA arg2 ;
+  SPLITTER arg3 ;
+  RKDTSPLITTER arg4 ;
+  CONFIGURATION arg5 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  void *argp2 ;
+  int res2 = 0 ;
+  void *argp3 ;
+  int res3 = 0 ;
+  void *argp4 ;
+  int res4 = 0 ;
+  void *argp5 ;
+  int res5 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  PyObject * obj2 = 0 ;
+  PyObject * obj3 = 0 ;
+  PyObject * obj4 = 0 ;
+  hmlp::gofmm::sTree_t *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OOOOO:Compress",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMATRIX_DENSE,  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Compress" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
+  }
+  if (!argp1) {
+    SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
+  }
+  arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
+  {
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA,  0  | 0);
+    if (!SWIG_IsOK(res2)) {
+      SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Compress" "', argument " "2"" of type '" "DATA""'"); 
+    }  
+    if (!argp2) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "2"" of type '" "DATA""'");
+    } else {
+      DATA * temp = reinterpret_cast< DATA * >(argp2);
+      arg2 = *temp;
+      if (SWIG_IsNewObj(res2)) delete temp;
+    }
+  }
+  {
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_SPLITTER,  0  | 0);
+    if (!SWIG_IsOK(res3)) {
+      SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Compress" "', argument " "3"" of type '" "SPLITTER""'"); 
+    }  
+    if (!argp3) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "3"" of type '" "SPLITTER""'");
+    } else {
+      SPLITTER * temp = reinterpret_cast< SPLITTER * >(argp3);
+      arg3 = *temp;
+      if (SWIG_IsNewObj(res3)) delete temp;
+    }
+  }
+  {
+    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_RKDTSPLITTER,  0  | 0);
+    if (!SWIG_IsOK(res4)) {
+      SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Compress" "', argument " "4"" of type '" "RKDTSPLITTER""'"); 
+    }  
+    if (!argp4) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "4"" of type '" "RKDTSPLITTER""'");
+    } else {
+      RKDTSPLITTER * temp = reinterpret_cast< RKDTSPLITTER * >(argp4);
+      arg4 = *temp;
+      if (SWIG_IsNewObj(res4)) delete temp;
+    }
+  }
+  {
+    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_CONFIGURATION,  0  | 0);
+    if (!SWIG_IsOK(res5)) {
+      SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Compress" "', argument " "5"" of type '" "CONFIGURATION""'"); 
+    }  
+    if (!argp5) {
+      SWIG_exception_fail(SWIG_ValueError, "invalid null reference " "in method '" "Compress" "', argument " "5"" of type '" "CONFIGURATION""'");
+    } else {
+      CONFIGURATION * temp = reinterpret_cast< CONFIGURATION * >(argp5);
+      arg5 = *temp;
+      if (SWIG_IsNewObj(res5)) delete temp;
+    }
+  }
+  result = (hmlp::gofmm::sTree_t *)Compress(*arg1,arg2,arg3,arg4,arg5);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_hmlp__gofmm__sTree_t, 0 |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
 	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD", _wrap_load_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},
-	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
 	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
+	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
+static swig_type_info _swigt__p_CONFIGURATION = {"_p_CONFIGURATION", "CONFIGURATION *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DATA = {"_p_DATA", "DATA *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_RKDTSPLITTER = {"_p_RKDTSPLITTER", "RKDTSPLITTER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_SPDMATRIX_DENSE = {"_p_SPDMATRIX_DENSE", "SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SPLITTER = {"_p_SPLITTER", "SPLITTER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlpError_t = {"_p_hmlpError_t", "hmlpError_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_hmlp__gofmm__dSPDMatrix_t = {"_p_hmlp__gofmm__dSPDMatrix_t", "hmlp::gofmm::dSPDMatrix_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_hmlp__gofmm__dTree_t = {"_p_hmlp__gofmm__dTree_t", "hmlp::gofmm::dTree_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_hmlp__gofmm__sTree_t = {"_p_hmlp__gofmm__sTree_t", "hmlp::gofmm::sTree_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
@@ -3757,11 +3808,14 @@ static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
+  &_swigt__p_CONFIGURATION,
+  &_swigt__p_DATA,
+  &_swigt__p_RKDTSPLITTER,
   &_swigt__p_SPDMATRIX_DENSE,
+  &_swigt__p_SPLITTER,
   &_swigt__p_char,
   &_swigt__p_hmlpError_t,
-  &_swigt__p_hmlp__gofmm__dSPDMatrix_t,
-  &_swigt__p_hmlp__gofmm__dTree_t,
+  &_swigt__p_hmlp__gofmm__sTree_t,
   &_swigt__p_int,
   &_swigt__p_long_long,
   &_swigt__p_p_char,
@@ -3773,11 +3827,14 @@ static swig_type_info *swig_type_initial[] = {
   &_swigt__p_unsigned_short,
 };
 
+static swig_cast_info _swigc__p_CONFIGURATION[] = {  {&_swigt__p_CONFIGURATION, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DATA[] = {  {&_swigt__p_DATA, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_RKDTSPLITTER[] = {  {&_swigt__p_RKDTSPLITTER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_SPDMATRIX_DENSE[] = {  {&_swigt__p_SPDMATRIX_DENSE, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SPLITTER[] = {  {&_swigt__p_SPLITTER, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlpError_t[] = {  {&_swigt__p_hmlpError_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_hmlp__gofmm__dSPDMatrix_t[] = {  {&_swigt__p_hmlp__gofmm__dSPDMatrix_t, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_hmlp__gofmm__dTree_t[] = {  {&_swigt__p_hmlp__gofmm__dTree_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_hmlp__gofmm__sTree_t[] = {  {&_swigt__p_hmlp__gofmm__sTree_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
@@ -3789,11 +3846,14 @@ static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_l
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
+  _swigc__p_CONFIGURATION,
+  _swigc__p_DATA,
+  _swigc__p_RKDTSPLITTER,
   _swigc__p_SPDMATRIX_DENSE,
+  _swigc__p_SPLITTER,
   _swigc__p_char,
   _swigc__p_hmlpError_t,
-  _swigc__p_hmlp__gofmm__dSPDMatrix_t,
-  _swigc__p_hmlp__gofmm__dTree_t,
+  _swigc__p_hmlp__gofmm__sTree_t,
   _swigc__p_int,
   _swigc__p_long_long,
   _swigc__p_p_char,

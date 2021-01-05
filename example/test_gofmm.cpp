@@ -131,21 +131,6 @@ int hello_world() {
 }
 
 
-hmlp::gofmm::dTree_t* Compress(hmlp::gofmm::dSPDMatrix_t K,
-                               double stol,
-                               double budget) {
-  /* Return a tree node that stores a compressed SPD matrix.
-
-     @return: a tree node with all numeric data type in double
-
-     @K: uncompressed SPD matrix
-
-     @stol: tolerance
-  */
-  return hmlp::gofmm::Compress<double>(K, stol, budget);
-}
-
-
 // hmlp::Data<double> Evaluate(hmlp::gofmm::dTree_t *tree,
 //                             hmlp::Data<double>    *weights) {
 //   /* Apply GOFMM on the compressed SPD matrix and return this data object
@@ -272,3 +257,15 @@ int main( int argc, char *argv[] ) {
   }
   return 0;
 } /** end main() */
+
+hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA NN,
+                               SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
+                               CONFIGURATION config) {
+  /* Return a tree node that stores a compressed SPD matrix.
+
+     @return: a tree node with all numeric data type in float
+
+     @K: uncompressed SPD matrix
+  */
+  return hmlp::gofmm::Compress( K, NN, splitter, rkdtsplitter, config);
+}

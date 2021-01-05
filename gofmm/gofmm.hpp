@@ -91,7 +91,7 @@ class CommandLineHelper
   public:
 
     /** (Default) constructor. */
-  // CommandLineHelper( int argc, char *argv[] )
+     // CommandLineHelper( int argc, char *argv[] )
      CommandLineHelper(int argc, vector<const char*> argv) {
       /** Number of columns and rows, i.e. problem size. */
       sscanf( argv[ 1 ], "%lu", &n );
@@ -3402,9 +3402,9 @@ Data<pair<T, size_t>> FindNeighbors( SPDMATRIX &K, SPLITTER splitter,
  */ 
 template<typename SPLITTER, typename RKDTSPLITTER, typename T, typename SPDMATRIX>
 tree::Tree< gofmm::Argument<SPDMATRIX, SPLITTER, T>, gofmm::NodeData<T>>
-*Compress( SPDMATRIX &K, Data<pair<T, size_t>> &NN, 
-    SPLITTER splitter, RKDTSPLITTER rkdtsplitter, Configuration<T> &config )
-{
+*Compress(SPDMATRIX &K, Data<pair<T, size_t>> &NN,
+          SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
+          Configuration<T> &config) {
   try
   {
     /** Get all user-defined parameters. */

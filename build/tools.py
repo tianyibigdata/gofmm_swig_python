@@ -107,13 +107,13 @@ def hello_world():
     return _tools.hello_world()
 hello_world = _tools.hello_world
 
-def Compress(K, stol, budget):
-    return _tools.Compress(K, stol, budget)
-Compress = _tools.Compress
-
 def main(argc, argv):
     return _tools.main(argc, argv)
 main = _tools.main
+
+def Compress(K, NN, splitter, rkdtsplitter, config):
+    return _tools.Compress(K, NN, splitter, rkdtsplitter, config)
+Compress = _tools.Compress
 # This file is compatible with both classic and new-style classes.
 
 
