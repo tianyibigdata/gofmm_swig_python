@@ -28,6 +28,9 @@ NOTICE: please leave no extra space or new line or any such kind!
 # `cmds`
 Document how to call `gofmm` on random or dense matrix in python
 
+# `swig.sh`
+The file that enables to run gofmm in python
+
 
 # hmlp + gofmm implementation
 1. Download and run blas and lapack as indicated by the website

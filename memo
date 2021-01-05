@@ -82,3 +82,4 @@ reference each other without worrying about order
 1. Reading day:)
 2. Create infrastructure for storing matrix in a tree (see typedef in .h)
 3. Finished the function compress
+4. Finished the function evaluate
