@@ -1,8 +1,10 @@
-import toolsb
+import tools
+
+# Run gofmm on a random matrix
 argv = tools.file_to_argv("parameters.txt")
 tools.call_Launchhelper(argv)
 
-
+# Run gofmm on a dense matrix
 denseSPD = tools.load_denseSPD(10000, 10000, "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/test.bin")
 tools.launchhelper_denseSPD(denseSPD, "parameters.txt")
 

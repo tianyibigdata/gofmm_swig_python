@@ -25,6 +25,9 @@ This file specifies parameters of running program on a matrix. It's used
 as an input file to c++ functions
 NOTICE: please leave no extra space or new line or any such kind!
 
+# `cmds`
+Document how to call `gofmm` on random or dense matrix in python
+
 
 # hmlp + gofmm implementation
 1. Download and run blas and lapack as indicated by the website
