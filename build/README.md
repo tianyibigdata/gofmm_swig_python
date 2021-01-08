@@ -20,9 +20,14 @@ If you run into a common problem like "can't link some functions from
 the llpack or lblas", please refer to the output of the cmd `source ..`
 and `cmake ..` and see where you did wrong.
 
-# `parameters.txt`
-This file specifies parameters of running program on a matrix. It's used
-as an input file to c++ functions
+# `parameters_dense.txt`
+This file specifies parameters of running program on a matrix given by
+a matrix file. It's used as an input file to c++ functions
+NOTICE: please leave no extra space or new line or any such kind!
+
+# `parameters_dense.txt`
+This file specifies parameters of running program on a randomly user
+generated matrix. It's used as an input file to c++ functions
 NOTICE: please leave no extra space or new line or any such kind!
 
 # `cmds`
