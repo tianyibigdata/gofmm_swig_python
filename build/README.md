@@ -57,8 +57,6 @@ Go to the directory for the file `gofmm.hpp`
 
 Go to the directory for the file `test_gofmm.cpp`
 
-/home/getianyi/Documents/Master/Fall_2020/MasterThesis/tobiasPackage/docker4datafold/dockerTest_gcc/files_4_jupyterLab
-
 We need to add the following features to the file `test_gofmm.cpp` so 
 that the c functions can be imported into python
 
@@ -79,10 +77,8 @@ https://arxiv.org/pdf/1707.00164.pdf
 inverse:
 https://mediatum.ub.tum.de/doc/1522878/1522878.pdf
 
-compile:
-
-$ sudo docker build --network=host -f ../dockerfiles/Dockerfile_test-gcc_gofmm-python-jupyterlab:shared    --tag=test-gcc:gofmm-python-jupyterlab-shared .
-$ sudo python3.7 start-docker4gofmm.py -d /home/getianyi/work/datafold-testFork
+Goal:
+https://royalsocietypublishing.org/doi/pdf/10.1098/rspa.2016.0751
 
 # Problem between template and swig
 1. Swig can't generate interface codes for a template until it is

@@ -107,10 +107,6 @@ def hello_world():
     return _tools.hello_world()
 hello_world = _tools.hello_world
 
-def main(argc, argv):
-    return _tools.main(argc, argv)
-main = _tools.main
-
 def Compress(K, NN, splitter, rkdtsplitter, config):
     return _tools.Compress(K, NN, splitter, rkdtsplitter, config)
 Compress = _tools.Compress
@@ -118,6 +114,10 @@ Compress = _tools.Compress
 def Evaluate(tree, weights):
     return _tools.Evaluate(tree, weights)
 Evaluate = _tools.Evaluate
+
+def main(argc, argv):
+    return _tools.main(argc, argv)
+main = _tools.main
 # This file is compatible with both classic and new-style classes.
 
 

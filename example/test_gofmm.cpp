@@ -37,6 +37,23 @@
 using namespace std;
 // using namespace hmlp;
 
+// class file_to_argv {
+//   /* A container to store argvs in vector and use destructor to automatically
+//      free the memory 
+//   */
+//  private:
+//   std::vector<const char*> argv;  // store the parameters
+
+//  public:
+//   /* constructors and destructors */
+//   file_to_argv();  // default constructor
+//   explicit file_to_argv(const char* filename);  // single parameter
+//   ~file_to_argv();
+
+//   /* Public methods*/
+//   void print_argv();  // print out parameters line by line
+//   std::vector<const char*> return_argv();  // return argv (deep copy)
+// };
 
 file_to_argv::file_to_argv() {}  // size 0 vector initialization
 
@@ -49,6 +66,7 @@ file_to_argv::file_to_argv(const char* filename) {
   std::ifstream file(filename);  // read the entire file
   std::string   para;            // parameter <-> each line in file
 
+  // Reading every line in stream and push it into string vector
   while (std::getline(file, para))  // Keep reading in each parameter
     parameters.push_back(para);
 
@@ -128,6 +146,39 @@ SPDMATRIX_DENSE load_denseSPD(uint64_t height,
 int hello_world() {
   cout << "Hello World!"<< endl;
   return 0;
+}
+
+
+hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA_PAIR NN,
+                               SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
+                               CONFIGURATION config) {
+  /* Return a tree node that stores a compressed SPD matrix.
+
+     @K: uncompressed SPD matrix
+
+     @NN: Number of neighbors
+
+     @config: parameters loaded from the parameter file
+
+     @return: a tree node with all numeric data type in float
+  */
+  return hmlp::gofmm::Compress( K, NN, splitter, rkdtsplitter, config);
+}
+
+
+DATA_s Evaluate(hmlp::gofmm::sTree_t *tree, DATA_s &weights) {
+/* Apply GOFMM on the compressed SPD matrix and return this data object
+
+   @return: A newly construct object that is calculated by GOFMM based
+   on a compressed SPD matrix
+
+   @tree: a ptr to the tree object which stores the compressed SPD matrix
+   with all numeric datatypes being double
+  
+   @weights: matrix of skeleton weights
+*/
+  
+  return hmlp::gofmm::Evaluate(*tree, weights);
 }
 
 
@@ -239,34 +290,3 @@ int main( int argc, char *argv[] ) {
   }
   return 0;
 } /** end main() */
-
-hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA_PAIR NN,
-                               SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
-                               CONFIGURATION config) {
-  /* Return a tree node that stores a compressed SPD matrix.
-
-     @K: uncompressed SPD matrix
-
-     @NN: Number of neighbors
-
-     @config: parameters loaded from the parameter file
-
-     @return: a tree node with all numeric data type in float
-  */
-  return hmlp::gofmm::Compress( K, NN, splitter, rkdtsplitter, config);
-}
-
-DATA_s Evaluate(hmlp::gofmm::sTree_t *tree, DATA_s &weights) {
-/* Apply GOFMM on the compressed SPD matrix and return this data object
-
-   @return: A newly construct object that is calculated by GOFMM based
-   on a compressed SPD matrix
-
-   @tree: a ptr to the tree object which stores the compressed SPD matrix
-   with all numeric datatypes being double
-  
-   @weights: matrix of skeleton weights
-*/
-  
-  return hmlp::gofmm::Evaluate(*tree, weights);
-}

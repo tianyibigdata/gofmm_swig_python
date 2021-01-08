@@ -5,15 +5,14 @@ $ python3  # Must be > python2.7, `build` folder
 
 
 ## Python Interface ##
-import tools
+>> import tools
 
 # Run gofmm on a random matrix
-argv = tools.file_to_argv("parameters.txt")
-tools.call_Launchhelper(argv)
+>> tools.call_Launchhelper("parameters_testsuit.txt")
 
 # Run gofmm on a dense matrix
 # Apply gofmm on a large matrix which is located on a different path. We
 # do this to avoid upload the data onto gitlab
-denseSPD = tools.load_denseSPD(10000, 10000, "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/test.bin")
-tools.launchhelper_denseSPD(denseSPD, "parameters.txt")
+>> denseSPD = tools.load_denseSPD(10000, 10000, "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/test.bin")
+>> tools.launchhelper_denseSPD(denseSPD, "parameters_dense.txt")
 

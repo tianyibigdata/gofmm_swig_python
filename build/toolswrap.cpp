@@ -3652,37 +3652,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  char **arg2 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:main",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "main" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "main" "', argument " "2"" of type '" "char *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< char ** >(argp2);
-  result = (int)main(arg1,arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   SPDMATRIX_DENSE *arg1 = 0 ;
@@ -3810,15 +3779,46 @@ fail:
 }
 
 
+SWIGINTERN PyObject *_wrap_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  int arg1 ;
+  char **arg2 ;
+  int val1 ;
+  int ecode1 = 0 ;
+  void *argp2 = 0 ;
+  int res2 = 0 ;
+  PyObject * obj0 = 0 ;
+  PyObject * obj1 = 0 ;
+  int result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"OO:main",&obj0,&obj1)) SWIG_fail;
+  ecode1 = SWIG_AsVal_int(obj0, &val1);
+  if (!SWIG_IsOK(ecode1)) {
+    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "main" "', argument " "1"" of type '" "int""'");
+  } 
+  arg1 = static_cast< int >(val1);
+  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
+  if (!SWIG_IsOK(res2)) {
+    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "main" "', argument " "2"" of type '" "char *[]""'"); 
+  } 
+  arg2 = reinterpret_cast< char ** >(argp2);
+  result = (int)main(arg1,arg2);
+  resultobj = SWIG_From_int(static_cast< int >(result));
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
 	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD", _wrap_load_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},
-	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
 	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
 	 { (char *)"Evaluate", _wrap_Evaluate, METH_VARARGS, NULL},
+	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

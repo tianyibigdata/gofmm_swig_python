@@ -26,7 +26,7 @@ typedef Data<pair<T, size_t>> DATA_PAIR;
 
 class file_to_argv {
   /* A container to store argvs in vector and use destructor to automatically
-     free the memory 
+     free the memory
   */
  private:
   std::vector<const char*> argv;  // store the parameters
