@@ -83,3 +83,21 @@ reference each other without worrying about order
 2. Create infrastructure for storing matrix in a tree (see typedef in .h)
 3. Finished the function compress
 4. Finished the function evaluate
+
+
+08.01.2021
+1. Changed `cmds`
+
+TASK: implement a function as folllows which takes `AA` as an input numpy
+matrix declared in the python console
+
+tools.launchhelper_denseSPD(AA, "parameters_dense.txt")
+
+
+18.01.2021
+
+How to deal with numpy in c++
+https://numpy.org/doc/stable/reference/swig.html
+
+Case with 1D numpy array to work with:
+https://stackoverflow.com/questions/52199057/c-array-to-numpy-with-swig-problem-with-typeerror

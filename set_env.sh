@@ -15,6 +15,7 @@ export HMLP_USE_BLAS=true
 export MKLROOT=false
 
 ## Make sure OPENBLASROOT is defined. (gcc/g++)
+# make sure OPENBLASROOT is undefined bc we use libs from NETLIBROOT
 # export OPENBLASROOT=/usr/lib/openblas-base/
 export OPENBLASROOT=false
 
