@@ -6,8 +6,25 @@
 %include <std_string.i>  // Included to use std::string
 
 
+// ----------------------------------
 %{
-#include "../example/test_gofmm.cpp"
+  #define SWIG_FILE_WITH_INIT
+  #include "../example/test_gofmm.cpp"
 %}
-%include "../example/test_gofmm.cpp"
+
+%include "numpy.i"
+
+%init %{
+  import_array();
+%}
+
+
+#include "../example/test_gofmm.cpp"
+// -------------------------------------------
+
+
+/* %{ */
+/* #include "../example/test_gofmm.cpp" */
+/* %} */
+/* %include "../example/test_gofmm.cpp" */
 
