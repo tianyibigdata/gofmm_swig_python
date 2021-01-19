@@ -11,7 +11,7 @@
   #define SWIG_FILE_WITH_INIT
   #include "../example/test_gofmm.cpp"
 %}
-
+%include "../example/test_gofmm.cpp"
 %include "numpy.i"
 
 %init %{
@@ -19,7 +19,7 @@
 %}
 
 
-#include "../example/test_gofmm.cpp"
+// #include "../example/test_gofmm.cpp"
 // -------------------------------------------
 
 

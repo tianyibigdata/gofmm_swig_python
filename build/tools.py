@@ -90,6 +90,34 @@ except AttributeError:
     _newclass = 0
 
 
+
+def call_Launchhelper(filename):
+    return _tools.call_Launchhelper(filename)
+call_Launchhelper = _tools.call_Launchhelper
+
+def launchhelper_denseSPD(K, filename):
+    return _tools.launchhelper_denseSPD(K, filename)
+launchhelper_denseSPD = _tools.launchhelper_denseSPD
+
+def load_denseSPD(height, width, filename):
+    return _tools.load_denseSPD(height, width, filename)
+load_denseSPD = _tools.load_denseSPD
+
+def hello_world():
+    return _tools.hello_world()
+hello_world = _tools.hello_world
+
+def Compress(K, NN, splitter, rkdtsplitter, config):
+    return _tools.Compress(K, NN, splitter, rkdtsplitter, config)
+Compress = _tools.Compress
+
+def Evaluate(tree, weights):
+    return _tools.Evaluate(tree, weights)
+Evaluate = _tools.Evaluate
+
+def main(argc, argv):
+    return _tools.main(argc, argv)
+main = _tools.main
 # This file is compatible with both classic and new-style classes.
 
 
