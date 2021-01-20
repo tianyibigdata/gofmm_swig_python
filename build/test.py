@@ -3,8 +3,11 @@
 import tools
 import numpy as np
 
-a = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]], dtype=np.double)
+# Construct a 3x3 SPD matrix
+spdMatrix = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]], dtype=np.double)
 
-b = tools.load_denseSPD_from_console(a)
+# load the numpy matrix into the tree container
+treeSpd = tools.load_denseSPD_from_console(spdMatrix)
 
-tools.launchhelper_denseSPD(b, "parameters_numpy_console.txt")
+# run gofmm + accuracy
+tools.launchhelper_denseSPD(treeSpd, "parameters_numpy_console.txt")
