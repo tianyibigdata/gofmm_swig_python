@@ -118,6 +118,10 @@ Evaluate = _tools.Evaluate
 def main(argc, argv):
     return _tools.main(argc, argv)
 main = _tools.main
+
+def load_denseSPD_from_console(numpyArr):
+    return _tools.load_denseSPD_from_console(numpyArr)
+load_denseSPD_from_console = _tools.load_denseSPD_from_console
 # This file is compatible with both classic and new-style classes.
 
 

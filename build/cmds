@@ -16,3 +16,9 @@ $ python3  # Must be > python2.7, `build` folder
 >> denseSPD = tools.load_denseSPD(10000, 10000, "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/test.bin")
 >> tools.launchhelper_denseSPD(denseSPD, "parameters_dense.txt")
 
+
+
+# Run numpy
+>> import numpy as np
+>> a = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]], dtype=float)
+>> tools.load_denseSPD_from_console(a, 3, 3)
