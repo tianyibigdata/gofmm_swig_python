@@ -52,9 +52,9 @@ SPDMATRIX_DENSE load_denseSPD(uint64_t height,
 
 int hello_world();
 
-hmlp::gofmm::dTree_t* Compress(hmlp::gofmm::dSPDMatrix_t K,
-                               double stol,
-                               double budget);
+/* hmlp::gofmm::dTree_t* Compress(hmlp::gofmm::dSPDMatrix_t K, */
+/*                                double stol, */
+/*                                double budget); */
 
 hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K,
                                DATA_PAIR NN, SPLITTER splitter,
@@ -62,3 +62,6 @@ hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K,
 
 DATA_s Evaluate(hmlp::gofmm::sTree_t* tree, DATA_s &weights);
 
+SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
+                                           int row_numpyArr,
+                                           int col_numpyArr);

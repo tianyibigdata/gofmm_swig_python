@@ -290,3 +290,31 @@ int main( int argc, char *argv[] ) {
   }
   return 0;
 } /** end main() */
+
+
+SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
+                                           int row_numpyArr,
+                                           int col_numpyArr) {
+  /* Load values of a numpy matrix `numpyArr` into a SPD matrix container
+   
+   @numpyArr: double pointer of type double
+
+   @row_numpyArr: row of `numpyArr`
+
+   @col_numpyArr: col of `numpyArr`
+
+   @return: copy of a locally created SPD matrix which contains the values
+            from `numpyArr`
+  */
+  SPDMATRIX_DENSE K(row_numpyArr, col_numpyArr);  // container for numpyArr
+
+  // Fill the container
+  int index = -1;
+  for (int i = 0; i < row_numpyArr; i++)
+    for (int j = 0; j < col_numpyArr; j++) {
+      index = i * col_numpyArr + j;
+      K.data()[index] = numpyArr[index];  // .data()'s type is double*
+    }
+
+  return K;
+}

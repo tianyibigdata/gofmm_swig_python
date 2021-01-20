@@ -94,10 +94,106 @@ matrix declared in the python console
 tools.launchhelper_denseSPD(AA, "parameters_dense.txt")
 
 
-18.01.2021
+19.01.2021
+
+1. Read where the matrix val was stored by looking at the `vector` and
+`Data` class
+
+2. Updated the `tools.i` file to implement the `numpy` usage
+
+3. Wrote the function `load_denseSPD_from_console` to take a `numpy` array
+as input and produces a tree-contained spd matrix as output.
+
+Here are the stuff that I consulted for implementation
 
 How to deal with numpy in c++
 https://numpy.org/doc/stable/reference/swig.html
 
 Case with 1D numpy array to work with:
 https://stackoverflow.com/questions/52199057/c-array-to-numpy-with-swig-problem-with-typeerror
+
+https://numpy.org/doc/stable/reference/swig.interface-file.html
+
+// since the class inherits from vector (public vector<T, Allocator>),
+// it has the method data(). Documentation is as follows:
+// http://www.cplusplus.com/reference/vector/vector/data/
+file.seekg( 0, std::ios::beg );
+if ( !file.read( (char*)this->data(), size ) )
+{
+std::cerr << "ERROR: only " << file.gcount() << " bytes, expecting " << m * n * sizeof(T) << std::endl;
+}
+file.close();
+
+
+20.01.2021
+
+1. Further updated `tools.i` so that a `numpy` array could be imported
+succesfully in `swig`
+
+2. Wrote `test.py` to demonstrate how the task to implement `numpy` and
+`gofmm` together works
+
+3. For user-input lower dimensional `numpy` array, we must fine-tuning the
+# of children of the tree.
+
+In the end, the `test.py` runs succesfully for numpy array of size > 10
+(both gofmm and accuracy report work) but for size < 10 only gofmm works.
+
+[getianyi@Ubuntu build]$ python3 test.py
+testsuit
+partitioning ...
+[ RT]     1 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]     1 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+omp_get_max_threads() 4
+Dependency clean up
+[ RT]     1 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+Finish NearSamplesTask
+Finish SymmetrizeNearInteractions
+Skeletonization (HMLP Runtime) ...
+[ RT]     4 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+MergeFarNodes ...
+CacheFarNodes ...
+========================================================
+GOFMM compression phase
+========================================================
+NeighborSearch ------------------------  0.00s (  0.0%)
+partitioning ----------------------  0.01s ( 88.2%)
+Skeletonization -----------------------  0.00s ( 11.3%)
+MergeFarNodes -------------------------  0.00s (  0.1%)
+CacheFarNodes -------------------------  0.00s (  0.4%)
+========================================================
+Compress (1.00 not compressed) --------  0.02s (100.0%)
+========================================================
+
+Forward permute ...
+N2S, S2S, S2N, L2L (HMLP Runtime) ...
+[ RT]     7 [normal]     0 [nested] 9.216E+03 flops 9.243E+03 mops
+d2h_t 0.000000s
+aggregate_t 0.000000s
+Backward permute ...
+========================================================
+GOFMM evaluation phase
+========================================================
+Allocate ------------------------------  0.00s (  3.8%)
+Forward permute -----------------------  0.00s ( 14.9%)
+N2S, S2S, S2N, L2L --------------------  0.00s ( 65.8%)
+Backward permute ----------------------  0.00s ( 15.4%)
+========================================================
+Evaluate ------------------------------  0.00s (100.0%)
+========================================================
+
+========================================================
+Accuracy report
+========================================================
+gid      0, ASKIT 0.0E+00, HODLR 0.0E+00, GOFMM 0.0E+00
+gid      1, ASKIT 0.0E+00, HODLR 0.0E+00, GOFMM 0.0E+00
+gid      2, ASKIT 0.0E+00, HODLR 0.0E+00, GOFMM 0.0E+00
+========================================================
+Elementwise ASKIT 0.0E+00, HODLR 0.0E+00, GOFMM 0.0E+00
+========================================================
+[ RT]     1 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+python3: ../gofmm/igofmm.hpp:652: void hmlp::gofmm::Factor<T>::Telescope(bool, hmlp::Data<T>&, hmlp::Data<T>&) [with T = float]: Assertion `Palr.col() == n' failed.
+Aborted (core dumped)
+
+
+Task: find a way to fine tuning the children #

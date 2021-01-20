@@ -402,6 +402,7 @@ class Data : public ReadWrite, public vector<T, Allocator>
         return HMLP_ERROR_INVALID_VALUE;
       }
 
+      // Extract the first `size` bytes of the stream into data()
       file.seekg( 0, std::ios::beg );
       if ( !file.read( (char*)this->data(), size ) )
       {

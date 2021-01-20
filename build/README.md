@@ -25,9 +25,14 @@ This file specifies parameters of running program on a matrix given by
 a matrix file. It's used as an input file to c++ functions
 NOTICE: please leave no extra space or new line or any such kind!
 
-# `parameters_dense.txt`
-This file specifies parameters of running program on a randomly user
+# `parameters_testsuit.txt`
+This file specifies parameters of running program on a randomly computer
 generated matrix. It's used as an input file to c++ functions
+NOTICE: please leave no extra space or new line or any such kind!
+
+# `parameters_numpy_console.txt`
+This file specifies parameters of running program on a user-input
+numpy matrix.
 NOTICE: please leave no extra space or new line or any such kind!
 
 # `cmds`
@@ -35,6 +40,9 @@ Document how to call `gofmm` on random or dense matrix in python
 
 # `swig.sh`
 The file that enables to run gofmm in python
+
+# `test.py`
+The file to run `numpy` and `gofmm` together
 
 
 # hmlp + gofmm implementation
