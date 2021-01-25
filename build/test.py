@@ -11,7 +11,7 @@ from sklearn.datasets import make_spd_matrix
 # spdMatrix = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]], dtype=np.double)
 
 # Construct a random n x n numpy spd matrix
-spdSize = 10
+spdSize = 10  # Remmeber to change the parameter file accordingly
 spdMatrix = make_spd_matrix(spdSize)
 
 # load the numpy matrix into the tree container
@@ -21,10 +21,10 @@ treeSpd = tools.load_denseSPD_from_console(spdMatrix)
 tools.launchhelper_denseSPD(treeSpd, "parameters_numpy_console.txt")
 
 
-#################
-# testsuit case #
-#################
-tools.call_Launchhelper("parameters_testsuit.txt")
+# #################
+# # testsuit case #
+# #################
+# tools.call_Launchhelper("parameters_testsuit.txt")
 
 
 # ##################
