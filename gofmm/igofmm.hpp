@@ -649,6 +649,7 @@ class Factor
 
       //Xa.Set( Pa ); 
 
+      std::cout << "Palr.col() is " << Palr.col() << '\n';
       assert( Palr.row() == s ); assert( Palr.col() == n );
 
       /** Pa = Palr' */

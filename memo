@@ -197,3 +197,31 @@ Aborted (core dumped)
 
 
 Task: find a way to fine tuning the children #
+
+
+22.01.2021
+
+1. Find how to fine tuning the parameters `m` and `s` in accordance with
+`n`
+
+
+## problem size
+n=5000
+## maximum leaf node size
+m=64
+## maximum off-diagonal ranks
+s=64
+## number of neighbors
+k=0
+## number of right hand sides
+nrhs=512
+## user tolerance
+stol=1E-5
+## user computation budget [0,1]
+budget=0.00
+## distance type (geometry, kernel, angle)
+distance="angle"
+## spdmatrix type (testsuit, dense, ooc, kernel, userdefine)
+matrixtype="testsuit"
+## kernelmatrix type (gaussian, laplace)
+kerneltype="gaussian"
