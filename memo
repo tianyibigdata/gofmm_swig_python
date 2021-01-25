@@ -225,3 +225,9 @@ distance="angle"
 matrixtype="testsuit"
 ## kernelmatrix type (gaussian, laplace)
 kerneltype="gaussian"
+
+
+25.01.2021
+
+1. Combined all 3 cases: testsuit, dense spd and numpy into the file 
+`test.py`
