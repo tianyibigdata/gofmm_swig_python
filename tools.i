@@ -28,5 +28,5 @@
 
 
 /* Typically in the end */
-%include "../example/test_gofmm.cpp"
+%include "../example/test_gofmm.h"
 

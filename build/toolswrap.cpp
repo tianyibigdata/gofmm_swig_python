@@ -3006,26 +3006,28 @@ SWIG_Python_NonDynamicSetAttr(PyObject *obj, PyObject *name, PyObject *value) {
 
 /* -------- TYPES TABLE (BEGIN) -------- */
 
-#define SWIGTYPE_p_CONFIGURATION swig_types[0]
-#define SWIGTYPE_p_DATA_PAIR swig_types[1]
-#define SWIGTYPE_p_DATA_s swig_types[2]
-#define SWIGTYPE_p_RKDTSPLITTER swig_types[3]
-#define SWIGTYPE_p_SPDMATRIX_DENSE swig_types[4]
-#define SWIGTYPE_p_SPLITTER swig_types[5]
-#define SWIGTYPE_p_char swig_types[6]
-#define SWIGTYPE_p_hmlpError_t swig_types[7]
-#define SWIGTYPE_p_hmlp__gofmm__sTree_t swig_types[8]
-#define SWIGTYPE_p_int swig_types[9]
-#define SWIGTYPE_p_long_long swig_types[10]
-#define SWIGTYPE_p_p_char swig_types[11]
-#define SWIGTYPE_p_short swig_types[12]
-#define SWIGTYPE_p_signed_char swig_types[13]
-#define SWIGTYPE_p_unsigned_char swig_types[14]
-#define SWIGTYPE_p_unsigned_int swig_types[15]
-#define SWIGTYPE_p_unsigned_long_long swig_types[16]
-#define SWIGTYPE_p_unsigned_short swig_types[17]
-static swig_type_info *swig_types[19];
-static swig_module_info swig_module = {swig_types, 18, 0, 0, 0, 0};
+#define SWIGTYPE_p_DataT_float_t swig_types[0]
+#define SWIGTYPE_p_DataT_pairT_float_size_t_t_t swig_types[1]
+#define SWIGTYPE_p_SPDMatrixT_float_t swig_types[2]
+#define SWIGTYPE_p_char swig_types[3]
+#define SWIGTYPE_p_file_to_argv swig_types[4]
+#define SWIGTYPE_p_float swig_types[5]
+#define SWIGTYPE_p_gofmm__ConfigurationT_T_t swig_types[6]
+#define SWIGTYPE_p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t swig_types[7]
+#define SWIGTYPE_p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t swig_types[8]
+#define SWIGTYPE_p_hmlpError_t swig_types[9]
+#define SWIGTYPE_p_hmlp__gofmm__sTree_t swig_types[10]
+#define SWIGTYPE_p_int swig_types[11]
+#define SWIGTYPE_p_long_long swig_types[12]
+#define SWIGTYPE_p_short swig_types[13]
+#define SWIGTYPE_p_signed_char swig_types[14]
+#define SWIGTYPE_p_std__vectorT_char_const_p_t swig_types[15]
+#define SWIGTYPE_p_unsigned_char swig_types[16]
+#define SWIGTYPE_p_unsigned_int swig_types[17]
+#define SWIGTYPE_p_unsigned_long_long swig_types[18]
+#define SWIGTYPE_p_unsigned_short swig_types[19]
+static swig_type_info *swig_types[21];
+static swig_module_info swig_module = {swig_types, 20, 0, 0, 0, 0};
 #define SWIG_TypeQuery(name) SWIG_TypeQueryModule(&swig_module, &swig_module, name)
 #define SWIG_MangledTypeQuery(name) SWIG_MangledTypeQueryModule(&swig_module, &swig_module, name)
 
@@ -3149,6 +3151,13 @@ namespace swig {
 
 
 #include <complex> 
+
+
+SWIGINTERNINLINE PyObject*
+  SWIG_From_int  (int value)
+{
+  return PyInt_FromLong((long) value);
+}
 
 
 SWIGINTERN swig_type_info*
@@ -3471,72 +3480,6 @@ SWIG_AsPtr_std_string (PyObject * obj, std::string **val)
     }
   }
   return SWIG_ERROR;
-}
-
-
-SWIGINTERNINLINE PyObject*
-  SWIG_From_int  (int value)
-{
-  return PyInt_FromLong((long) value);
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_long (PyObject *obj, long* val)
-{
-#if PY_VERSION_HEX < 0x03000000
-  if (PyInt_Check(obj)) {
-    if (val) *val = PyInt_AsLong(obj);
-    return SWIG_OK;
-  } else
-#endif
-  if (PyLong_Check(obj)) {
-    long v = PyLong_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_OK;
-    } else {
-      PyErr_Clear();
-      return SWIG_OverflowError;
-    }
-  }
-#ifdef SWIG_PYTHON_CAST_MODE
-  {
-    int dispatch = 0;
-    long v = PyInt_AsLong(obj);
-    if (!PyErr_Occurred()) {
-      if (val) *val = v;
-      return SWIG_AddCast(SWIG_OK);
-    } else {
-      PyErr_Clear();
-    }
-    if (!dispatch) {
-      double d;
-      int res = SWIG_AddCast(SWIG_AsVal_double (obj,&d));
-      if (SWIG_IsOK(res) && SWIG_CanCastAsInteger(&d, LONG_MIN, LONG_MAX)) {
-	if (val) *val = (long)(d);
-	return res;
-      }
-    }
-  }
-#endif
-  return SWIG_TypeError;
-}
-
-
-SWIGINTERN int
-SWIG_AsVal_int (PyObject * obj, int *val)
-{
-  long v;
-  int res = SWIG_AsVal_long (obj, &v);
-  if (SWIG_IsOK(res)) {
-    if ((v < INT_MIN || v > INT_MAX)) {
-      return SWIG_OverflowError;
-    } else {
-      if (val) *val = static_cast< int >(v);
-    }
-  }  
-  return res;
 }
 
 
@@ -4015,6 +3958,159 @@ SWIG_AsVal_int (PyObject * obj, int *val)
 #ifdef __cplusplus
 extern "C" {
 #endif
+SWIGINTERN PyObject *N_CHILDREN_swigconstant(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *module;
+  PyObject *d;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigconstant", &module)) return NULL;
+  d = PyModule_GetDict(module);
+  if (!d) return NULL;
+  SWIG_Python_SetConstant(d, "N_CHILDREN",SWIG_From_int(static_cast< int >(2)));
+  return SWIG_Py_Void();
+}
+
+
+SWIGINTERN PyObject *_wrap_new_file_to_argv__SWIG_0(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  file_to_argv *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)":new_file_to_argv")) SWIG_fail;
+  result = (file_to_argv *)new file_to_argv();
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_file_to_argv, SWIG_POINTER_NEW |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_file_to_argv__SWIG_1(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  char *arg1 = (char *) 0 ;
+  int res1 ;
+  char *buf1 = 0 ;
+  int alloc1 = 0 ;
+  PyObject * obj0 = 0 ;
+  file_to_argv *result = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:new_file_to_argv",&obj0)) SWIG_fail;
+  res1 = SWIG_AsCharPtrAndSize(obj0, &buf1, NULL, &alloc1);
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "new_file_to_argv" "', argument " "1"" of type '" "char const *""'");
+  }
+  arg1 = reinterpret_cast< char * >(buf1);
+  result = (file_to_argv *)new file_to_argv((char const *)arg1);
+  resultobj = SWIG_NewPointerObj(SWIG_as_voidptr(result), SWIGTYPE_p_file_to_argv, SWIG_POINTER_NEW |  0 );
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return resultobj;
+fail:
+  if (alloc1 == SWIG_NEWOBJ) delete[] buf1;
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_new_file_to_argv(PyObject *self, PyObject *args) {
+  Py_ssize_t argc;
+  PyObject *argv[2] = {
+    0
+  };
+  Py_ssize_t ii;
+  
+  if (!PyTuple_Check(args)) SWIG_fail;
+  argc = args ? PyObject_Length(args) : 0;
+  for (ii = 0; (ii < 1) && (ii < argc); ii++) {
+    argv[ii] = PyTuple_GET_ITEM(args,ii);
+  }
+  if (argc == 0) {
+    return _wrap_new_file_to_argv__SWIG_0(self, args);
+  }
+  if (argc == 1) {
+    int _v;
+    int res = SWIG_AsCharPtrAndSize(argv[0], 0, NULL, 0);
+    _v = SWIG_CheckState(res);
+    if (_v) {
+      return _wrap_new_file_to_argv__SWIG_1(self, args);
+    }
+  }
+  
+fail:
+  SWIG_SetErrorMsg(PyExc_NotImplementedError,"Wrong number or type of arguments for overloaded function 'new_file_to_argv'.\n"
+    "  Possible C/C++ prototypes are:\n"
+    "    file_to_argv::file_to_argv()\n"
+    "    file_to_argv::file_to_argv(char const *)\n");
+  return 0;
+}
+
+
+SWIGINTERN PyObject *_wrap_delete_file_to_argv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  file_to_argv *arg1 = (file_to_argv *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:delete_file_to_argv",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_file_to_argv, SWIG_POINTER_DISOWN |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "delete_file_to_argv" "', argument " "1"" of type '" "file_to_argv *""'"); 
+  }
+  arg1 = reinterpret_cast< file_to_argv * >(argp1);
+  delete arg1;
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_file_to_argv_print_argv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  file_to_argv *arg1 = (file_to_argv *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:file_to_argv_print_argv",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_file_to_argv, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "file_to_argv_print_argv" "', argument " "1"" of type '" "file_to_argv *""'"); 
+  }
+  arg1 = reinterpret_cast< file_to_argv * >(argp1);
+  (arg1)->print_argv();
+  resultobj = SWIG_Py_Void();
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *_wrap_file_to_argv_return_argv(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *resultobj = 0;
+  file_to_argv *arg1 = (file_to_argv *) 0 ;
+  void *argp1 = 0 ;
+  int res1 = 0 ;
+  PyObject * obj0 = 0 ;
+  std::vector< char const * > result;
+  
+  if (!PyArg_ParseTuple(args,(char *)"O:file_to_argv_return_argv",&obj0)) SWIG_fail;
+  res1 = SWIG_ConvertPtr(obj0, &argp1,SWIGTYPE_p_file_to_argv, 0 |  0 );
+  if (!SWIG_IsOK(res1)) {
+    SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "file_to_argv_return_argv" "', argument " "1"" of type '" "file_to_argv *""'"); 
+  }
+  arg1 = reinterpret_cast< file_to_argv * >(argp1);
+  result = (arg1)->return_argv();
+  resultobj = SWIG_NewPointerObj((new std::vector< char const * >(static_cast< const std::vector< char const * >& >(result))), SWIGTYPE_p_std__vectorT_char_const_p_t, SWIG_POINTER_OWN |  0 );
+  return resultobj;
+fail:
+  return NULL;
+}
+
+
+SWIGINTERN PyObject *file_to_argv_swigregister(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
+  PyObject *obj;
+  if (!PyArg_ParseTuple(args,(char*)"O:swigregister", &obj)) return NULL;
+  SWIG_TypeNewClientData(SWIGTYPE_p_file_to_argv, SWIG_NewClientData(obj));
+  return SWIG_Py_Void();
+}
+
 SWIGINTERN PyObject *_wrap_call_Launchhelper(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
   char *arg1 = (char *) 0 ;
@@ -4054,7 +4150,7 @@ SWIGINTERN PyObject *_wrap_launchhelper_denseSPD(PyObject *SWIGUNUSEDPARM(self),
   hmlpError_t result;
   
   if (!PyArg_ParseTuple(args,(char *)"OO:launchhelper_denseSPD",&obj0,&obj1)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMATRIX_DENSE,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMatrixT_float_t,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "launchhelper_denseSPD" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
   }
@@ -4115,7 +4211,7 @@ SWIGINTERN PyObject *_wrap_load_denseSPD(PyObject *SWIGUNUSEDPARM(self), PyObjec
     arg3 = ptr;
   }
   result = load_denseSPD(arg1,arg2,(std::string const &)*arg3);
-  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMATRIX_DENSE, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMatrixT_float_t, SWIG_POINTER_OWN |  0 );
   if (SWIG_IsNewObj(res3)) delete arg3;
   return resultobj;
 fail:
@@ -4162,7 +4258,7 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   hmlp::gofmm::sTree_t *result = 0 ;
   
   if (!PyArg_ParseTuple(args,(char *)"OOOOO:Compress",&obj0,&obj1,&obj2,&obj3,&obj4)) SWIG_fail;
-  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMATRIX_DENSE,  0 );
+  res1 = SWIG_ConvertPtr(obj0, &argp1, SWIGTYPE_p_SPDMatrixT_float_t,  0 );
   if (!SWIG_IsOK(res1)) {
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Compress" "', argument " "1"" of type '" "SPDMATRIX_DENSE &""'"); 
   }
@@ -4171,7 +4267,7 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   arg1 = reinterpret_cast< SPDMATRIX_DENSE * >(argp1);
   {
-    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA_PAIR,  0  | 0);
+    res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DataT_pairT_float_size_t_t_t,  0  | 0);
     if (!SWIG_IsOK(res2)) {
       SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Compress" "', argument " "2"" of type '" "DATA_PAIR""'"); 
     }  
@@ -4184,7 +4280,7 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
     }
   }
   {
-    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_SPLITTER,  0  | 0);
+    res3 = SWIG_ConvertPtr(obj2, &argp3, SWIGTYPE_p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t,  0  | 0);
     if (!SWIG_IsOK(res3)) {
       SWIG_exception_fail(SWIG_ArgError(res3), "in method '" "Compress" "', argument " "3"" of type '" "SPLITTER""'"); 
     }  
@@ -4197,7 +4293,7 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
     }
   }
   {
-    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_RKDTSPLITTER,  0  | 0);
+    res4 = SWIG_ConvertPtr(obj3, &argp4, SWIGTYPE_p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t,  0  | 0);
     if (!SWIG_IsOK(res4)) {
       SWIG_exception_fail(SWIG_ArgError(res4), "in method '" "Compress" "', argument " "4"" of type '" "RKDTSPLITTER""'"); 
     }  
@@ -4210,7 +4306,7 @@ SWIGINTERN PyObject *_wrap_Compress(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
     }
   }
   {
-    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_CONFIGURATION,  0  | 0);
+    res5 = SWIG_ConvertPtr(obj4, &argp5, SWIGTYPE_p_gofmm__ConfigurationT_T_t,  0  | 0);
     if (!SWIG_IsOK(res5)) {
       SWIG_exception_fail(SWIG_ArgError(res5), "in method '" "Compress" "', argument " "5"" of type '" "CONFIGURATION""'"); 
     }  
@@ -4248,7 +4344,7 @@ SWIGINTERN PyObject *_wrap_Evaluate(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
     SWIG_exception_fail(SWIG_ArgError(res1), "in method '" "Evaluate" "', argument " "1"" of type '" "hmlp::gofmm::sTree_t *""'"); 
   }
   arg1 = reinterpret_cast< hmlp::gofmm::sTree_t * >(argp1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DATA_s,  0 );
+  res2 = SWIG_ConvertPtr(obj1, &argp2, SWIGTYPE_p_DataT_float_t,  0 );
   if (!SWIG_IsOK(res2)) {
     SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "Evaluate" "', argument " "2"" of type '" "DATA_s &""'"); 
   }
@@ -4257,38 +4353,7 @@ SWIGINTERN PyObject *_wrap_Evaluate(PyObject *SWIGUNUSEDPARM(self), PyObject *ar
   }
   arg2 = reinterpret_cast< DATA_s * >(argp2);
   result = Evaluate(arg1,*arg2);
-  resultobj = SWIG_NewPointerObj((new DATA_s(static_cast< const DATA_s& >(result))), SWIGTYPE_p_DATA_s, SWIG_POINTER_OWN |  0 );
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
-SWIGINTERN PyObject *_wrap_main(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  char **arg2 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  void *argp2 = 0 ;
-  int res2 = 0 ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  int result;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OO:main",&obj0,&obj1)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "main" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  res2 = SWIG_ConvertPtr(obj1, &argp2,SWIGTYPE_p_p_char, 0 |  0 );
-  if (!SWIG_IsOK(res2)) {
-    SWIG_exception_fail(SWIG_ArgError(res2), "in method '" "main" "', argument " "2"" of type '" "char *[]""'"); 
-  } 
-  arg2 = reinterpret_cast< char ** >(argp2);
-  result = (int)main(arg1,arg2);
-  resultobj = SWIG_From_int(static_cast< int >(result));
+  resultobj = SWIG_NewPointerObj((new DATA_s(static_cast< const DATA_s& >(result))), SWIGTYPE_p_DataT_float_t, SWIG_POINTER_OWN |  0 );
   return resultobj;
 fail:
   return NULL;
@@ -4319,7 +4384,7 @@ SWIGINTERN PyObject *_wrap_load_denseSPD_from_console(PyObject *SWIGUNUSEDPARM(s
     arg3 = (int) array_size(array1,1);
   }
   result = load_denseSPD_from_console(arg1,arg2,arg3);
-  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMATRIX_DENSE, SWIG_POINTER_OWN |  0 );
+  resultobj = SWIG_NewPointerObj((new SPDMATRIX_DENSE(static_cast< const SPDMATRIX_DENSE& >(result))), SWIGTYPE_p_SPDMatrixT_float_t, SWIG_POINTER_OWN |  0 );
   {
     if (is_new_object1 && array1)
     {
@@ -4340,13 +4405,18 @@ fail:
 
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
+	 { (char *)"N_CHILDREN_swigconstant", N_CHILDREN_swigconstant, METH_VARARGS, NULL},
+	 { (char *)"new_file_to_argv", _wrap_new_file_to_argv, METH_VARARGS, NULL},
+	 { (char *)"delete_file_to_argv", _wrap_delete_file_to_argv, METH_VARARGS, NULL},
+	 { (char *)"file_to_argv_print_argv", _wrap_file_to_argv_print_argv, METH_VARARGS, NULL},
+	 { (char *)"file_to_argv_return_argv", _wrap_file_to_argv_return_argv, METH_VARARGS, NULL},
+	 { (char *)"file_to_argv_swigregister", file_to_argv_swigregister, METH_VARARGS, NULL},
 	 { (char *)"call_Launchhelper", _wrap_call_Launchhelper, METH_VARARGS, NULL},
 	 { (char *)"launchhelper_denseSPD", _wrap_launchhelper_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD", _wrap_load_denseSPD, METH_VARARGS, NULL},
 	 { (char *)"hello_world", _wrap_hello_world, METH_VARARGS, NULL},
 	 { (char *)"Compress", _wrap_Compress, METH_VARARGS, NULL},
 	 { (char *)"Evaluate", _wrap_Evaluate, METH_VARARGS, NULL},
-	 { (char *)"main", _wrap_main, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD_from_console", _wrap_load_denseSPD_from_console, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
@@ -4354,80 +4424,88 @@ static PyMethodDef SwigMethods[] = {
 
 /* -------- TYPE CONVERSION AND EQUIVALENCE RULES (BEGIN) -------- */
 
-static swig_type_info _swigt__p_CONFIGURATION = {"_p_CONFIGURATION", "CONFIGURATION *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_DATA_PAIR = {"_p_DATA_PAIR", "DATA_PAIR *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_DATA_s = {"_p_DATA_s", "DATA_s *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_RKDTSPLITTER = {"_p_RKDTSPLITTER", "RKDTSPLITTER *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_SPDMATRIX_DENSE = {"_p_SPDMATRIX_DENSE", "SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_SPLITTER = {"_p_SPLITTER", "SPLITTER *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DataT_float_t = {"_p_DataT_float_t", "Data< float > *|DATA_s *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_DataT_pairT_float_size_t_t_t = {"_p_DataT_pairT_float_size_t_t_t", "DATA_PAIR *|Data< pair< float,size_t > > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_SPDMatrixT_float_t = {"_p_SPDMatrixT_float_t", "SPDMatrix< float > *|SPDMATRIX_DENSE *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_char = {"_p_char", "char *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_file_to_argv = {"_p_file_to_argv", "file_to_argv *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_float = {"_p_float", "float *|T *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gofmm__ConfigurationT_T_t = {"_p_gofmm__ConfigurationT_T_t", "CONFIGURATION *|gofmm::Configuration< T > *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t = {"_p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t", "gofmm::centersplit< SPDMATRIX_DENSE,2,T > *|SPLITTER *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t = {"_p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t", "gofmm::randomsplit< SPDMATRIX_DENSE,2,T > *|RKDTSPLITTER *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlpError_t = {"_p_hmlpError_t", "hmlpError_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_hmlp__gofmm__sTree_t = {"_p_hmlp__gofmm__sTree_t", "hmlp::gofmm::sTree_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_int = {"_p_int", "intptr_t *|int *|int_least32_t *|int_fast32_t *|int32_t *|int_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_long_long = {"_p_long_long", "int_least64_t *|int_fast64_t *|int64_t *|long long *|intmax_t *", 0, 0, (void*)0, 0};
-static swig_type_info _swigt__p_p_char = {"_p_p_char", "char **", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_short = {"_p_short", "short *|int_least16_t *|int16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_signed_char = {"_p_signed_char", "signed char *|int_least8_t *|int_fast8_t *|int8_t *", 0, 0, (void*)0, 0};
+static swig_type_info _swigt__p_std__vectorT_char_const_p_t = {"_p_std__vectorT_char_const_p_t", "std::vector< char const * > *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_char = {"_p_unsigned_char", "unsigned char *|uint_least8_t *|uint_fast8_t *|uint8_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_int = {"_p_unsigned_int", "uintptr_t *|uint_least32_t *|uint_fast32_t *|uint32_t *|unsigned int *|uint_fast16_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_long_long = {"_p_unsigned_long_long", "uint_least64_t *|uint_fast64_t *|uint64_t *|unsigned long long *|uintmax_t *", 0, 0, (void*)0, 0};
 static swig_type_info _swigt__p_unsigned_short = {"_p_unsigned_short", "unsigned short *|uint_least16_t *|uint16_t *", 0, 0, (void*)0, 0};
 
 static swig_type_info *swig_type_initial[] = {
-  &_swigt__p_CONFIGURATION,
-  &_swigt__p_DATA_PAIR,
-  &_swigt__p_DATA_s,
-  &_swigt__p_RKDTSPLITTER,
-  &_swigt__p_SPDMATRIX_DENSE,
-  &_swigt__p_SPLITTER,
+  &_swigt__p_DataT_float_t,
+  &_swigt__p_DataT_pairT_float_size_t_t_t,
+  &_swigt__p_SPDMatrixT_float_t,
   &_swigt__p_char,
+  &_swigt__p_file_to_argv,
+  &_swigt__p_float,
+  &_swigt__p_gofmm__ConfigurationT_T_t,
+  &_swigt__p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t,
+  &_swigt__p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t,
   &_swigt__p_hmlpError_t,
   &_swigt__p_hmlp__gofmm__sTree_t,
   &_swigt__p_int,
   &_swigt__p_long_long,
-  &_swigt__p_p_char,
   &_swigt__p_short,
   &_swigt__p_signed_char,
+  &_swigt__p_std__vectorT_char_const_p_t,
   &_swigt__p_unsigned_char,
   &_swigt__p_unsigned_int,
   &_swigt__p_unsigned_long_long,
   &_swigt__p_unsigned_short,
 };
 
-static swig_cast_info _swigc__p_CONFIGURATION[] = {  {&_swigt__p_CONFIGURATION, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_DATA_PAIR[] = {  {&_swigt__p_DATA_PAIR, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_DATA_s[] = {  {&_swigt__p_DATA_s, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_RKDTSPLITTER[] = {  {&_swigt__p_RKDTSPLITTER, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_SPDMATRIX_DENSE[] = {  {&_swigt__p_SPDMATRIX_DENSE, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_SPLITTER[] = {  {&_swigt__p_SPLITTER, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DataT_float_t[] = {  {&_swigt__p_DataT_float_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_DataT_pairT_float_size_t_t_t[] = {  {&_swigt__p_DataT_pairT_float_size_t_t_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_SPDMatrixT_float_t[] = {  {&_swigt__p_SPDMatrixT_float_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_char[] = {  {&_swigt__p_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_file_to_argv[] = {  {&_swigt__p_file_to_argv, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_float[] = {  {&_swigt__p_float, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gofmm__ConfigurationT_T_t[] = {  {&_swigt__p_gofmm__ConfigurationT_T_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t[] = {  {&_swigt__p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t[] = {  {&_swigt__p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlpError_t[] = {  {&_swigt__p_hmlpError_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_hmlp__gofmm__sTree_t[] = {  {&_swigt__p_hmlp__gofmm__sTree_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_int[] = {  {&_swigt__p_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_long_long[] = {  {&_swigt__p_long_long, 0, 0, 0},{0, 0, 0, 0}};
-static swig_cast_info _swigc__p_p_char[] = {  {&_swigt__p_p_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_short[] = {  {&_swigt__p_short, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_signed_char[] = {  {&_swigt__p_signed_char, 0, 0, 0},{0, 0, 0, 0}};
+static swig_cast_info _swigc__p_std__vectorT_char_const_p_t[] = {  {&_swigt__p_std__vectorT_char_const_p_t, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_char[] = {  {&_swigt__p_unsigned_char, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_int[] = {  {&_swigt__p_unsigned_int, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_long_long[] = {  {&_swigt__p_unsigned_long_long, 0, 0, 0},{0, 0, 0, 0}};
 static swig_cast_info _swigc__p_unsigned_short[] = {  {&_swigt__p_unsigned_short, 0, 0, 0},{0, 0, 0, 0}};
 
 static swig_cast_info *swig_cast_initial[] = {
-  _swigc__p_CONFIGURATION,
-  _swigc__p_DATA_PAIR,
-  _swigc__p_DATA_s,
-  _swigc__p_RKDTSPLITTER,
-  _swigc__p_SPDMATRIX_DENSE,
-  _swigc__p_SPLITTER,
+  _swigc__p_DataT_float_t,
+  _swigc__p_DataT_pairT_float_size_t_t_t,
+  _swigc__p_SPDMatrixT_float_t,
   _swigc__p_char,
+  _swigc__p_file_to_argv,
+  _swigc__p_float,
+  _swigc__p_gofmm__ConfigurationT_T_t,
+  _swigc__p_gofmm__centersplitT_SPDMATRIX_DENSE_2_T_t,
+  _swigc__p_gofmm__randomsplitT_SPDMATRIX_DENSE_2_T_t,
   _swigc__p_hmlpError_t,
   _swigc__p_hmlp__gofmm__sTree_t,
   _swigc__p_int,
   _swigc__p_long_long,
-  _swigc__p_p_char,
   _swigc__p_short,
   _swigc__p_signed_char,
+  _swigc__p_std__vectorT_char_const_p_t,
   _swigc__p_unsigned_char,
   _swigc__p_unsigned_int,
   _swigc__p_unsigned_long_long,

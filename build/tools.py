@@ -91,6 +91,33 @@ except AttributeError:
 
 
 
+_tools.N_CHILDREN_swigconstant(_tools)
+N_CHILDREN = _tools.N_CHILDREN
+class file_to_argv(_object):
+    __swig_setmethods__ = {}
+    __setattr__ = lambda self, name, value: _swig_setattr(self, file_to_argv, name, value)
+    __swig_getmethods__ = {}
+    __getattr__ = lambda self, name: _swig_getattr(self, file_to_argv, name)
+    __repr__ = _swig_repr
+
+    def __init__(self, *args):
+        this = _tools.new_file_to_argv(*args)
+        try:
+            self.this.append(this)
+        except Exception:
+            self.this = this
+    __swig_destroy__ = _tools.delete_file_to_argv
+    __del__ = lambda self: None
+
+    def print_argv(self):
+        return _tools.file_to_argv_print_argv(self)
+
+    def return_argv(self):
+        return _tools.file_to_argv_return_argv(self)
+file_to_argv_swigregister = _tools.file_to_argv_swigregister
+file_to_argv_swigregister(file_to_argv)
+
+
 def call_Launchhelper(filename):
     return _tools.call_Launchhelper(filename)
 call_Launchhelper = _tools.call_Launchhelper
@@ -107,17 +134,13 @@ def hello_world():
     return _tools.hello_world()
 hello_world = _tools.hello_world
 
-def Compress(K, NN, splitter, rkdtsplitter, config):
-    return _tools.Compress(K, NN, splitter, rkdtsplitter, config)
+def Compress(K, NN, splitter, rkds, config):
+    return _tools.Compress(K, NN, splitter, rkds, config)
 Compress = _tools.Compress
 
 def Evaluate(tree, weights):
     return _tools.Evaluate(tree, weights)
 Evaluate = _tools.Evaluate
-
-def main(argc, argv):
-    return _tools.main(argc, argv)
-main = _tools.main
 
 def load_denseSPD_from_console(numpyArr):
     return _tools.load_denseSPD_from_console(numpyArr)
