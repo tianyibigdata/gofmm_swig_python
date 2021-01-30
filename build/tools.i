@@ -27,6 +27,16 @@
       {(double* numpyArr, int row_numpyArr, int col_numpyArr)}
 
 
+// %apply (int* IN_ARRAY1, int DIM1){(int* a, int dim_a), (int* b, int dim_b)}
+
+// %apply (int* ARGOUT_ARRAY1, int DIM1){(int* c, int dim_c)}
+
+%apply (double* ARGOUT_ARRAY1, int DIM1){(double* c, int dim_c)}
+
+%apply (double* ARGOUT_ARRAY1, int DIM1) \
+       {(double* mul_numpy, int len_mul_numpy)}
+
+
 /* Typically in the end */
 %include "../example/test_gofmm.h"
 

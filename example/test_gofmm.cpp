@@ -318,3 +318,42 @@ SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
 
   return K;
 }
+
+
+void mul_denseSPD(SPDMATRIX_DENSE K1,
+                  SPDMATRIX_DENSE K2,
+                  double* mul_numpy, int len_mul_numpy) {
+  // mxk matrix * kxn matrix. Calculate the row and col of two matrices
+  size_t row_K1 = K1.row();
+  size_t col_K1 = K1.col();
+  size_t row_K2 = K2.row();
+  size_t col_K2 = K2.col();
+
+  /* Check if the matrix muliplication can be performed */
+  // Check the two inputs
+  if (col_K1 != row_K2) {
+    std::cerr << "Error: dimension of the two input matrices doesn't match!"
+              << std::endl;
+  }
+
+  if ((row_K1 * col_K2) != len_mul_numpy) {
+    std::cerr << "Error: the size of the output matrix doesn't match the "
+              << "input size m x n!\n"
+              << std::endl;
+  }
+
+  /* Multiplication: mxk matrix * kxn matrix*/
+  int index = -1;
+  float* k1 = K1.data();  // Extract matrix data
+  float* k2 = K2.data();
+
+  for (size_t i = 0; i < row_K1; i++) {
+    for (size_t j = 0; j < col_K2; j++) {
+      index = i * col_K2 + j;
+      mul_numpy[index] = 0;
+      for (size_t k = 0; k < col_K1; k++) {
+        mul_numpy[index] += k1[i * col_K1 + k] * k2[k * col_K2 + j];
+      }
+    }
+  }
+}

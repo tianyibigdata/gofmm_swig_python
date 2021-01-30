@@ -231,3 +231,22 @@ kerneltype="gaussian"
 
 1. Combined all 3 cases: testsuit, dense spd and numpy into the file 
 `test.py`
+
+Task to do:
+
+1.   auto u = Evaluate( tree, w );  // type: Data<T>
+
+extract data from the container and do multiplication
+
+question: multiplication 
+
+should 
+       Data<T> mul(Data<T> ..., Data<T> ...) {}
+
+
+
+29.01.2021
+https://stackoverflow.com/questions/36222455/swigcpython-passing-and-receiving-c-arrays
+
+# 2D spd matrix
+# spdMatrix = np.array([[2, 6], [6, 20]], dtype=np.double)
