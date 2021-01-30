@@ -246,11 +246,21 @@ should
 
 
 29.01.2021
+
+# How to print a c matrix in numpy array form in python
 https://stackoverflow.com/questions/36222455/swigcpython-passing-and-receiving-c-arrays
 
-# 2D spd matrix
+# An example of 2D spd matrix
 # spdMatrix = np.array([[2, 6], [6, 20]], dtype=np.double)
 
-2D ARGOUT_ARRAY2 map not avilable
-test.py mul case updated
-mul_denseSPD written
+1. Included mul_denseSPD in test_gofmm.cpp to calcuate the multiplication
+of two dense SPD matrices
+
+2. Wrote typemap for an 1D output matrix which will be resize to display
+the instrinsic 2D layout (tools.i)
+    Lesson learned:  (double* ARGOUT_ARRAY2, int DIM1, int DIM2) is unavailable
+    Whenever we want to use a typemap in .i file, check first if such
+    mapping is defined in numpy.i
+
+3. Updated test.py to include the running example of multiplication of
+two numpy spd matrices
