@@ -149,10 +149,6 @@ load_denseSPD_from_console = _tools.load_denseSPD_from_console
 def mul_denseSPD(K1, K2, mul_numpy):
     return _tools.mul_denseSPD(K1, K2, mul_numpy)
 mul_denseSPD = _tools.mul_denseSPD
-
-def add(a, b, c):
-    return _tools.add(a, b, c)
-add = _tools.add
 # This file is compatible with both classic and new-style classes.
 
 

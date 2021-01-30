@@ -250,3 +250,7 @@ https://stackoverflow.com/questions/36222455/swigcpython-passing-and-receiving-c
 
 # 2D spd matrix
 # spdMatrix = np.array([[2, 6], [6, 20]], dtype=np.double)
+
+2D ARGOUT_ARRAY2 map not avilable
+test.py mul case updated
+mul_denseSPD written

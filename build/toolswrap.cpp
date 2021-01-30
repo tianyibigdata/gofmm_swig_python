@@ -4533,60 +4533,6 @@ fail:
 }
 
 
-SWIGINTERN PyObject *_wrap_add(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
-  PyObject *resultobj = 0;
-  int arg1 ;
-  int arg2 ;
-  double *arg3 = (double *) 0 ;
-  int arg4 ;
-  int val1 ;
-  int ecode1 = 0 ;
-  int val2 ;
-  int ecode2 = 0 ;
-  PyObject *array3 = NULL ;
-  PyObject * obj0 = 0 ;
-  PyObject * obj1 = 0 ;
-  PyObject * obj2 = 0 ;
-  
-  if (!PyArg_ParseTuple(args,(char *)"OOO:add",&obj0,&obj1,&obj2)) SWIG_fail;
-  ecode1 = SWIG_AsVal_int(obj0, &val1);
-  if (!SWIG_IsOK(ecode1)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode1), "in method '" "add" "', argument " "1"" of type '" "int""'");
-  } 
-  arg1 = static_cast< int >(val1);
-  ecode2 = SWIG_AsVal_int(obj1, &val2);
-  if (!SWIG_IsOK(ecode2)) {
-    SWIG_exception_fail(SWIG_ArgError(ecode2), "in method '" "add" "', argument " "2"" of type '" "int""'");
-  } 
-  arg2 = static_cast< int >(val2);
-  {
-    npy_intp dims[1];
-    if (!PyLong_Check(obj2))
-    {
-      const char* typestring = pytype_string(obj2);
-      PyErr_Format(PyExc_TypeError,
-        "Int dimension expected.  '%s' given.",
-        typestring);
-      SWIG_fail;
-    }
-    arg4 = (int) PyLong_AsSsize_t(obj2);
-    if (arg4 == -1 && PyErr_Occurred()) SWIG_fail;
-    dims[0] = (npy_intp) arg4;
-    array3 = PyArray_SimpleNew(1, dims, NPY_DOUBLE);
-    if (!array3) SWIG_fail;
-    arg3 = (double*) array_data(array3);
-  }
-  add(arg1,arg2,arg3,arg4);
-  resultobj = SWIG_Py_Void();
-  {
-    resultobj = SWIG_Python_AppendOutput(resultobj,(PyObject*)array3);
-  }
-  return resultobj;
-fail:
-  return NULL;
-}
-
-
 static PyMethodDef SwigMethods[] = {
 	 { (char *)"SWIG_PyInstanceMethod_New", (PyCFunction)SWIG_PyInstanceMethod_New, METH_O, NULL},
 	 { (char *)"N_CHILDREN_swigconstant", N_CHILDREN_swigconstant, METH_VARARGS, NULL},
@@ -4603,7 +4549,6 @@ static PyMethodDef SwigMethods[] = {
 	 { (char *)"Evaluate", _wrap_Evaluate, METH_VARARGS, NULL},
 	 { (char *)"load_denseSPD_from_console", _wrap_load_denseSPD_from_console, METH_VARARGS, NULL},
 	 { (char *)"mul_denseSPD", _wrap_mul_denseSPD, METH_VARARGS, NULL},
-	 { (char *)"add", _wrap_add, METH_VARARGS, NULL},
 	 { NULL, NULL, 0, NULL }
 };
 

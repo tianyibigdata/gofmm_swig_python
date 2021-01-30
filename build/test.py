@@ -53,5 +53,7 @@ treeSpd = tools.load_denseSPD_from_console(spdMatrix)
 idMatrix = np.identity(spdSize)
 idTree = tools.load_denseSPD_from_console(idMatrix)
 
-lenMatrix = spdSize ** spdSize
-c = tools.mul_denseSPD(treeSpd, idTree, lenMatrix)
+# Do the multiplication
+lenMatrix = spdSize ** 2  # Length of the 1D array
+c = tools.mul_denseSPD(treeSpd, idTree, lenMatrix)  # still 1D
+print(np.resize(c, (spdSize, spdSize)))  # Display 1D in 2D
