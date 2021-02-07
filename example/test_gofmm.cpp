@@ -356,6 +356,8 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
   float* k1 = K1.data();  // Extract matrix data
   float* k2 = K2.data();
 
+  // print(k2)
+
   for (size_t i = 0; i < row_K1; i++) {
     for (size_t j = 0; j < col_K2; j++) {
       index = i * col_K2 + j;

@@ -1549,6 +1549,7 @@ hmlpError_t Solve( TREE &tree, Data<T> &input )
 
   if ( tree.setup.do_ulv_factorization )
   {
+    std::cout << "do ulv"; 
     /** clean up all dependencies on tree nodes */
     RETURN_IF_ERROR( tree.dependencyClean() );
     tree.traverseDown( treeviewtask );
@@ -1907,8 +1908,22 @@ void ComputeError( TREE &tree, T lambda, Data<T> weights, Data<T> potentials )
     for ( size_t i = 0; i < n; i ++ )
       rhs( i, j ) = potentials( i, j ) + lambda * weights( i, j );
 
-  /** potentials = inv( K + lambda * I ) * potentials */
+  /** w = inv( K + lambda * I ) * u where w is weight and u is potential.
+   and rhs is u, the potential*/
+
+  std::cout << "n is " << n << " and nrhs is " << nrhs << '\n';
+
+  size_t ss = 10;
+
+  for (size_t i = 0, j = 0; i < n; i++)
+    std::cout << rhs(i, j) << ", \n";
+
+  std::cout << "rhs\n\n";
+
   Solve( tree, rhs );
+
+  for (size_t i = 0, j = 0; i < n; i++)
+    std::cout << rhs(i, j) << ", \n";
 
 
   /** Compute relative error = sqrt( err / nrm2 ) for each rhs */

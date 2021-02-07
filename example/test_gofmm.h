@@ -69,5 +69,3 @@ SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
 void mul_denseSPD(SPDMATRIX_DENSE K1,
                   SPDMATRIX_DENSE K2,
                   double* mul_numpy, int len_mul_numpy);
-
-

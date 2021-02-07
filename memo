@@ -264,3 +264,58 @@ the instrinsic 2D layout (tools.i)
 
 3. Updated test.py to include the running example of multiplication of
 two numpy spd matrices
+
+
+05.02.2020
+
+1. Inverse of dense SPD
+
+https://www.cs.utexas.edu/ftp/techreports/tr06-20.pdf
+
+https://stackoverflow.com/questions/40703042/more-efficient-way-to-invert-a-matrix-knowing-it-is-symmetric-and-positive-semi
+
+
+06.02.2020
+1. Read about how blas implement inverse of a matrix, solve a linear system,
+
+http://www.netlib.org/lapack/double/
+
+
+07.02.2021
+
+1. Use the following method to compute the inverse of K
+
+
+    void Factorize( Data<T> &Kaa ) 
+    {
+      assert( isLeaf() );
+      assert( Kaa.row() == n ); assert( Kaa.col() == n );
+
+      /** Initialize with Kaa. */
+      Z = Kaa;
+
+      /** Record the partial pivoting order. */
+      ipiv.resize( n, 0 );
+
+      /** Compute 1-norm of Z. */
+      T nrm1 = 0.0;
+      for ( auto &z : Z ) nrm1 += z;
+
+      /** Pivoted LU factorization. */
+      xgetrf( n, n, Z.data(), n, ipiv.data() );
+
+      /** Compute 1-norm condition number. */
+      T rcond1 = 0.0;
+      Data<T> work( Z.row(), 4 );
+      vector<int> iwork( Z.row() );
+      xgecon( "1", Z.row(), Z.data(), Z.row(), nrm1, 
+          &rcond1, work.data(), iwork.data() );
+      if ( 1.0 / rcond1 > 1E+6 )
+        printf( "Warning! large 1-norm condition number %3.1E, nrm1( Z ) %3.1E\n", 
+            1.0 / rcond1, nrm1 );
+    }; /** end Factorize() */
+
+
+2. Problem: how to convert Tree class to Data class
+
+
