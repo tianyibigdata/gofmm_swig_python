@@ -12,6 +12,9 @@
 typedef float T;
 typedef SPDMatrix<T> SPDMATRIX_DENSE;
 typedef Data<T> DATA_s;
+typedef gofmm::CommandLineHelper CommandLineHelper;
+/* typedef hmlp::Node<ARGUMENT, NODEDATA> NODE; */
+/* typedef tree::Node<ARGUMENT, NODEDATA> NODE; */
 
 /* Create infrastructure for storing matrix in a tree */
 /** Use the geometric-oblivious splitter from the metric ball tree. */
@@ -69,3 +72,7 @@ SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
 void mul_denseSPD(SPDMATRIX_DENSE K1,
                   SPDMATRIX_DENSE K2,
                   double* mul_numpy, int len_mul_numpy);
+
+void invert_denseSPD(SPDMATRIX_DENSE& K,
+                     CommandLineHelper& cmd,
+                     double* inv_numpy);

@@ -594,9 +594,7 @@ void xgetrs
   const char *trans,
   int m, int nrhs, 
   double *A, int lda, int *ipiv,
-  double *B, int ldb
-)
-{
+  double *B, int ldb) {
 #ifdef USE_BLAS
   int info;
   dgetrs_

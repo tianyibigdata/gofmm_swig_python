@@ -368,3 +368,52 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
     }
   }
 }
+
+
+void invert_denseSPD(SPDMATRIX_DENSE& K,
+                     CommandLineHelper& cmd,
+                     double* inv_numpy) {
+  /* Compute the inverse of a SPD matrix K and output it in the variable 
+     inv_numpy 
+
+   @K: n x n SPD matrix
+
+   @inv_numpy: the inverse of K 
+  */
+  /* Compress K into our gof tree */
+
+  // 1st step: Argument preparation for fitting K into a tree
+  /** GOFMM metric ball tree splitter (for the matrix partition). */
+  SPLITTER splitter(K, cmd.metric);
+
+  /** Randomized matric tree splitter (for nearest neighbor). */
+  RKDTSPLITTER rkdtsplitter(K, cmd.metric);
+
+  /** Create configuration for all user-define arguments. */
+  CONFIGURATION config(cmd.metric,
+                       cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
+                       cmd.budget, cmd.secure_accuracy);
+
+  /** (Optional) provide neighbors, leave uninitialized otherwise. */
+  Data<pair<T, size_t>> NN;
+
+  /** Instantiation for the randomisze tree. */
+  using DATA  = gofmm::NodeData<T>;
+  using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
+  using TREE  = tree::Tree<SETUP, DATA>;
+  /** Derive type NODE from TREE. */
+  using NODE  = typename TREE::NODE;
+
+  /** Compress K. */
+  auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
+
+  // using NODE = typename gofmm::Node<ARGUMENT, NODEDATA>;
+  // 2nd step: extract the root node of the tree
+  NODE* root = tree_ptr->getLocalRoot();
+  // Use ptr to root so that inverse data will be stored in the root node
+  NODE** ptr_to_root = &root;
+
+  // Apply UV or ULV factorization on the root to compute the inverse matrix
+  auto error = gofmm::Factorize<NODE, T>(ptr_to_root);
+
+}
