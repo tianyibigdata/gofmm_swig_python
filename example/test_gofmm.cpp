@@ -372,13 +372,16 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
 
 void invert_denseSPD(SPDMATRIX_DENSE& K,
                      CommandLineHelper& cmd,
-                     double* inv_numpy) {
+                     double* inv_numpy,
+                     int len_inv_numpy) {
   /* Compute the inverse of a SPD matrix K and output it in the variable 
      inv_numpy 
 
    @K: n x n SPD matrix
 
-   @inv_numpy: the inverse of K 
+   @inv_numpy: the inverse of K
+
+   @ len_inv_numpy: length of the 1D array version for the inv_numpy
   */
   /* Compress K into our gof tree */
 
@@ -414,6 +417,15 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   NODE** ptr_to_root = &root;
 
   // Apply UV or ULV factorization on the root to compute the inverse matrix
-  auto error = gofmm::Factorize<NODE, T>(ptr_to_root);
+  auto ret = gofmm::Factorize<NODE, T>(ptr_to_root);
 
+  // Fill the container
+  size_t row = K.row();
+  size_t col = K.col();
+  int index = -1;
+  for (size_t i = 0; i < row; i++)
+    for (size_t j = 0; j < col; j++) {
+      index = i * col + j;
+      inv_numpy[index] = root->data[index];
+    }
 }

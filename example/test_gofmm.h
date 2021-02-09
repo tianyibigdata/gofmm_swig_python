@@ -75,4 +75,5 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
 
 void invert_denseSPD(SPDMATRIX_DENSE& K,
                      CommandLineHelper& cmd,
-                     double* inv_numpy);
+                     double* inv_numpy,
+                     int len_inv_numpy);

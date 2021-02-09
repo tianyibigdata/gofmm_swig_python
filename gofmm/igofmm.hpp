@@ -1722,10 +1722,10 @@ hmlpError_t Factorize( NODE *node )
 template<typename NODE, typename T>
 hmlpError_t Factorize(NODE** node1) {
   NODE* node = *node1;
-  auto &data = node->data;
+  auto &data = node->data;  // type NODEDATA
   auto &setup = node->setup;
   auto &K = *setup->K;
-  auto &proj = data.proj;
+  auto &proj = data.proj;  // type Data<T>
 
   auto do_ulv_factorization = setup->do_ulv_factorization;
 
@@ -1758,6 +1758,8 @@ hmlpError_t Factorize(NODE** node1) {
       /** V = proj' */
       data.Telescope( false, data.V, proj );
     }
+
+    // ret Kaa OBJ
   }
   else
   {
@@ -1783,7 +1785,8 @@ hmlpError_t Factorize(NODE** node1) {
         data.Telescope( false, data.U, proj, Ul, Ur );
         data.Orthogonalization();
       }
-      data.PartialFactorize( Zl, Zr, Ul, Ur, Vl, Vr );
+      // Data type of all parameters Data<T>
+      data.PartialFactorize(Zl, Zr, Ul, Ur, Vl, Vr);
     }
     else
     {
@@ -1798,6 +1801,7 @@ hmlpError_t Factorize(NODE** node1) {
         data.Telescope( false, data.V, proj, Vl, Vr );
       }
     }
+    // ret some matrix from above
   }
 
   return HMLP_ERROR_SUCCESS;
