@@ -1720,8 +1720,9 @@ hmlpError_t Factorize( NODE *node )
 
 
 template<typename NODE, typename T>
-hmlpError_t Factorize(NODE** node1) {
-  NODE* node = *node1;
+Data<T> Factorize1(NODE* node) {
+  // hmlpError_t Factorize(NODE** node1) {
+  // NODE* node = *node1;
   auto &data = node->data;  // type NODEDATA
   auto &setup = node->setup;
   auto &K = *setup->K;
@@ -1758,7 +1759,7 @@ hmlpError_t Factorize(NODE** node1) {
       /** V = proj' */
       data.Telescope( false, data.V, proj );
     }
-
+    return Kaa;
     // ret Kaa OBJ
   }
   else
@@ -1801,10 +1802,11 @@ hmlpError_t Factorize(NODE** node1) {
         data.Telescope( false, data.V, proj, Vl, Vr );
       }
     }
+    return data.Z;
     // ret some matrix from above
   }
 
-  return HMLP_ERROR_SUCCESS;
+  // return HMLP_ERROR_SUCCESS;
 }; /** end void Factorize() */
 
 

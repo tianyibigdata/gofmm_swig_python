@@ -413,11 +413,9 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   // using NODE = typename gofmm::Node<ARGUMENT, NODEDATA>;
   // 2nd step: extract the root node of the tree
   NODE* root = tree_ptr->getLocalRoot();
-  // Use ptr to root so that inverse data will be stored in the root node
-  NODE** ptr_to_root = &root;
 
   // Apply UV or ULV factorization on the root to compute the inverse matrix
-  auto ret = gofmm::Factorize<NODE, T>(ptr_to_root);
+  Data<T> inverseOfK = gofmm::Factorize1<NODE, T>(root);
 
   // Fill the container
   size_t row = K.row();
@@ -426,6 +424,6 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   for (size_t i = 0; i < row; i++)
     for (size_t j = 0; j < col; j++) {
       index = i * col + j;
-      inv_numpy[index] = root->data[index];
+      inv_numpy[index] = inverseOfK[index];
     }
 }
