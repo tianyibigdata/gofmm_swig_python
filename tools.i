@@ -32,6 +32,12 @@
 %apply (double* ARGOUT_ARRAY1, int DIM1) \  // ARGOUT: output array
        {(double* mul_numpy, int len_mul_numpy)}
 
+// inv_numpy is actually a 2D array flattened row-wise into a 1D array
+// Why not use 2D? bc typemap (double* ARGOUT_ARRAY2, int DIM1, int DIM2)
+// is not available in numpy.i
+%apply (double* ARGOUT_ARRAY1, int DIM1) \  // ARGOUT: output array
+       {(double* inv_numpy, int len_inv_numpy)}
+
 
 /* Typically in the end */
 %include "../example/test_gofmm.h"

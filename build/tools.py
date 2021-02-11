@@ -149,6 +149,10 @@ load_denseSPD_from_console = _tools.load_denseSPD_from_console
 def mul_denseSPD(K1, K2, mul_numpy):
     return _tools.mul_denseSPD(K1, K2, mul_numpy)
 mul_denseSPD = _tools.mul_denseSPD
+
+def invert_denseSPD(K, filename, inv_numpy):
+    return _tools.invert_denseSPD(K, filename, inv_numpy)
+invert_denseSPD = _tools.invert_denseSPD
 # This file is compatible with both classic and new-style classes.
 
 

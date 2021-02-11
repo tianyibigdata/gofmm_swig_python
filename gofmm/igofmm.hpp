@@ -1737,25 +1737,35 @@ Data<T> Factorize1(NODE* node) {
 
     /** Evaluate the diagonal block. */
     Data<T> Kaa = K( amap, amap );
-
+   
     /** Apply the regularization */
     for ( size_t i = 0; i < Kaa.row(); i ++ ) Kaa( i, i ) += lambda;
 
     if ( do_ulv_factorization )
     {
+      std::cout << "\n123\n";
       /** U = proj */
       data.Telescope( false, data.U, proj );
+
+      std::cout << "\n456\n";
       /** QR factorization */
       data.Orthogonalization();
+
+      std::cout << "\n789\n";
       /** LU factorization */
       data.PartialFactorize( Kaa );
     }
     else
     {
+      std::cout << "\n111\n";
       /** LU factorization */
       data.Factorize( Kaa );
+
+      std::cout << "\n222\n";
       /** U = inv( Kaa ) * proj' */
       data.Telescope( true, data.U, proj );
+
+      std::cout << "\n333\n";
       /** V = proj' */
       data.Telescope( false, data.V, proj );
     }
@@ -1778,19 +1788,30 @@ Data<T> Factorize1(NODE* node) {
     /** Get the skeleton rows and columns */
     node->data.Crl = K( bmap, amap );
 
+    std::cout << "\n1st else\n";
     if ( do_ulv_factorization )
     {
+      std::cout << "ahah\n";
+
       if ( !node->data.isroot )
       {
-        //printf( "here level %lu\n", node->l );
+        std::cout << "\nmama?\n";
+        // printf( "here level %lu\n", node->l );
         data.Telescope( false, data.U, proj, Ul, Ur );
+
+        std::cout << "\northo\n";
         data.Orthogonalization();
       }
+
+      std::cout << "\nhere?\n";
+
       // Data type of all parameters Data<T>
       data.PartialFactorize(Zl, Zr, Ul, Ur, Vl, Vr);
     }
     else
     {
+      std::cout << "asdf\n";
+
       /** SMW factorization (LU or Cholesky) */
       data.Factorize( Ul, Ur, Vl, Vr );
       /** telescope U and V */
@@ -1911,19 +1932,19 @@ void ComputeError( TREE &tree, T lambda, Data<T> weights, Data<T> potentials )
   /** w = inv( K + lambda * I ) * u where w is weight and u is potential.
    and rhs is u, the potential*/
 
-  std::cout << "n is " << n << " and nrhs is " << nrhs << '\n';
+  // std::cout << "n is " << n << " and nrhs is " << nrhs << '\n';
 
-  size_t ss = 10;
+  // size_t ss = 10;
 
-  for (size_t i = 0, j = 0; i < n; i++)
-    std::cout << rhs(i, j) << ", \n";
+  // for (size_t i = 0, j = 0; i < n; i++)
+  //   std::cout << rhs(i, j) << ", \n";
 
-  std::cout << "rhs\n\n";
+  // std::cout << "rhs\n\n";
 
   Solve( tree, rhs );
 
-  for (size_t i = 0, j = 0; i < n; i++)
-    std::cout << rhs(i, j) << ", \n";
+  // for (size_t i = 0, j = 0; i < n; i++)
+  //   std::cout << rhs(i, j) << ", \n";
 
 
   /** Compute relative error = sqrt( err / nrm2 ) for each rhs */

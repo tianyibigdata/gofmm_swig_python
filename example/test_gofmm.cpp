@@ -110,6 +110,25 @@ hmlpError_t call_Launchhelper(const char* filename) {
   return temp;
 }
 
+hmlpError_t build_cmds(const char* filename) {
+  /* Construct vector string */
+  file_to_argv argvObj(filename);
+  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+                               argvObj.return_argv());  // avoid deep copy
+
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  /** random spd initialization */
+  SPDMatrix<double> K(cmd.n, cmd.n);
+  K.randspd(0.0, 1.0);
+
+  hmlpError_t temp = gofmm::LaunchHelper(K, cmd);
+
+  HANDLE_ERROR(hmlp_finalize());
+
+  return temp;
+}
+
 
 hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
   /* Compress and evaluate a SPD dense matrix 
@@ -118,7 +137,6 @@ hmlpError_t launchhelper_denseSPD(SPDMATRIX_DENSE &K, const char* filename) {
 
      @filename: the file containing parameters
    */
-
   // Wrap parameters from filename line by line into argvObj
   file_to_argv argvObj(filename);
   gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
@@ -371,7 +389,7 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
 
 
 void invert_denseSPD(SPDMATRIX_DENSE& K,
-                     CommandLineHelper& cmd,
+                     const char* filename,
                      double* inv_numpy,
                      int len_inv_numpy) {
   /* Compute the inverse of a SPD matrix K and output it in the variable 
@@ -383,8 +401,14 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
 
    @ len_inv_numpy: length of the 1D array version for the inv_numpy
   */
-  /* Compress K into our gof tree */
+  // Wrap parameters from filename line by line into argvObj
+  file_to_argv argvObj(filename);
+  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+                               argvObj.return_argv());  // avoid deep copy
 
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  /* Compress K into our gof tree */
   // 1st step: Argument preparation for fitting K into a tree
   /** GOFMM metric ball tree splitter (for the matrix partition). */
   SPLITTER splitter(K, cmd.metric);
@@ -400,30 +424,45 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   /** (Optional) provide neighbors, leave uninitialized otherwise. */
   Data<pair<T, size_t>> NN;
 
-  /** Instantiation for the randomisze tree. */
-  using DATA  = gofmm::NodeData<T>;
-  using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
-  using TREE  = tree::Tree<SETUP, DATA>;
-  /** Derive type NODE from TREE. */
-  using NODE  = typename TREE::NODE;
-
   /** Compress K. */
   auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
 
-  // using NODE = typename gofmm::Node<ARGUMENT, NODEDATA>;
-  // 2nd step: extract the root node of the tree
-  NODE* root = tree_ptr->getLocalRoot();
+  auto &tree = *tree_ptr;
 
-  // Apply UV or ULV factorization on the root to compute the inverse matrix
-  Data<T> inverseOfK = gofmm::Factorize1<NODE, T>(root);
+  /* HSS ULV factorization currently does not support level-restriction. */
+  if ( !tree.setup.SecureAccuracy() ) {
+    std::cout << "\nsecdsfd\n";
 
-  // Fill the container
-  size_t row = K.row();
-  size_t col = K.col();
-  int index = -1;
-  for (size_t i = 0; i < row; i++)
-    for (size_t j = 0; j < col; j++) {
-      index = i * col + j;
-      inv_numpy[index] = inverseOfK[index];
-    }
+    /* Regularization parameter. */
+    T lambda = 5.0;
+    /** HSS ULV factorization. The inverse is stored in some node of the
+        tree*/
+    gofmm::Factorize(tree, lambda);
+
+    /** Derive type NODE from TREE. */
+    // Instantiation for the randomisze tree
+    using DATA  = gofmm::NodeData<T>;
+    using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
+    using TREE  = tree::Tree<SETUP, DATA>;
+    using NODE  = typename TREE::NODE;
+
+    /* Extract the inverse data from the root */
+    NODE* root = tree_ptr->getLocalRoot();
+    Data<T> inverseOfK = root->data.Z;
+
+    // Fill the inverse data into our ret variable
+    size_t row = K.row();
+    size_t col = K.col();
+    int index = -1;
+    for (size_t i = 0; i < row; i++)
+      for (size_t j = 0; j < col; j++) {
+        index = i * col + j;
+        inv_numpy[index] = inverseOfK[index];
+      }
+  }
+
+  /** delete tree_ptr */
+  delete tree_ptr;
+
+  HANDLE_ERROR(hmlp_finalize());
 }
