@@ -424,12 +424,13 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   /** (Optional) provide neighbors, leave uninitialized otherwise. */
   Data<pair<T, size_t>> NN;
 
-  /** Compress K. */
+  /** 2nd step: compress K. */
   auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
 
   auto &tree = *tree_ptr;
 
-  /* HSS ULV factorization currently does not support level-restriction. */
+  /* 3rd step: HSS ULV factorization currently does not support 
+     level-restriction. */
   if ( !tree.setup.SecureAccuracy() ) {
     std::cout << "\nsecdsfd\n";
 
