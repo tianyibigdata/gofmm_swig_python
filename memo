@@ -319,3 +319,21 @@ http://www.netlib.org/lapack/double/
 2. Problem: how to convert Tree class to Data class
 
 
+08.02.2021 - 10.02.2021
+1. Read intensively about the class functions, fortran files and blas
+prototypes to figure out which functions should be used to compute the
+inverse (It's time consuming because the existing code don't have adequate
+commentary. Besides, the coding style makes it hard to use egrep to grap
+key fields. Eg, public fields spread randomly inside a class. Random
+commas here and there -> making it extremly time consuming to use
+egrep espcially in such large project)
+
+2. Attempted to write a new Factorize class that takes in the root node
+and do LUV or LV computation. But failed because something goes wrong
+with the input.
+
+
+11.02.2021
+1. Wrote `invert_denseSPD` to convert a SPD matrix.
+
+2. Updated `test.py` to cover the inverse user case
