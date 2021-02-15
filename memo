@@ -337,3 +337,21 @@ with the input.
 1. Wrote `invert_denseSPD` to convert a SPD matrix.
 
 2. Updated `test.py` to cover the inverse user case
+
+
+12.02.2021
+1. Debugging with Severin
+
+2. Task to do:
+   a. figure out why inverse is instable
+   b. Create github
+
+
+15.02.2021
+1. Tried printing out inverse matrix value from all nodes. But the same
+problem after the 4th row or somewhere there, entries start to contain
+very small vals -> det(inverse) close to 0
+
+2. Task for tomorrow: will not use factorization but pseudo-inverse and
+see how that goes
+

@@ -371,8 +371,8 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
 
   /* Multiplication: mxk matrix * kxn matrix*/
   int index = -1;
-  float* k1 = K1.data();  // Extract matrix data
-  float* k2 = K2.data();
+  T* k1 = K1.data();  // Extract matrix data
+  T* k2 = K2.data();
 
   // print(k2)
 
@@ -432,8 +432,6 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   /* 3rd step: HSS ULV factorization currently does not support 
      level-restriction. */
   if ( !tree.setup.SecureAccuracy() ) {
-    std::cout << "\nsecdsfd\n";
-
     /* Regularization parameter. */
     T lambda = 5.0;
     /** HSS ULV factorization. The inverse is stored in some node of the
@@ -455,6 +453,7 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
     size_t row = K.row();
     size_t col = K.col();
     int index = -1;
+
     for (size_t i = 0; i < row; i++)
       for (size_t j = 0; j < col; j++) {
         index = i * col + j;
