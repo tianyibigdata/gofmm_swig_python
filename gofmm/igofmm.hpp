@@ -1291,6 +1291,12 @@ class MatrixPermuteTask : public hmlp::Task
       auto &output = *(node->setup->output);
       auto &A      = node->data.bview;
 
+      // std::cout << "row is " << A.row() << std::endl;
+      // std::cout << "gid is " << gids.size() << std::endl;
+      // std::cout << "col is " << A.col() << std::endl;
+      // std::cout << "gid is " << input.col() << std::endl;
+
+
       assert( A.row() == gids.size() );
       assert( A.col() == input.col() );
 
@@ -1941,7 +1947,8 @@ void ComputeError( TREE &tree, T lambda, Data<T> weights, Data<T> potentials )
 
   // std::cout << "rhs\n\n";
 
-  Solve( tree, rhs );
+  // Already know K and u. Using Solve to get w, which is stored in rhs
+  Solve(tree, rhs);
 
   // for (size_t i = 0, j = 0; i < n; i++)
   //   std::cout << rhs(i, j) << ", \n";

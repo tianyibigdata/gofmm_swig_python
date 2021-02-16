@@ -3824,9 +3824,7 @@ hmlpError_t SelfTesting( TREE &tree, size_t ntest, size_t nrhs )
    */
   hmlp::Data<double> logs( ntest, 7, 0 );
 
-
-
-  //auto A = tree.CheckAllInteractions();
+  // auto A = tree.CheckAllInteractions();
 
   /** Evaluate u ~ K * w. */
   Data<T> w( n, nrhs ); w.rand();

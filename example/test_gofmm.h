@@ -65,7 +65,7 @@ hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K,
 
 DATA_s Evaluate(hmlp::gofmm::sTree_t* tree, DATA_s &weights);
 
-SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
+SPDMATRIX_DENSE load_denseSPD_from_console(float* numpyArr,
                                            int row_numpyArr,
                                            int col_numpyArr);
 

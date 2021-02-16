@@ -310,7 +310,7 @@ int main( int argc, char *argv[] ) {
 } /** end main() */
 
 
-SPDMATRIX_DENSE load_denseSPD_from_console(double* numpyArr,
+SPDMATRIX_DENSE load_denseSPD_from_console(float* numpyArr,
                                            int row_numpyArr,
                                            int col_numpyArr) {
   /* Load values of a numpy matrix `numpyArr` into a SPD matrix container
@@ -388,6 +388,87 @@ void mul_denseSPD(SPDMATRIX_DENSE K1,
 }
 
 
+// void invert_denseSPD(SPDMATRIX_DENSE& K,
+//                      const char* filename,
+//                      double* inv_numpy,
+//                      int len_inv_numpy) {
+//   /* Compute the inverse of a SPD matrix K and output it in the variable 
+//      inv_numpy 
+
+//    @K: n x n SPD matrix
+
+//    @inv_numpy: the inverse of K
+
+//    @ len_inv_numpy: length of the 1D array version for the inv_numpy
+//   */
+//   // Wrap parameters from filename line by line into argvObj
+//   file_to_argv argvObj(filename);
+//   gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
+//                                argvObj.return_argv());  // avoid deep copy
+
+//   HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+//   /* Compress K into our gof tree */
+//   // 1st step: Argument preparation for fitting K into a tree
+//   /** GOFMM metric ball tree splitter (for the matrix partition). */
+//   SPLITTER splitter(K, cmd.metric);
+
+//   /** Randomized matric tree splitter (for nearest neighbor). */
+//   RKDTSPLITTER rkdtsplitter(K, cmd.metric);
+
+//   /** Create configuration for all user-define arguments. */
+//   CONFIGURATION config(cmd.metric,
+//                        cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
+//                        cmd.budget, cmd.secure_accuracy);
+
+//   /** (Optional) provide neighbors, leave uninitialized otherwise. */
+//   Data<pair<T, size_t>> NN;
+
+//   /** 2nd step: compress K. */
+//   auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
+
+//   auto &tree = *tree_ptr;
+
+//   /* 3rd step: HSS ULV factorization currently does not support 
+//      level-restriction. */
+//   if ( !tree.setup.SecureAccuracy() ) {
+//     /* Regularization parameter. */
+//     T lambda = 5.0;
+//     /** HSS ULV factorization. The inverse is stored in some node of the
+//         tree*/
+//     gofmm::Factorize(tree, lambda);
+
+//     /** Derive type NODE from TREE. */
+//     // Instantiation for the randomisze tree
+//     using DATA  = gofmm::NodeData<T>;
+//     using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
+//     using TREE  = tree::Tree<SETUP, DATA>;
+//     using NODE  = typename TREE::NODE;
+
+//     /* Extract the inverse data from the root */
+//     NODE* root = tree_ptr->getLocalRoot();
+//     Data<T> inverseOfK = root->data.Z;
+
+//     // Fill the inverse data into our ret variable
+//     size_t row = K.row();
+//     size_t col = K.col();
+//     int index = -1;
+
+//     for (size_t i = 0; i < row; i++)
+//       for (size_t j = 0; j < col; j++) {
+//         index = i * col + j;
+//         inv_numpy[index] = inverseOfK[index];
+//       }
+//   }
+
+//   /** delete tree_ptr */
+//   delete tree_ptr;
+
+//   HANDLE_ERROR(hmlp_finalize());
+// }
+
+
+
 void invert_denseSPD(SPDMATRIX_DENSE& K,
                      const char* filename,
                      double* inv_numpy,
@@ -429,36 +510,57 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
 
   auto &tree = *tree_ptr;
 
-  /* 3rd step: HSS ULV factorization currently does not support 
-     level-restriction. */
-  if ( !tree.setup.SecureAccuracy() ) {
-    /* Regularization parameter. */
-    T lambda = 5.0;
-    /** HSS ULV factorization. The inverse is stored in some node of the
-        tree*/
-    gofmm::Factorize(tree, lambda);
+  // size_t n = tree.getGlobalProblemSize();
+  size_t n = cmd.n;
+  size_t nrhs = cmd.nrhs;
 
-    /** Derive type NODE from TREE. */
-    // Instantiation for the randomisze tree
-    using DATA  = gofmm::NodeData<T>;
-    using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
-    using TREE  = tree::Tree<SETUP, DATA>;
-    using NODE  = typename TREE::NODE;
+  /* Construct a random w and compute u = kw.*/
+  Data<T> w(n, nrhs);
+  w.rand();
+  Data<T> u = Evaluate(tree, w);
 
-    /* Extract the inverse data from the root */
-    NODE* root = tree_ptr->getLocalRoot();
-    Data<T> inverseOfK = root->data.Z;
+  // Factorize as preparation
+  T lambda = 20.0;
 
-    // Fill the inverse data into our ret variable
-    size_t row = K.row();
-    size_t col = K.col();
-    int index = -1;
+  gofmm::Factorize(tree, lambda);
 
-    for (size_t i = 0; i < row; i++)
-      for (size_t j = 0; j < col; j++) {
-        index = i * col + j;
-        inv_numpy[index] = inverseOfK[index];
+  /* Construct a container for estimated weight, w, from gofmm */
+  Data<T> rhs(n, nrhs);
+  for (size_t j = 0; j < nrhs; j ++)
+    for (size_t i = 0; i < n; i ++)
+      rhs(i, j) = u(i, j) + lambda * w(i, j);
+
+  /** w = inv( K + lambda * I ) * u where w is weight and u is potential.
+   and rhs is u, the potential. Already know K and u. Using Solve to 
+   get w, which is stored in rhs */
+  Solve(tree, rhs);
+
+  /* Calculate inv(u) ----> inv(K) = w * inv(u) */
+  vector<int> ipiv;
+  ipiv.resize(u.row(), 0);
+  // std::cout << u.row() << ' ' << u.col() << std::endl;
+  xgetrf(u.row(), u.col(), u.data(), u.row(), ipiv.data());
+
+  /* Multiplication: mxk matrix * kxn matrix*/
+  int index = -1;
+  size_t row_K1 = w.row();
+  size_t col_K1 = w.col();
+  size_t row_K2 = u.col();
+  size_t col_K2 = u.row();
+  T* k1 = w.data();  // Extract matrix data
+  T* k2 = u.data();
+
+  // std::cout << row_K1 << ' ' << col_K1 << std::endl;
+  // std::cout << row_K2 << ' ' << col_K2 << std::endl;
+
+  for (size_t i = 0; i < row_K1; i++) {
+    for (size_t j = 0; j < col_K2; j++) {
+      index = i * col_K2 + j;
+      inv_numpy[index] = 0;
+      for (size_t k = 0; k < col_K1; k++) {
+        inv_numpy[index] += k1[i * col_K1 + k] * k2[k * col_K2 + j];
       }
+    }
   }
 
   /** delete tree_ptr */
