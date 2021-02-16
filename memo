@@ -355,3 +355,7 @@ very small vals -> det(inverse) close to 0
 2. Task for tomorrow: will not use factorization but pseudo-inverse and
 see how that goes
 
+
+16.02.2021
+1. Tried using xgetrf and inv(k) = w * inv(u). The result is a lot closer
+than just using the factorize. But still unstable

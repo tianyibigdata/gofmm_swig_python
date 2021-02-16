@@ -520,12 +520,15 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   Data<T> u = Evaluate(tree, w);
 
   // Factorize as preparation
-  T lambda = 20.0;
+  T lambda = 5.0;
 
   gofmm::Factorize(tree, lambda);
 
   /* Construct a container for estimated weight, w, from gofmm */
   Data<T> rhs(n, nrhs);
+  // for (size_t j = 0; j < nrhs; j ++)
+  //   for (size_t i = 0; i < n; i ++)
+  //     rhs(i, j) = 0;
   for (size_t j = 0; j < nrhs; j ++)
     for (size_t i = 0; i < n; i ++)
       rhs(i, j) = u(i, j) + lambda * w(i, j);
@@ -539,30 +542,27 @@ void invert_denseSPD(SPDMATRIX_DENSE& K,
   vector<int> ipiv;
   ipiv.resize(u.row(), 0);
   // std::cout << u.row() << ' ' << u.col() << std::endl;
+
+  // The row and col of the matrix u after inverse doesn't change. That
+  // is, the inverse data is stored row wise in the new u
   xgetrf(u.row(), u.col(), u.data(), u.row(), ipiv.data());
 
   /* Multiplication: mxk matrix * kxn matrix*/
   int index = -1;
   size_t row_K1 = w.row();
   size_t col_K1 = w.col();
-  size_t row_K2 = u.col();
-  size_t col_K2 = u.row();
-  T* k1 = w.data();  // Extract matrix data
-  T* k2 = u.data();
-
-  // std::cout << row_K1 << ' ' << col_K1 << std::endl;
-  // std::cout << row_K2 << ' ' << col_K2 << std::endl;
+  size_t row_K2 = u.row();
+  size_t col_K2 = u.col();
 
   for (size_t i = 0; i < row_K1; i++) {
-    for (size_t j = 0; j < col_K2; j++) {
-      index = i * col_K2 + j;
+    for (size_t j = 0; j < row_K2; j++) {
+      index = i * row_K1 + j;
       inv_numpy[index] = 0;
       for (size_t k = 0; k < col_K1; k++) {
-        inv_numpy[index] += k1[i * col_K1 + k] * k2[k * col_K2 + j];
+        inv_numpy[index] += w(i, k) * u(j, k);
       }
     }
   }
-
   /** delete tree_ptr */
   delete tree_ptr;
 
