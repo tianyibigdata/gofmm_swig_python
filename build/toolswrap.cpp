@@ -4423,7 +4423,7 @@ fail:
 
 SWIGINTERN PyObject *_wrap_load_denseSPD_from_console(PyObject *SWIGUNUSEDPARM(self), PyObject *args) {
   PyObject *resultobj = 0;
-  double *arg1 = (double *) 0 ;
+  float *arg1 = (float *) 0 ;
   int arg2 ;
   int arg3 ;
   PyArrayObject *array1 = NULL ;
@@ -4436,11 +4436,11 @@ SWIGINTERN PyObject *_wrap_load_denseSPD_from_console(PyObject *SWIGUNUSEDPARM(s
     npy_intp size[2] = {
       -1, -1 
     };
-    array1 = obj_to_array_contiguous_allow_conversion(obj0, NPY_DOUBLE,
+    array1 = obj_to_array_contiguous_allow_conversion(obj0, NPY_FLOAT,
       &is_new_object1);
     if (!array1 || !require_dimensions(array1, 2) ||
       !require_size(array1, size, 2)) SWIG_fail;
-    arg1 = (double*) array_data(array1);
+    arg1 = (float*) array_data(array1);
     arg2 = (int) array_size(array1,0);
     arg3 = (int) array_size(array1,1);
   }

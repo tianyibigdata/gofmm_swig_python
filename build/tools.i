@@ -23,8 +23,8 @@
 
 // Typemap: the order and names of the parameteres must match exactly
 // the function args in the cpp file. `\` is the line separator
-%apply (double* IN_ARRAY2, int DIM1, int DIM2 ) \  // IN_ARRAY2: Input 2D
-      {(double* numpyArr, int row_numpyArr, int col_numpyArr)}
+%apply (float* IN_ARRAY2, int DIM1, int DIM2 ) \  // IN_ARRAY2: Input 2D
+      {(float* numpyArr, int row_numpyArr, int col_numpyArr)}
 
 // mul_numpy is actually a 2D array flattened row-wise into a 1D array
 // Why not use 2D? bc typemap (double* ARGOUT_ARRAY2, int DIM1, int DIM2)

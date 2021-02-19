@@ -16,10 +16,10 @@ h=1.0
 n=5000
 ## maximum leaf node size
 m=64
-## maximum off-diagonal ranks
-s=64
 ## number of neighbors
 k=0
+## maximum off-diagonal ranks
+s=64
 ## number of right hand sides
 nrhs=512
 ## user tolerance

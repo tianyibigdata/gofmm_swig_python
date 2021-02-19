@@ -68,10 +68,9 @@ from sklearn.datasets import make_spd_matrix
 # # Inverse of a SPD using gofmm method #
 #########################################
 # Construct a random n x n numpy spd matrix
-spdSize = 13  # Remmeber to change the parameter file accordingly
+spdSize = 10  # Remmeber to change the parameter file accordingly
 spdMatrix = make_spd_matrix(spdSize)
-# Here is a little test for the multiplication
-# spdMatrix = np.array([[2, 6], [6, 20]], dtype=np.double)
+spdMatrix = np.float32(spdMatrix)
 
 treeSpd = tools.load_denseSPD_from_console(spdMatrix)
 
@@ -90,4 +89,4 @@ dotProduct = np.linalg.det(np.dot(spdMatrix, spdMatrix_inv))
 
 print("\nThe original SPD matrix is \n", spdMatrix)
 print("\nThe inverse is \n", spdMatrix_inv)
-print("\nThe dot product of the two is\n", dotProduct)
+print("\nThe determinant of the two is\n", dotProduct)
