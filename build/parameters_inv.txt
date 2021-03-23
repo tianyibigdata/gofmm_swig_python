@@ -1,0 +1,11 @@
+./test_gofmm
+200
+64
+0
+64
+200
+1e-07
+0.00
+angle
+testsuit
+status=0

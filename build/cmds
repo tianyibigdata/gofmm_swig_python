@@ -1,0 +1,24 @@
+## Linux Interface ##
+$ bash swig.sh  # Do this in the `hmlp-1` folder
+$ make  # Optional, do this in the `build` folder
+$ python3  # Must be > python2.7, `build` folder
+
+
+## Python Interface ##
+>> import tools
+
+# Run gofmm on a random matrix
+>> tools.call_Launchhelper("parameters_testsuit.txt")
+
+# Run gofmm on a dense matrix
+# Apply gofmm on a large matrix which is located on a different path. We
+# do this to avoid upload the data onto gitlab
+>> denseSPD = tools.load_denseSPD(10000, 10000, "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/test.bin")
+>> tools.launchhelper_denseSPD(denseSPD, "parameters_dense.txt")
+
+
+
+# Run numpy
+>> import numpy as np
+>> a = np.array([[2, -1, 0], [-1, 2, -1], [0, -1, 2]], dtype=float)
+>> tools.load_denseSPD_from_console(a, 3, 3)
