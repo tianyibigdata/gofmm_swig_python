@@ -37,23 +37,185 @@
 using namespace std;
 // using namespace hmlp;
 
-// class file_to_argv {
-//   /* A container to store argvs in vector and use destructor to automatically
-//      free the memory 
-//   */
-//  private:
-//   std::vector<const char*> argv;  // store the parameters
 
-//  public:
-//   /* constructors and destructors */
-//   file_to_argv();  // default constructor
-//   explicit file_to_argv(const char* filename);  // single parameter
-//   ~file_to_argv();
+gofmmTree::gofmmTree() {}  // size 0 vector initialization
 
-//   /* Public methods*/
-//   void print_argv();  // print out parameters line by line
-//   std::vector<const char*> return_argv();  // return argv (deep copy)
-// };
+gofmmTree::gofmmTree(std::string executableName, int n0, int m0, int k0, int s0,
+                     int nrhs0, T stol0, T budget0, std::string distanceName,
+                     std::string matrixtypeName, std::string kerneltypeName,
+                     SPDMATRIX_DENSE K0):
+    executable(executableName), n(n0), m(m0), k(k0), s(s0),
+    nrhs(nrhs0), stol(stol0), budget(budget0), distance(distanceName),
+    matrixtype(matrixtypeName), kerneltype(kerneltypeName) {
+  K = K0;  // Initialize SPD matrix
+  convert_to_vector();  // Initialize argv
+}
+
+void gofmmTree::convert_to_vector() {
+  /* Called in the user-defined constructor, this method fills argv
+     with  all configuration inputs 
+  */
+  std::vector<std::string> parameters;
+
+  // Brute-force push all configuration parameters into the vector
+  parameters.push_back(executable);
+  parameters.push_back(std::to_string(n));
+  parameters.push_back(std::to_string(m));
+  parameters.push_back(std::to_string(k));
+  parameters.push_back(std::to_string(s));
+  parameters.push_back(std::to_string(nrhs));
+  parameters.push_back(std::to_string(stol));
+  parameters.push_back(std::to_string(budget));
+  parameters.push_back(distance);
+  parameters.push_back(matrixtype);
+  parameters.push_back(kerneltype);
+
+  /* Convert vector string to vector char* by pushing */
+  for (int i=0; i < parameters.size(); i++)
+    argv.push_back(parameters[i].c_str());
+
+  parameters.clear();  // clear the vector
+}
+
+void gofmmTree::mul_denseSPD(DATA_s w, double* mul_numpy, int len_mul_numpy) {
+  /* Compute the product of a SPD dense matrix K and a vector or matrix
+     that is stored in DATA_s
+
+   @w: w is a matrix or vector
+
+   @mul_numpy: K * W
+
+   @len_mul_numpy: length of the 1D array version for the mul numpy
+
+   @ret: the multiplication result  is stored in the variable mul_numpy in place
+  */
+
+  gofmm::CommandLineHelper cmd(argv.size(), argv);  // avoid deep copy
+
+  size_t n = cmd.n;  // Size of the SPD
+  size_t nrhs = cmd.nrhs;  // col # of w
+
+  // Check if the matrix multiplicatin Kw is viable
+  if ((K.row() != n) || (w.row() != n) || (w.col() != nrhs)) {
+    std::cerr << "Please check the shape of K and w must match the ones"
+              << " specified in the parameter file \n";
+    exit(0);
+  }
+
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  /* Compress K into our gof tree */
+  // 1st step: Argument preparation for fitting K into a tree
+  /** GOFMM metric ball tree splitter (for the matrix partition). */
+  SPLITTER splitter(K, cmd.metric);
+
+  /** Randomized matric tree splitter (for nearest neighbor). */
+  RKDTSPLITTER rkdtsplitter(K, cmd.metric);
+
+  /** Create configuration for all user-define arguments. */
+  CONFIGURATION config(cmd.metric,
+                       cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
+                       cmd.budget, cmd.secure_accuracy);
+
+  /** (Optional) provide neighbors, leave uninitialized otherwise. */
+  Data<pair<T, size_t>> NN;
+
+  /** 2nd step: compress K. */
+  auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
+
+  auto &tree = *tree_ptr;
+
+  /* Construct a random w and compute u = kw.*/
+  Data<T> u = Evaluate(tree, w);
+
+  /* Extract the multiplication result from u into mul_numpy */
+  for (size_t i = 0; i < n; i++)
+    for (size_t j = 0; j < nrhs; j++)
+      mul_numpy[j + i * nrhs] = u(i, j);
+
+  /** delete tree_ptr */
+  delete tree_ptr;
+
+  HANDLE_ERROR(hmlp_finalize());  
+}
+
+void gofmmTree::invert_denseSPD(T lambda,
+                                double* inv_numpy,
+                                int len_inv_numpy) {
+  /* Compute the inverse of a SPD matrix K and output it in the variable 
+     inv_numpy 
+
+     @inv_numpy: the inverse of K
+
+     @len_inv_numpy: length of the 1D array version for the inv_numpy
+
+     @ret: the inverse is stored in the variable inv_numpy in place
+  */
+  gofmm::CommandLineHelper cmd(argv.size(),
+                               argv);  // avoid deep copy
+
+  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
+
+  /* Compress K into our gof tree */
+  // 1st step: Argument preparation for fitting K into a tree
+  /** GOFMM metric ball tree splitter (for the matrix partition). */
+  SPLITTER splitter(K, cmd.metric);
+
+  /** Randomized matric tree splitter (for nearest neighbor). */
+  RKDTSPLITTER rkdtsplitter(K, cmd.metric);
+
+  /** Create configuration for all user-define arguments. */
+  CONFIGURATION config(cmd.metric,
+                       cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
+                       cmd.budget, cmd.secure_accuracy);
+
+  /** (Optional) provide neighbors, leave uninitialized otherwise. */
+  Data<pair<T, size_t>> NN;
+
+  /** 2nd step: compress K. */
+  auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
+
+  auto &tree = *tree_ptr;
+
+  /* Construct the potential to be n x n identity matrix */
+  size_t n = cmd.n;
+
+  // Must change nrhs to be n in the new setup file for inverse
+  Data<T> u(n, n);
+
+  // Construct u as an identity matrix. Using 3 loops to enable parallelism
+  for (size_t i = 0; i < n; i++)
+    for (size_t j = i + 1; j < n; j++)
+      u(i, j) = 0;
+
+  for (size_t i = 0; i < n; i++)
+    for (size_t j = 0; j < i; j++)
+      u(i, j) = 0;
+
+  for (size_t k = 0; k < n; k++)
+    u(k, k) = 1;
+
+  // Factorize as preparation
+  gofmm::Factorize(tree, lambda);
+
+  /* w = inv( K + lambda * I ) * u where w is weight and u is potential.
+     and rhs is u, the potential. Already know K and u. Using Solve to 
+     get w, which is stored in rhs.
+     Since u is identity martix, w (which overwrites u) will be the inverse
+     of w (still need regularization)
+  */
+  Solve(tree, u);
+
+  for (size_t i = 0; i < n; i++)
+    for (size_t j = 0; j < n; j++)
+      inv_numpy[j + i * n] = u(i, j);
+
+  /** delete tree_ptr */
+  delete tree_ptr;
+
+  HANDLE_ERROR(hmlp_finalize());
+}
+
 
 file_to_argv::file_to_argv() {}  // size 0 vector initialization
 
@@ -167,39 +329,6 @@ int hello_world() {
 }
 
 
-hmlp::gofmm::sTree_t* Compress(SPDMATRIX_DENSE &K, DATA_PAIR NN,
-                               SPLITTER splitter, RKDTSPLITTER rkdtsplitter,
-                               CONFIGURATION config) {
-  /* Return a tree node that stores a compressed SPD matrix.
-
-     @K: uncompressed SPD matrix
-
-     @NN: Number of neighbors
-
-     @config: parameters loaded from the parameter file
-
-     @return: a tree node with all numeric data type in float
-  */
-  return hmlp::gofmm::Compress( K, NN, splitter, rkdtsplitter, config);
-}
-
-
-DATA_s Evaluate(hmlp::gofmm::sTree_t *tree, DATA_s &weights) {
-/* Apply GOFMM on the compressed SPD matrix and return this data object
-
-   @return: A newly construct object that is calculated by GOFMM based
-   on a compressed SPD matrix
-
-   @tree: a ptr to the tree object which stores the compressed SPD matrix
-   with all numeric datatypes being double
-  
-   @weights: matrix of skeleton weights
-*/
-  
-  return hmlp::gofmm::Evaluate(*tree, weights);
-}
-
-
 /** @brief Top level driver that reads arguments from the command line. */ 
 int main( int argc, char *argv[] ) {
   try {
@@ -310,12 +439,34 @@ int main( int argc, char *argv[] ) {
 } /** end main() */
 
 
+DATA_s load_matrix_from_console(float* numpyMat,
+                                int row_numpyMat,
+                                int col_numpyMat) {
+  /* Load a numpy matrix into our self-defined DATA container. Mainly
+     for loading w into DATA
+
+     @numpyMat: if the input from the console is a numpy row array,
+     it'll be first converted to a numpy column arr first in python before
+     being processed by this function. This means col_numpyMat is at least
+     1.
+
+     @ret: return data in the container DATA_s.
+  */
+  DATA_s w(row_numpyMat, col_numpyMat);
+
+  for (size_t i = 0; i < row_numpyMat; i++)
+    for (size_t j = 0; j < col_numpyMat; j++)
+      w(i, j) = numpyMat[j + i * col_numpyMat];
+  return w;
+}
+
+
 SPDMATRIX_DENSE load_denseSPD_from_console(float* numpyArr,
                                            int row_numpyArr,
                                            int col_numpyArr) {
   /* Load values of a numpy matrix `numpyArr` into a SPD matrix container
    
-   @numpyArr: double pointer of type double
+   @numpyArr: double pointer of type float
 
    @row_numpyArr: row of `numpyArr`
 
@@ -335,236 +486,4 @@ SPDMATRIX_DENSE load_denseSPD_from_console(float* numpyArr,
     }
 
   return K;
-}
-
-
-void mul_denseSPD(SPDMATRIX_DENSE K1,
-                  SPDMATRIX_DENSE K2,
-                  double* mul_numpy, int len_mul_numpy) {
-  /* Multiply the SPD Matrices from the SPD container and save the result.
-
-     @K1: the SPD container that has the underlying SPD matrix
-
-     @mul_numpy: pointer that points to the result of multiplication of
-     the matrix data of K1 and K2
-
-     @len_mul_numpy: length of mul_numpy = row of K1 * col of K2
-   */
-  // mxk matrix * kxn matrix. Calculate the row and col of two matrices
-  size_t row_K1 = K1.row();
-  size_t col_K1 = K1.col();
-  size_t row_K2 = K2.row();
-  size_t col_K2 = K2.col();
-
-  /* Check if the matrix muliplication can be performed */
-  // Check the two inputs
-  if (col_K1 != row_K2) {
-    std::cerr << "Error: dimension of the two input matrices doesn't match!"
-              << std::endl;
-  }
-
-  if ((row_K1 * col_K2) != len_mul_numpy) {
-    std::cerr << "Error: size of the output matrix doesn't match the "
-              << "input size m x n!\n"
-              << std::endl;
-  }
-
-  /* Multiplication: mxk matrix * kxn matrix*/
-  int index = -1;
-  T* k1 = K1.data();  // Extract matrix data
-  T* k2 = K2.data();
-
-  // print(k2)
-
-  for (size_t i = 0; i < row_K1; i++) {
-    for (size_t j = 0; j < col_K2; j++) {
-      index = i * col_K2 + j;
-      mul_numpy[index] = 0;
-      for (size_t k = 0; k < col_K1; k++) {
-        mul_numpy[index] += k1[i * col_K1 + k] * k2[k * col_K2 + j];
-      }
-    }
-  }
-}
-
-
-// void invert_denseSPD(SPDMATRIX_DENSE& K,
-//                      const char* filename,
-//                      double* inv_numpy,
-//                      int len_inv_numpy) {
-//   /* Compute the inverse of a SPD matrix K and output it in the variable 
-//      inv_numpy 
-
-//    @K: n x n SPD matrix
-
-//    @inv_numpy: the inverse of K
-
-//    @ len_inv_numpy: length of the 1D array version for the inv_numpy
-//   */
-//   // Wrap parameters from filename line by line into argvObj
-//   file_to_argv argvObj(filename);
-//   gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
-//                                argvObj.return_argv());  // avoid deep copy
-
-//   HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
-
-//   /* Compress K into our gof tree */
-//   // 1st step: Argument preparation for fitting K into a tree
-//   /** GOFMM metric ball tree splitter (for the matrix partition). */
-//   SPLITTER splitter(K, cmd.metric);
-
-//   /** Randomized matric tree splitter (for nearest neighbor). */
-//   RKDTSPLITTER rkdtsplitter(K, cmd.metric);
-
-//   /** Create configuration for all user-define arguments. */
-//   CONFIGURATION config(cmd.metric,
-//                        cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
-//                        cmd.budget, cmd.secure_accuracy);
-
-//   /** (Optional) provide neighbors, leave uninitialized otherwise. */
-//   Data<pair<T, size_t>> NN;
-
-//   /** 2nd step: compress K. */
-//   auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
-
-//   auto &tree = *tree_ptr;
-
-//   /* 3rd step: HSS ULV factorization currently does not support 
-//      level-restriction. */
-//   if ( !tree.setup.SecureAccuracy() ) {
-//     /* Regularization parameter. */
-//     T lambda = 5.0;
-//     /** HSS ULV factorization. The inverse is stored in some node of the
-//         tree*/
-//     gofmm::Factorize(tree, lambda);
-
-//     /** Derive type NODE from TREE. */
-//     // Instantiation for the randomisze tree
-//     using DATA  = gofmm::NodeData<T>;
-//     using SETUP = gofmm::Argument<SPDMATRIX_DENSE, SPLITTER, T>;
-//     using TREE  = tree::Tree<SETUP, DATA>;
-//     using NODE  = typename TREE::NODE;
-
-//     /* Extract the inverse data from the root */
-//     NODE* root = tree_ptr->getLocalRoot();
-//     Data<T> inverseOfK = root->data.Z;
-
-//     // Fill the inverse data into our ret variable
-//     size_t row = K.row();
-//     size_t col = K.col();
-//     int index = -1;
-
-//     for (size_t i = 0; i < row; i++)
-//       for (size_t j = 0; j < col; j++) {
-//         index = i * col + j;
-//         inv_numpy[index] = inverseOfK[index];
-//       }
-//   }
-
-//   /** delete tree_ptr */
-//   delete tree_ptr;
-
-//   HANDLE_ERROR(hmlp_finalize());
-// }
-
-
-
-void invert_denseSPD(SPDMATRIX_DENSE& K,
-                     const char* filename,
-                     double* inv_numpy,
-                     int len_inv_numpy) {
-  /* Compute the inverse of a SPD matrix K and output it in the variable 
-     inv_numpy 
-
-   @K: n x n SPD matrix
-
-   @inv_numpy: the inverse of K
-
-   @ len_inv_numpy: length of the 1D array version for the inv_numpy
-  */
-  // Wrap parameters from filename line by line into argvObj
-  file_to_argv argvObj(filename);
-  gofmm::CommandLineHelper cmd(argvObj.return_argv().size(),
-                               argvObj.return_argv());  // avoid deep copy
-
-  HANDLE_ERROR(hmlp_init());  // Initialize separate memory space at runtime
-
-  /* Compress K into our gof tree */
-  // 1st step: Argument preparation for fitting K into a tree
-  /** GOFMM metric ball tree splitter (for the matrix partition). */
-  SPLITTER splitter(K, cmd.metric);
-
-  /** Randomized matric tree splitter (for nearest neighbor). */
-  RKDTSPLITTER rkdtsplitter(K, cmd.metric);
-
-  /** Create configuration for all user-define arguments. */
-  CONFIGURATION config(cmd.metric,
-                       cmd.n, cmd.m, cmd.k, cmd.s, cmd.stol,
-                       cmd.budget, cmd.secure_accuracy);
-
-  /** (Optional) provide neighbors, leave uninitialized otherwise. */
-  Data<pair<T, size_t>> NN;
-
-  /** 2nd step: compress K. */
-  auto *tree_ptr = gofmm::Compress(K, NN, splitter, rkdtsplitter, config);
-
-  auto &tree = *tree_ptr;
-
-  // size_t n = tree.getGlobalProblemSize();
-  size_t n = cmd.n;
-  size_t nrhs = cmd.nrhs;
-
-  /* Construct a random w and compute u = kw.*/
-  Data<T> w(n, nrhs);
-  w.rand();
-  Data<T> u = Evaluate(tree, w);
-
-  // Factorize as preparation
-  T lambda = 5.0;
-
-  gofmm::Factorize(tree, lambda);
-
-  /* Construct a container for estimated weight, w, from gofmm */
-  Data<T> rhs(n, nrhs);
-  // for (size_t j = 0; j < nrhs; j ++)
-  //   for (size_t i = 0; i < n; i ++)
-  //     rhs(i, j) = 0;
-  for (size_t j = 0; j < nrhs; j ++)
-    for (size_t i = 0; i < n; i ++)
-      rhs(i, j) = u(i, j) + lambda * w(i, j);
-
-  /** w = inv( K + lambda * I ) * u where w is weight and u is potential.
-   and rhs is u, the potential. Already know K and u. Using Solve to 
-   get w, which is stored in rhs */
-  Solve(tree, rhs);
-
-  /* Calculate inv(u) ----> inv(K) = w * inv(u) */
-  vector<int> ipiv;
-  ipiv.resize(u.row(), 0);
-  // std::cout << u.row() << ' ' << u.col() << std::endl;
-
-  // The row and col of the matrix u after inverse doesn't change. That
-  // is, the inverse data is stored row wise in the new u
-  xgetrf(u.row(), u.col(), u.data(), u.row(), ipiv.data());
-
-  /* Multiplication: mxk matrix * kxn matrix*/
-  int index = -1;
-  size_t row_K1 = w.row();
-  size_t col_K1 = w.col();
-  size_t row_K2 = u.row();
-  size_t col_K2 = u.col();
-
-  for (size_t i = 0; i < row_K1; i++) {
-    for (size_t j = 0; j < row_K2; j++) {
-      index = i * row_K1 + j;
-      inv_numpy[index] = 0;
-      for (size_t k = 0; k < col_K1; k++) {
-        inv_numpy[index] += w(i, k) * u(j, k);
-      }
-    }
-  }
-  /** delete tree_ptr */
-  delete tree_ptr;
-
-  HANDLE_ERROR(hmlp_finalize());
 }

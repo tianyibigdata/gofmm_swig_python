@@ -109,3 +109,34 @@ $ pwd
 $ bash bin/run_gofmm_user....sh
 modify your test_gofmm.cpp and try to produce the output here in the
 python interface
+
+
+# `hmlp-1/gitadd`
+Store all the files that need to be added in git. The git add command to
+use 
+$ xargs -a gitadd -d '\n' git add
+
+
+# Parameter setup file
+// .exe program name, paraIdx = 0
+./test_gofmm
+// problem size, paraIdx = 1
+n=5000
+// maximum leaf node size, paraIdx = 2
+m=64
+// number of neighbors, paraIdx = 3
+k=0
+// maximum off-diagonal ranks, paraIdx = 4
+s=64
+// number of right hand sides, paraIdx = 5
+nrhs=512
+// user tolerance, paraIdx = 6
+stol=1E-5
+// user computation budget [0,1], paraIdx = 7
+budget=0.00
+// distance type (geometry, kernel, angle), paraIdx = 8
+distance="angle"
+// spdmatrix type (testsuit, dense, ooc, kernel, userdefine), paraIdx = 9
+matrixtype="testsuit"
+// kernelmatrix type (gaussian, laplace), paraIdx = 10
+kerneltype="gaussian"

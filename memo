@@ -359,3 +359,137 @@ see how that goes
 16.02.2021
 1. Tried using xgetrf and inv(k) = w * inv(u). The result is a lot closer
 than just using the factorize. But still unstable
+
+
+24.02.2021 -26.02.2021
+1. Wrote the error file but lost it during merge :(
+
+
+02.03.2021
+1. Rewrote multiplication function using gofmm
+
+03.03.2021
+1. Work on error file again but this time incorporate egrep into python
+2. Wrote 3 functions to compute the rses
+
+04.03.2021
+1. Incorporate the functions wrote on the date 03.03.2021 into a class,
+rse_calculator (benefits of a class :))
+
+2. Notable performance: take a look at the last entry which corresponds
+to the leaf node size 1024
+
+[0.8612689165197026, 0.842358990265323, 0.8481395839236431, 0.8183800151701816, 0.751166024988613, 0.7121029139939241, 0.6134476531553748, 7.63604173110931e-05]
+
+e-05: this is a notable error drop compared to all previous entries corresponding
+to leaf node size from 8 to 512.
+
+3. Further results
+
+The relative standard error at the leaf node size 8, 32, 128, 512 is
+[0.878310270424629, 0.845326314465862, 0.7778199424492407, 0.3471068224167622]
+
+The relative standard error at the tolerance 1E-3, 1E-5, 1E-7 is
+[0.34710689297322533, 0.33541029792654214, 0.33688449797138287]
+
+
+05.03.2021
+1. Calculate the rses for the configuration of two sets, stols x leafNodeSize
+            8                32              128             512             1024
+1E-3 array([[4.41262073e-01, 4.39609106e-01, 4.60542097e-01, 2.68897813e-01, 3.72566878e-04],
+1E-5       [4.63088328e-01, 4.55703526e-01, 4.68613841e-01, 2.68898622e-01, 6.48993133e-05],
+1E-7       [4.40821804e-01, 4.42426887e-01, 4.59727435e-01, 2.65221226e-01, 7.00785465e-05]])
+
+note: leafNodeSize = 1024 -> notable drop in rse
+
+2. stuff to read
+a. smth to do with factorization
+https://en.wikipedia.org/wiki/Triangular_matrix#Forward_and_back_substitution
+        
+   factorize: calculate LUVP... (lower triangular, upper triangular, V,
+              permutation,...) for K, the SPD
+   solve: use LUV to solve the linear eq system Kw = u where K, u known
+
+b. New thought to calculate the inverse of the SPD:
+   Let the potential be n x n identity matrix and use the solver to get
+   w. This w is effectively inv(K)
+
+
+08.03.2021
+1. Wrote 2 child classes of rse_calculator:
+   a. spdMultiplication_rseCalulator
+   b. spdInverse_rseCalulator
+to calculate the rses of matrix mul and inv
+
+row: stols = [1E-3, 1E-5, 1E-7]  
+col: rank = [8, 32, 128, 256, 512, 1024] (also is leaf node size)
+
+multiplication error
+
+[[8.28216761e-01 8.17690475e-01 7.30507649e-01 4.25563318e-01
+  5.33191277e-05 5.06015293e-05]
+ [8.21753934e-01 8.31821189e-01 7.50877147e-01 4.25563018e-01
+  5.22699376e-05 5.21239007e-05]
+ [8.14985462e-01 8.25909278e-01 7.44181603e-01 4.25562888e-01
+  5.05020967e-05 5.09992211e-05]]
+
+inverse error
+
+[[5.00332286e+00 5.00652777e+00 4.36099554e+00 2.42939717e+00
+  2.27446961e-04 2.27446961e-04]
+ [5.00156093e+00 5.00886389e+00 4.35608443e+00 2.42939559e+00
+  2.27446961e-04 2.27446961e-04]
+ [5.00321689e+00 5.01030233e+00 4.35736420e+00 2.42939697e+00
+  2.27446961e-04 2.27446961e-04]]
+
+
+09.03.2021
+1. Tasks: a. Use the files from Python/ from Severin to construct a dense SPD
+          b. Run rses on them
+
+2. Finished the 2 tasks as required in the point 1
+
+
+12.03.2021
+1. https://packaging.python.org/tutorials/packaging-projects/
+2. https://python-packaging-tutorial.readthedocs.io/en/latest/uploading_pypi.html
+tools.so + tools.py + ...
+pip install
+
+
+15.03.2021
+1. The following name has the last successful commit before we start working
+on replace the configuration file with inputs in local script. If somehow
+the replacement doesn't work, git pull the repo with the following commit
+name
+
+last Copy before ditching configFile
+
+2. Working on the gofmmTree. Finished its default and user-defined
+constructors
+
+
+16.03.2021
+1. Finished both mul + inv
+
+2. modified rse_calculator and its derived classes, spdMultiplication_rseCalulator
+and spdInverse_rseCalulator
+
+
+
+18.03.2021
+
+1. Shit was going on, was stupid enough to upgrade my Ubunut to 20.04 with a broken
+upgrade. Now goes back to the stone age.
+
+2. Strugging with the pt 1 for the most part of the day but somehow managed to
+almost finish the pip install gofmm1
+
+3. Read the follwoing pipy upload stuff:
+
+https://medium.com/@joel.barmettler/how-to-upload-your-python-package-to-pypi-65edc5fe9c56
+
+
+19.03.2021
+
+1. figure out relative import issue now gofmm1 is good to go

@@ -26,6 +26,10 @@
 %apply (float* IN_ARRAY2, int DIM1, int DIM2 ) \  // IN_ARRAY2: Input 2D
       {(float* numpyArr, int row_numpyArr, int col_numpyArr)}
 
+// load_matrix_from_console
+%apply (float* IN_ARRAY2, int DIM1, int DIM2 ) \  // IN_ARRAY2: Input 2D
+      {(float* numpyMat, int row_numpyMat, int col_numpyMat)}
+
 // mul_numpy is actually a 2D array flattened row-wise into a 1D array
 // Why not use 2D? bc typemap (double* ARGOUT_ARRAY2, int DIM1, int DIM2)
 // is not available in numpy.i

@@ -64,28 +64,69 @@ from sklearn.datasets import make_spd_matrix
 # #       np.resize(c, (spdSize, k2_col)))  # Display 1D in 2D
 
 
+# ######################################################
+# # # Matrix multiplication using gofmm tree structure #
+# ######################################################
+# # Construct a random n x n numpy spd matrix
+# spdSize = 10  # Remmeber to change the parameter file accordingly
+# spdMatrix = make_spd_matrix(spdSize)
+# spdMatrix = np.float32(spdMatrix)
+
+# treeSpd = tools.load_denseSPD_from_console(spdMatrix)
+
+# nrhs = 6
+
+# w = np.ones((spdSize, nrhs))
+# w = np.float32(w)
+# wData = tools.load_matrix_from_console(w)
+
+# len_of_mulMat = spdSize * nrhs
+
+# # return a 1d array which is a 2D matrix flattened row-wise
+# c = tools.mul_denseSPD(treeSpd,
+#                        wData,
+#                        "parameters_inverse.txt",
+#                        len_of_mulMat)
+
+# # # Display 1D in 2D
+# # spdMatrix_mul = np.resize(c, (spdSize, nrhs))
+
+# # # Dot product of the spd and its inverse
+# # dotProduct = np.linalg.det(np.dot(spdMatrix, spdMatrix_inv))
+
+# # print("\nThe original SPD matrix is \n", spdMatrix)
+# # print("\nThe inverse is \n", spdMatrix_inv)
+# # print("\nThe determinant of the two is\n", dotProduct)
+
+
 #########################################
 # # Inverse of a SPD using gofmm method #
 #########################################
 # Construct a random n x n numpy spd matrix
-spdSize = 10  # Remmeber to change the parameter file accordingly
+spdSize = 200  # Remmeber to change the parameter file accordingly
 spdMatrix = make_spd_matrix(spdSize)
+# spdMatrix = np.ones((spdSize, spdSize))
 spdMatrix = np.float32(spdMatrix)
+lambda0 = 5.0
 
-treeSpd = tools.load_denseSPD_from_console(spdMatrix)
+spdDense = tools.load_denseSPD_from_console(spdMatrix)
 
 len_of_inverseMat = spdSize ** 2
 
 # return a 1d array which is a 2D matrix flattened row-wise
-c = tools.invert_denseSPD(treeSpd,
-                          "parameters_inverse.txt",
+c = tools.invert_denseSPD(spdDense,
+                          "parameters_inv.txt",
+                          lambda0,
                           len_of_inverseMat)
 
 # Display 1D in 2D
 spdMatrix_inv = np.resize(c, (spdSize, spdSize))
 
 # Dot product of the spd and its inverse
-dotProduct = np.linalg.det(np.dot(spdMatrix, spdMatrix_inv))
+dotProduct = np.linalg.det(np.dot(spdMatrix+ lambda0 * np.eye(spdSize), spdMatrix_inv))
+
+# a = np.dot(spdMatrix+ lambda0 * np.eye(spdSize), spdMatrix_inv) - np.eye(spdSize)
+# np.norm(a)
 
 print("\nThe original SPD matrix is \n", spdMatrix)
 print("\nThe inverse is \n", spdMatrix_inv)
