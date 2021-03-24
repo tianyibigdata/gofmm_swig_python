@@ -1,0 +1,419 @@
+Start testing: Dec 14 14:58 CET
+----------------------------------------------------------
+1/1 Testing: unitTest
+1/1 Test: unitTest
+Command: "/home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build/unitTest"
+Directory: /home/getianyi/Documents/Master/Fall_2020/MasterThesis/severinPackage/hmlp-1/build
+"unitTest" start time: Dec 14 14:58 CET
+Output:
+----------------------------------------------------------
+[==========] Running 7 tests from 2 test cases.
+[----------] Global test environment set-up.
+[----------] 2 tests from gofmm
+[ RUN      ] gofmm.all_nearest_neighbor
+Number of rows: 5000 number of columns: 5000
+K(0,0) 0.0438727 K(1,2) -0.00392772
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+Number of neighboprs: 64 number of queries: 5000
+Data in 64 * 5000
+col[         0]                                                                 col[         5] 
+===============================================================================
+A = [
+( 0.0E+00,    0)( 0.0E+00,    1)( 0.0E+00,    2)( 0.0E+00,    3)( 0.0E+00,    4)( 0.0E+00,    5);
+( 9.7E-01, 2918)( 9.6E-01, 4964)( 9.5E-01, 3835)( 9.6E-01,  905)( 9.7E-01, 1691)( 9.6E-01, 1378);
+( 9.7E-01, 3545)( 9.7E-01,  997)( 9.7E-01, 3246)( 9.7E-01, 3500)( 9.7E-01, 3351)( 9.7E-01, 4750);
+( 9.7E-01, 3642)( 9.7E-01, 2285)( 9.7E-01, 2849)( 9.7E-01,  550)( 9.7E-01, 3660)( 9.7E-01, 4675);
+( 9.8E-01, 2402)( 9.7E-01,   79)( 9.7E-01,  757)( 9.7E-01, 4996)( 9.8E-01,  643)( 9.7E-01, 4245);
+( 9.8E-01, 1768)( 9.7E-01,  360)( 9.7E-01,  375)( 9.8E-01, 1663)( 9.8E-01,  296)( 9.7E-01,  726);
+( 9.8E-01, 3447)( 9.7E-01, 4602)( 9.7E-01, 2958)( 9.8E-01, 3837)( 9.8E-01, 2825)( 9.7E-01,  880);
+( 9.8E-01, 2318)( 9.8E-01, 1178)( 9.7E-01, 4679)( 9.8E-01,   95)( 9.8E-01, 2525)( 9.7E-01, 3810);
+( 9.8E-01, 3031)( 9.8E-01, 2725)( 9.8E-01, 4774)( 9.8E-01, 1609)( 9.8E-01,  626)( 9.8E-01,  976);
+( 9.8E-01, 1788)( 9.8E-01, 4290)( 9.8E-01, 1784)( 9.8E-01, 1523)( 9.8E-01,  744)( 9.8E-01,   57);
+];
+[0.000000E+00,    0]
+[9.698730E-01, 2918]
+[9.700351E-01, 3545]
+[9.741201E-01, 3642]
+[9.753537E-01, 2402]
+[9.771765E-01, 1768]
+[9.772945E-01, 3447]
+[9.784497E-01, 2318]
+[9.788138E-01, 3031]
+[9.795955E-01, 1788]
+[0.000000E+00,    0]
+[9.698730E-01, 2918]
+[9.700351E-01, 3545]
+[9.741201E-01, 3642]
+[9.753537E-01, 2402]
+[9.771765E-01, 1768]
+[9.772945E-01, 3447]
+[9.784497E-01, 2318]
+[9.788138E-01, 3031]
+[9.795955E-01, 1788]
+Number of rows: 5000 number of columns: 5000
+K(0,0) 1 K(1,2) 0.00380188
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+Number of neighboprs: 64 number of queries: 5000
+[0.000000E+00,    0]
+[5.371156E-01, 1821]
+[5.614290E-01, 3192]
+[5.627241E-01, 4871]
+[6.766396E-01, 3024]
+[7.377586E-01, 3711]
+[7.610779E-01, 2820]
+[8.016100E-01, 1501]
+[8.087020E-01, 3400]
+[8.273783E-01, 3088]
+[ RT]     0 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[       OK ] gofmm.all_nearest_neighbor (18689 ms)
+[ RUN      ] gofmm.fast_matvec_solver
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+partitioning ...
+[ RT]   127 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]   127 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+omp_get_max_threads() 2
+Dependency clean up
+[ RT]    64 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+Finish NearSamplesTask
+Finish SymmetrizeNearInteractions
+Skeletonization (HMLP Runtime) ...
+[ RT]   445 [normal]     0 [nested] 2.424E+09 flops 2.193E+09 mops
+MergeFarNodes ...
+CacheFarNodes ...
+========================================================
+GOFMM compression phase
+========================================================
+NeighborSearch ------------------------  0.00s (  0.0%)
+partitioning ----------------------  0.04s (  5.9%)
+Skeletonization -----------------------  0.55s ( 85.4%)
+MergeFarNodes -------------------------  0.01s (  1.2%)
+CacheFarNodes -------------------------  0.05s (  7.5%)
+========================================================
+Compress (0.02 not compressed) --------  0.65s (100.0%)
+========================================================
+
+Forward permute ...
+N2S, S2S, S2N, L2L (HMLP Runtime) ...
+[ RT]   637 [normal]    72 [nested] 1.165E+08 flops 1.284E+07 mops
+d2h_t 0.000000s
+aggregate_t 0.000000s
+Backward permute ...
+========================================================
+GOFMM evaluation phase
+========================================================
+Allocate ------------------------------  0.00s (  1.9%)
+Forward permute -----------------------  0.00s (  4.9%)
+N2S, S2S, S2N, L2L --------------------  0.02s ( 88.9%)
+Backward permute ----------------------  0.00s (  4.4%)
+========================================================
+Evaluate ------------------------------  0.03s (100.0%)
+========================================================
+
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    31 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]    16 [normal]     0 [nested] 6.250E+06 flops 1.250E+07 mops
+partitioning ...
+[ RT]   127 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[ RT]   127 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+omp_get_max_threads() 2
+Dependency clean up
+[ RT]    64 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+Finish NearSamplesTask
+Finish SymmetrizeNearInteractions
+Skeletonization (HMLP Runtime) ...
+[ RT]   445 [normal]     0 [nested] 2.424E+09 flops 2.193E+09 mops
+MergeFarNodes ...
+CacheFarNodes ...
+========================================================
+GOFMM compression phase
+========================================================
+NeighborSearch ------------------------  0.00s (  0.0%)
+partitioning ----------------------  0.13s ( 18.3%)
+Skeletonization -----------------------  0.52s ( 74.1%)
+MergeFarNodes -------------------------  0.00s (  0.5%)
+CacheFarNodes -------------------------  0.05s (  7.1%)
+========================================================
+Compress (0.02 not compressed) --------  0.70s (100.0%)
+========================================================
+
+Forward permute ...
+N2S, S2S, S2N, L2L (HMLP Runtime) ...
+[ RT]   637 [normal]    72 [nested] 1.165E+08 flops 1.284E+07 mops
+d2h_t 0.000000s
+aggregate_t 0.000000s
+Backward permute ...
+========================================================
+GOFMM evaluation phase
+========================================================
+Allocate ------------------------------  0.00s (  2.4%)
+Forward permute -----------------------  0.00s (  7.2%)
+N2S, S2S, S2N, L2L --------------------  0.01s ( 83.1%)
+Backward permute ----------------------  0.00s (  7.3%)
+========================================================
+Evaluate ------------------------------  0.02s (100.0%)
+========================================================
+
+[ RT]     0 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[       OK ] gofmm.fast_matvec_solver (21923 ms)
+[----------] 2 tests from gofmm (40612 ms total)
+
+[----------] 5 tests from runtime
+[ RUN      ] runtime.hmlp_init
+[       OK ] runtime.hmlp_init (0 ms)
+[ RUN      ] runtime.hmlp_init_with_arguments
+[       OK ] runtime.hmlp_init_with_arguments (0 ms)
+[ RUN      ] runtime.hmlp_finalize
+[ RT]     0 [normal]     0 [nested] 0.000E+00 flops 0.000E+00 mops
+[       OK ] runtime.hmlp_finalize (0 ms)
+[ RUN      ] runtime.hmlp_set_num_workers
+[       OK ] runtime.hmlp_set_num_workers (0 ms)
+[ RUN      ] runtime.hmlp_is_in_epoch_session
+[       OK ] runtime.hmlp_is_in_epoch_session (0 ms)
+[----------] 5 tests from runtime (0 ms total)
+
+[----------] Global test environment tear-down
+[==========] 7 tests from 2 test cases ran. (40612 ms total)
+[  PASSED  ] 7 tests.
+<end of output>
+Test time =  40.62 sec
+----------------------------------------------------------
+Test Passed.
+"unitTest" end time: Dec 14 14:59 CET
+"unitTest" time elapsed: 00:00:40
+----------------------------------------------------------
+
+End testing: Dec 14 14:59 CET

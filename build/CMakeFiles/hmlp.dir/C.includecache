@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/blas_lapack_prototypes.h
+
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/dgeqp4.c
+omp.h
+-
+stdlib.h
+-
+stdio.h
+-
+math.h
+-
+blas_lapack_prototypes.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/blas_lapack_prototypes.h
+dgeqp4.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/dgeqp4.h
+
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/dgeqp4.h
+
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/sgeqp4.c
+stdlib.h
+-
+stdio.h
+-
+math.h
+-
+blas_lapack_prototypes.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/blas_lapack_prototypes.h
+sgeqp4.h
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/sgeqp4.h
+
+/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/frame/external/sgeqp4.h
+

@@ -1,0 +1,99 @@
+[getianyi@Ubuntu hmlp-1]$ source set_env.sh
+====================================================================
+Notice: HMLP and CMAKE use variables CC and CXX to decide compilers.
+        If the following messages pop out:
+
+            Variable CC  is unset (REQUIRED) or
+            Variable CXX is unset (REQUIRED),
+
+        then you must first export these two variables.
+====================================================================
+Variable CC  is set to 'gcc'
+Variable CXX is set to 'g++'
+====================================================================
+
+====================================================================
+Notice: HMLP and CMAKE use variables MKLROOT to find Intel MKL.
+        If you are using intel compile and seeing the following:
+
+            Variable MKLROOT is unset (REQUIRED by intel compilers)
+
+        then you must first export MKLROOT=/path_to_mkl...
+====================================================================
+Variable MKLROOT is set to 'false'
+====================================================================
+
+====================================================================
+Notice: HMLP and CMAKE use variables OPENBLASROOT to find OpenBLAS.
+        If you are using intel compile and seeing the following:
+
+            Variable OPENBLASROOT is unset (REQUIRED by GNU compilers)
+
+        then you must first export OPENBLASROOT=/path_to_OpenBLAS...
+====================================================================
+Variable OPENBLASROOT is set to 'false'
+====================================================================
+
+HMLP_DIR = /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1
+HMLP_GPU_ARCH = gpu/kepler
+HMLP_ARCH = x86_64/haswell
+HMLP_USE_BLAS = true
+QSMLROOT = /Users/chenhan/Documents/Projects/qsml/aarch64-linux-android
+HMLP_USE_MPI = false
+HMLP_USE_CUDA = false
+HMLP_CUDA_DIR = 
+HMLP_USE_MAGMA = false
+HMLP_MAGMA_DIR = /users/chenhan/Projects/magma-2.2.0
+HMLP_ANALYSIS_DATA = false
+OMP_PROC_BIND = close
+OMP_NUM_THREADS = 2
+OMP_PLACES = cores
+KS_JC_NT = 1
+KS_IC_NT = 2
+KS_JR_NT = 1
+[getianyi@Ubuntu hmlp-1]$ cd build
+[getianyi@Ubuntu build]$ cmake ..
+-- x86_64/Linux
+-- GNU compiler.
+-- Use NETLIB BLAS/LAPACK
+-- A library with BLAS API found.
+-- A library with BLAS API found.
+-- A library with LAPACK API found.
+MPI is disable
+===================================================
+Version      =1.1.0
+Source       =/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1
+Target       =/home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build
+Platform     =x86_64/Linux
+HMLP_ARCH    =x86_64/haswell
+CC           =/usr/bin/gcc
+CFLAGS       =  -O3 -fopenmp -m64 -fPIC -D_POSIX_C_SOURCE=200112L -fprofile-arcs -ftest-coverage -fPIC -DUSE_BLAS -mavx
+C Linker     =
+CXX          =/usr/bin/g++
+CXXFLAGS     =  -O3 -fopenmp -m64 -fPIC -D_POSIX_C_SOURCE=200112L -fprofile-arcs -ftest-coverage -fPIC -DUSE_BLAS -mavx -std=c++11
+CXX Linker   =
+EXE Linker   = -lpthread -fopenmp -lm -L/usr/lib/ -lblas -llapack
+EXE Linker   =
+MPICXX       =
+MPICXXFLAGS  =
+MPICXXINCLUDE=
+MPICXX Linker=
+MPICXXLIBS   =
+AR           =/usr/bin/ar
+RANLIB       =/usr/bin/ranlib
+===================================================
+HMLP_GPU_ARCH=gpu/kepler
+HOST_COMPILER=
+NVCC_VERSION =.
+NVCCFLAGS    =
+===================================================
+MKLROOT      =false
+BLISROOT     =
+OPENBLASROOT =false
+QSMLROOT     =/Users/chenhan/Documents/Projects/qsml/aarch64-linux-android
+BLAS_LIBRARY =/usr/lib/libf77blas.so;/usr/lib/libatlas.so
+BLAS_LINKER  =
+===================================================
+-- Configuring done
+-- Generating done
+-- Build files have been written to: /home/getianyi/Documents/Master/Fall_2020/MasterThesis/hmlp/hmlp-1/build
