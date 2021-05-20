@@ -119,6 +119,32 @@ class spdMultiplication_rseCalulator(rse_calculator):
         # Theoreitcla result of mat-vec multiplication
         self.matvecThe = np.matmul(self.spdMatrix, self.weight)
 
+    def matvec(self):
+        """The operation of matrix-vector multiplication. The calculation
+        is based on updated instance attributes.
+
+        @ret: multi-dimensional numpy array
+        """
+        # Initialize a new tree every time a parameter is modified
+        # We use this re-initialization method instead of just passing
+        # the modified parameter into the object. The reason is
+        # we don't know the type of the parameter when we try to
+        # pass the parameter in python to the one in c++. C++ needs
+        # a clear type (parameters have 3 types, int, float, string)
+        gofmmCalculator = tools.gofmmTree(self.executable, self.spdSize,
+                                          self.m,
+                                          self.k, self.s, self.nrhs,
+                                          self.stol, self.budget,
+                                          self.distance, self.matrixtype,
+                                          self.kerneltype, self.denseSpd)
+
+        # return a 1D array which is a 2D matrix flattened row-wise
+        c = gofmmCalculator.mul_denseSPD(self.wData, self.lenMul)
+        # resize it to 2D
+        spdMatrix_mul = np.resize(c, (self.spdSize, self.nrhs))
+
+        return spdMatrix_mul
+
     def check_vectorShape(self):
         """Abort if the shape of the input vector doesn't match the one
         in the setup file. This is a preliminary check before we carry
@@ -142,23 +168,7 @@ class spdMultiplication_rseCalulator(rse_calculator):
         for parameter in parameterList:
             self.modify_parameter(idx, parameter)
 
-            # Initialize a new tree every time a parameter is modified
-            # We use this re-initialization method instead of just passing
-            # the modified parameter into the object. The reason is
-            # we don't know the type of the parameter when we try to
-            # pass the parameter in python to the one in c++. C++ needs
-            # a clear type (parameters have 3 types, int, float, string)
-            gofmmCalculator = tools.gofmmTree(self.executable, self.spdSize,
-                                              self.m,
-                                              self.k, self.s, self.nrhs,
-                                              self.stol, self.budget,
-                                              self.distance, self.matrixtype,
-                                              self.kerneltype, self.denseSpd)
-
-            # return a 1D array which is a 2D matrix flattened row-wise
-            c = gofmmCalculator.mul_denseSPD(self.wData, self.lenMul)
-            # resize it to 2D
-            spdMatrix_mul = np.resize(c, (self.spdSize, self.nrhs))
+            spdMatrix_mul = self.matvec()
 
             rse = self.compute_rse(spdMatrix_mul, self.matvecThe)
             rseList.append(rse)
@@ -181,6 +191,28 @@ class spdInverse_rseCalulator(rse_calculator):
         # Calculate the theoretical inverse of the regularized spd matrix
         self.invThe = np.linalg.inv(self.spdMatrix + lambda0 * np.eye(self.spdSize))
 
+    def inv(self):
+        # Initialize a new tree every time a parameter is modified
+        # We use this re-initialization method instead of just passing
+        # the modified parameter into the object. The reason is
+        # we don't know the type of the parameter when we try to
+        # pass the parameter in python to the one in c++. C++ needs
+        # a clear type (parameters have 3 types, int, float, string)
+        len_of_inverseMat = self.spdSize ** 2  # total # of entries in 1D
+        gofmmCalculator = tools.gofmmTree(self.executable, self.spdSize,
+                                          self.m,
+                                          self.k, self.s, self.nrhs,
+                                          self.stol, self.budget,
+                                          self.distance, self.matrixtype,
+                                          self.kerneltype, self.denseSpd)
+
+        # return a 1D array which is a 2D matrix flattened row-wise
+        c = gofmmCalculator.invert_denseSPD(self.lambda0, len_of_inverseMat)
+        # resize it to 2D
+        spdMatrix_inv = np.resize(c, (self.spdSize, self.spdSize))
+
+        return spdMatrix_inv
+
     def rse_analysis(self, idx, parameterList):
         """ Tune leaf node size and user tolerance to calculate the rse of
         our gofmm inverse
@@ -192,30 +224,13 @@ class spdInverse_rseCalulator(rse_calculator):
 
         @ret: a list of rses wrt to changing parameter
         """
-        len_of_inverseMat = self.spdSize ** 2
-
         rseList = []  # holder for rse
         for parameter in parameterList:
             self.modify_parameter(idx, parameter)
 
-            # Initialize a new tree every time a parameter is modified
-            # We use this re-initialization method instead of just passing
-            # the modified parameter into the object. The reason is
-            # we don't know the type of the parameter when we try to
-            # pass the parameter in python to the one in c++. C++ needs
-            # a clear type (parameters have 3 types, int, float, string)
-            gofmmCalculator = tools.gofmmTree(self.executable, self.spdSize,
-                                              self.m,
-                                              self.k, self.s, self.nrhs,
-                                              self.stol, self.budget,
-                                              self.distance, self.matrixtype,
-                                              self.kerneltype, self.denseSpd)
-
-            # return a 1D array which is a 2D matrix flattened row-wise
-            c = gofmmCalculator.invert_denseSPD(self.lambda0, len_of_inverseMat)
-            # resize it to 2D
-            spdMatrix_inv = np.resize(c, (self.spdSize, self.spdSize))
-
+            spdMatrix_inv = self.inv()
+            
+            # Calculate the RSEs
             rse = self.compute_rse(spdMatrix_inv, self.invThe)
             rseList.append(rse)
         return rseList
