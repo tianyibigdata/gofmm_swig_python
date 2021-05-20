@@ -192,6 +192,11 @@ class spdInverse_rseCalulator(rse_calculator):
         self.invThe = np.linalg.inv(self.spdMatrix + lambda0 * np.eye(self.spdSize))
 
     def inv(self):
+        """The operation of matrix inverse. The calculation is based
+        on updated instance attributes.
+
+        @ret: multi-dimensional numpy array
+        """
         # Initialize a new tree every time a parameter is modified
         # We use this re-initialization method instead of just passing
         # the modified parameter into the object. The reason is
