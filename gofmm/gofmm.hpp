@@ -4047,7 +4047,6 @@ float  ComputeError( sTree_t *tree, size_t gid, hmlp::Data<float>  *potentials )
 
 
 
-
 }; /** end namespace gofmm */
 }; /** end namespace hmlp */
 

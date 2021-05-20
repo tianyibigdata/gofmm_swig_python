@@ -9,7 +9,6 @@ import sys
 sys.path.insert(1, '../python')
 from generate_SPD_from_KDE import generateSPD_fromKDE
 
-
 class rse_calculator():
     """Calculate the relative standard errors based on different inputn
     of parameters, eg, nrhs, stol..."""
